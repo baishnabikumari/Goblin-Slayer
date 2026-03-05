@@ -783,12 +783,18 @@ sources/0 = SubResource("TileSetAtlasSource_dikn6")
 
 [node name="pawn" type="CharacterBody2D" unique_id=563966811]
 script = ExtResource("1_jbbln")
+speed = null
+max_life = null
+knockback_force = null
+use_duration = null
+tool_cooldown = null
 
 [node name="anim" type="AnimatedSprite2D" parent="." unique_id=1623781219]
 sprite_frames = SubResource("SpriteFrames_vmnnn")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.6684357
+frame = 4
+frame_progress = 0.9027476
 metadata/_edit_lock_ = true
 
 [node name="shape" type="CollisionShape2D" parent="." unique_id=17875598]
@@ -852,7 +858,7 @@ text = "."
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1438483373]
 
-[node name="Usetimer" type="Timer" parent="." unique_id=965175855]
+[node name="Use_timer" type="Timer" parent="." unique_id=965175855]
 
 [node name="Control" type="Control" parent="." unique_id=600409110]
 layout_mode = 3
@@ -944,14 +950,20 @@ metadata/_edit_lock_ = true
 
 [node name="soundfx" type="Node2D" parent="." unique_id=905347400]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="soundfx" unique_id=601439293]
+[node name="hammer_audio" type="AudioStreamPlayer" parent="soundfx" unique_id=601439293]
 
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="soundfx" unique_id=1039792332]
+[node name="knife_audio" type="AudioStreamPlayer" parent="soundfx" unique_id=1039792332]
 
-[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="soundfx" unique_id=1100906369]
+[node name="pickaxe_audio" type="AudioStreamPlayer" parent="soundfx" unique_id=1100906369]
 
-[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="soundfx" unique_id=601532134]
+[node name="axe_audio" type="AudioStreamPlayer" parent="soundfx" unique_id=601532134]
 
-[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="soundfx" unique_id=1638016283]
+[node name="equip_audio" type="AudioStreamPlayer" parent="soundfx" unique_id=1638016283]
 
-[node name="AudioStreamPlayer6" type="AudioStreamPlayer" parent="soundfx" unique_id=980856578]
+[node name="click_audio" type="AudioStreamPlayer" parent="soundfx" unique_id=980856578]
+
+[node name="death_audio" type="AudioStreamPlayer" parent="soundfx" unique_id=322143899]
+
+[node name="hit_audio" type="AudioStreamPlayer" parent="soundfx" unique_id=2005927737]
+
+[connection signal="timeout" from="Use_timer" to="." method="_on_use_timer_timeout"]
