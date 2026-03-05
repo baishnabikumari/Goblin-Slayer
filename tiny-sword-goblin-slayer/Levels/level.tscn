@@ -455,6 +455,10 @@ sources/1 = SubResource("TileSetAtlasSource_jmcc3")
 sources/2 = SubResource("TileSetAtlasSource_fw3l5")
 sources/3 = SubResource("TileSetAtlasSource_wjjle")
 
+[sub_resource type="TileSet" id="TileSet_xsqsu"]
+physics_layer_0/collision_layer = 31
+physics_layer_0/collision_mask = 31
+
 [node name="level" type="Node2D" unique_id=1383739427]
 
 [node name="sea" type="TextureRect" parent="." unique_id=1921126012]
@@ -499,3 +503,6 @@ tile_set = SubResource("TileSet_8hqpc")
 [node name="plants" type="TileMapLayer" parent="Tiles" unique_id=1911314371]
 tile_map_data = PackedByteArray("AADz/woAAAAAAAAAAABKAC4AAAAAAAAAAABNACsAAQAAAAAAAAApABkAAQAAAAAAAAAKACUAAQAAAAAAAAApAAgAAgAAAAAAAAAlAAgAAgAAAAAAAAAhAAgAAgAAAAAAAAAeABAAAgAAAAAAAAAiABAAAgAAAAAAAAAoACAAAgAAAAAAAAAkACAAAgAAAAAAAAAhACAAAwAAAAAAAAAlABAAAwAAAAAAAABGAA4AAwAAAAAAAABJAA4AAwAAAAAAAABIAA4AAwAAAAAAAABLAA4AAwAAAAAAAADz/xAAAwAAAAAAAAD1/xAAAwAAAAAAAAAOAA4AAwAAAAAAAAAMAA4AAwAAAAAAAAAVAAkAAgAAAAAAAAATAAkAAgAAAAAAAAAMACUAAAAAAAAAAAApAP7/AQAAAAAAAAAnAP7/AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_1sae0")
+
+[node name="Collider" type="TileMapLayer" parent="Tiles" unique_id=1167319583]
+tile_set = SubResource("TileSet_xsqsu")
