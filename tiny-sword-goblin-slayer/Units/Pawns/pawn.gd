@@ -79,7 +79,7 @@ var ui_timer:=0.0
 #ready func
 #-------------------------
 func _ready() -> void:
-	#global player
+	GlobalPlayer.register_pawn(self)
 	progress_bar.visible=false
 	
 	toolbox_panel.z_index=7
@@ -157,8 +157,7 @@ func hide_toolbox_if_visible():
 #-------------------------
 func _physics_process(delta: float) -> void:
 	if active==true:
-		pass
-		#GlobalPlayer.active_player_position=global_position
+		GlobalPlayer.active_player_position=global_position
 	if active and not busy:
 		if Input.is_key_pressed(KEY_RIGHT) or Input.is_key_pressed(KEY_LEFT) or \
 		Input.is_key_pressed(KEY_DOWN) or Input.is_key_pressed(KEY_UP):
@@ -379,15 +378,14 @@ func spawn_repair_effect()->void:
 			hammer_audio.stop()
 
 
-
 #-------------------------
 #Damage feedback
 #-------------------------
 func take_damage(amount:int,from_pos:Vector2)->void:
 	show_combat_ui()
 	life-=amount
-	#if GlobalPlayer.camera_shake_func.is_value():
-		#GlobalPlayer.camera_shake_func.call()
+	if GlobalPlayer.camera_shake_func.is_value():
+		GlobalPlayer.camera_shake_func.call()
 	progress_bar.value=life
 	knockback_velocity=(global_position-from_pos).normalized()*knockback_force
 	
