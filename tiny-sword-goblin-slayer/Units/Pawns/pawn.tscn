@@ -791,10 +791,10 @@ tool_cooldown = null
 
 [node name="anim" type="AnimatedSprite2D" parent="." unique_id=1623781219]
 sprite_frames = SubResource("SpriteFrames_vmnnn")
-animation = &"idle"
+animation = &"run"
 autoplay = "idle"
-frame = 4
-frame_progress = 0.9027476
+frame = 1
+frame_progress = 0.34591055
 metadata/_edit_lock_ = true
 
 [node name="shape" type="CollisionShape2D" parent="." unique_id=17875598]
@@ -966,5 +966,12 @@ metadata/_edit_lock_ = true
 
 [node name="hit_audio" type="AudioStreamPlayer" parent="soundfx" unique_id=2005927737]
 
+[connection signal="area_entered" from="detector_zone" to="." method="_on_detector_zone_area_entered"]
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="Use_timer" to="." method="_on_use_timer_timeout"]
+[connection signal="pressed" from="Control/hammer" to="." method="_on_hammer_pressed"]
+[connection signal="pressed" from="Control/pickaxe" to="." method="_on_pickaxe_pressed"]
+[connection signal="pressed" from="Control/axe" to="." method="_on_axe_pressed"]
+[connection signal="pressed" from="Control/knife" to="." method="_on_knife_pressed"]
+[connection signal="pressed" from="Control/hand" to="." method="_on_hand_pressed"]

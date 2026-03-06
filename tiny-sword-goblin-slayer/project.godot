@@ -13,6 +13,10 @@ config_version=5
 config/name="Tiny sword Goblin slayer"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 
+[autoload]
+
+Global="*uid://pfk1u4j4aw5q"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")

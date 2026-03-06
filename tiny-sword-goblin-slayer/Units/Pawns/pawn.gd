@@ -99,9 +99,6 @@ func _ready() -> void:
 	if detector_zone!=null:
 		detector_zone.area_entered.connect(_on_resource_entered)
 
-func _on_use_timer_timeout() -> void:
-	pass # Replace with function body.
-
 #-------------------------
 #pickup function
 #-------------------------
@@ -395,3 +392,181 @@ func take_damage(amount:int,from_pos:Vector2)->void:
 	knockback_velocity=(global_position-from_pos).normalized()*knockback_force
 	
 	red_flash()
+	
+	if life<=0:
+		die()
+		
+func red_flash():
+	anim.modulate=Color.RED
+	await get_tree().create_timer(0.12).timeout
+	anim.modulate=Color.WHITE
+
+
+#-------------------------
+#DEATH
+#-------------------------
+signal died(pawn)
+
+func die():
+	if Current_state.DEAD:
+		return
+	emit_signal("died",self)
+	
+	Current_state=state.DEAD
+	active=false
+	busy=true
+	
+	if not death_audio.playing:
+		death_audio.play()
+		
+	spawn_skull()
+	await fade_out()
+	queue_free()
+
+func spawn_skull():
+	var skull=skull_scene.instantiate()
+	skull.global_position=global_position
+	get_parent().add_child(skull)
+	skull.scale=Vector2(0.5,0.5)
+	
+func fade_out():
+	var tween:=create_tween()
+	tween.tween_property(anim,"modulate:a",0.0,0.6)
+	await tween.finished
+	
+#-------------------------
+#animation handler
+#-------------------------
+func update_animation()->void:
+	var suffix:=""
+	match current_tool:
+		tool.HAMMER:suffix="hammer"
+		tool.PICKAXE:suffix="pickaxe"
+		tool.AXE:suffix="axe"
+		tool.KNIFE:suffix="knife"
+		tool.HAND:suffix=""
+		
+	if  Current_state==state.USE:
+		if suffix=="":
+			anim.play("use")
+		else:
+			anim.play("use_"+suffix)
+	if  Current_state==state.IDLE:
+		if suffix=="":
+			anim.play("idle")
+		else:
+			anim.play("idle_"+suffix)
+	if  Current_state==state.RUN:
+		if suffix=="":
+			anim.play("run")
+		else:
+			anim.play("run_"+suffix)
+	if  Current_state==state.DEAD:
+			anim.play("idle")
+
+
+#-------------------------
+#Button tools selection
+#-------------------------
+func _on_hammer_pressed() -> void:
+	set_tool_and_activate(tool.HAMMER)
+	hide_toolbox_if_visible()
+	#Global.pawn_tool="hammer"
+	equip_audio.play()
+	
+func _on_pickaxe_pressed() -> void:
+	set_tool_and_activate(tool.PICKAXE)
+	hide_toolbox_if_visible()
+	#Global.pawn_tool="pickaxe"
+	equip_audio.play()
+	
+func _on_axe_pressed() -> void:
+	set_tool_and_activate(tool.AXE)
+	hide_toolbox_if_visible()
+	#Global.pawn_tool="axe"
+	equip_audio.play()
+	
+func _on_knife_pressed() -> void:
+	set_tool_and_activate(tool.KNIFE)
+	hide_toolbox_if_visible()
+	#Global.pawn_tool="knife"
+	equip_audio.play()
+
+func _on_hand_pressed() -> void:
+	set_tool_and_activate(tool.HAND)
+	hide_toolbox_if_visible()
+	#Global.pawn_tool="hand"
+	equip_audio.play()
+
+#-------------------------
+#activate/deactivate the pawn
+#-------------------------
+func activate_this_pawn():
+	if GlobalPlayer.active_player and GlobalPlayer.active_player!=self:
+		if GlobalPlayer.is_active_player.has_method("deactivate"):
+			GlobalPlayer.is_active_player.deactive()
+	GlobalPlayer.active_player=self
+	
+	active=true
+	GlobalPlayer.active_player_position=global_position
+	set_process(true)
+	toolbox_panel.show()
+	update_selection_indicator()
+	
+func deactivate():
+	active=false
+	set_process(false) #---here(:)
+	toolbox_panel.hide()
+	update_selection_indicator()
+	select_indicator.visible=active
+	
+func update_selection_indicator():
+	select_indicator.visible=active
+
+
+#-------------------------
+#dectector zone signals
+#-------------------------
+func _on_detector_zone_area_entered(area: Area2D) -> void:
+	if area.is_in_group("heal"): #using for healing via monk
+		show_combat_ui()
+		life=max_life
+
+#-------------------------
+#button signal
+#-------------------------
+func _on_button_pressed() -> void:
+	GlobalPlayer.set_active_pawn(self)
+	click_audio.play()
+
+func _on_use_timer_timeout() -> void:
+	busy=false
+	can_use_tool=true
+	Current_state=state.IDLE
+	update_animation()
+
+
+#-------------------------
+#healing detector
+#-------------------------
+func get_health_percentage()->float:
+	return float(life)/float(max_life)
+	
+func get_health()->void:
+	return life
+	
+func get_max_health()->int:
+	return max_life
+	
+func show_combat_ui():
+	ui_visible=true
+	ui_timer=0.0
+	progress_bar.visible=true
+	progress_bar.modulate.a=1.0
+	
+func activate_from_global():
+	active=true
+	set_process(true)
+	toolbox_panel.show()
+	select_indicator.visible=true
+	GlobalPlayer.active_player_position=global_position
