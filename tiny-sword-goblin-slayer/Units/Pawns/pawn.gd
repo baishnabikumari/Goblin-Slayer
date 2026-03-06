@@ -278,10 +278,10 @@ func repeat_tool_action(tool:tool,collect_type:String,tool_name:String,times:int
 func spawn_tool_effect()->void:
 	if current_tool==tool.HAMMER:
 		pass
-		#spawn_repair_effect()
+		spawn_repair_effect()
 	else:
 		pass
-		#spawn_attack_effect()
+		spawn_attack_effect()
 
 
 #-------------------------
@@ -310,4 +310,88 @@ func pick_nearby_items()->void:
 			if area.has_method("collect") and area.has_property("resource_type"):
 				if not area.collected:
 					var resource_type=area.resource_type
-				return
+					if resource_type in collected:
+						pickup_resource(area)
+
+
+
+#-------------------------
+#flip the anim
+#-------------------------
+func flip_sprites(dir:Vector2)->void:
+	if dir.x!=0:
+		anim.flip_h=dir.x<0
+		
+#-------------------------
+#Tool selection/activation
+#-------------------------
+func set_tool_and_activate(Tool:tool)->void:
+	if busy:
+		return
+	if active:
+		current_tool=Tool
+		
+func set_active()->void:
+	active=true
+	toolbox_panel.show()
+	
+#-------------------------
+#hitbox and damage
+#-------------------------
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	if area.is_in_group("explo"):
+		take_damage(10,area.global_position)
+		hit_audio.play()
+		
+#-------------------------
+#spawn attack effect
+#-------------------------
+func spawn_attack_effect()->void:
+	var fx:=attack_effect_scene.instantiate()
+	fx.global_position=marker_2d.global_position
+	fx.scale=Vector2(0.2,0.2)
+	get_parent().add_child(fx)
+	match current_tool:
+		tool.HAMMER:
+			fx.scale=Vector2(0.2,0.2)
+			hammer_audio.play()
+			await get_tree().create_timer(0.6).timeout
+			hammer_audio.stop()
+		tool.KNIFE:
+			fx.scale=Vector2(0.2,0.2)
+			knife_audio.play()
+		tool.AXE:
+			fx.scale=Vector2(0.2,0.2)
+			axe_audio.play()
+		tool.PICKAXE:
+			fx.scale=Vector2(0.2,0.2)
+			pickaxe_audio.play()
+		tool.HAND:
+			fx.scale=Vector2(0.2,0.2)
+			
+func spawn_repair_effect()->void:
+	var fx:=attack_effect_scene.instantiate()
+	fx.global_position=marker_2d.global_position
+	fx.scale=Vector2(0.2,0.2)
+	get_parent().add_child(fx)
+	match current_tool:
+		tool.HAMMER:
+			fx.scale=Vector2(0.2,0.2)
+			hammer_audio.play()
+			await get_tree().create_timer(0.6).timeout
+			hammer_audio.stop()
+
+
+
+#-------------------------
+#Damage feedback
+#-------------------------
+func take_damage(amount:int,from_pos:Vector2)->void:
+	show_combat_ui()
+	life-=amount
+	#if GlobalPlayer.camera_shake_func.is_value():
+		#GlobalPlayer.camera_shake_func.call()
+	progress_bar.value=life
+	knockback_velocity=(global_position-from_pos).normalized()*knockback_force
+	
+	red_flash()

@@ -966,4 +966,5 @@ metadata/_edit_lock_ = true
 
 [node name="hit_audio" type="AudioStreamPlayer" parent="soundfx" unique_id=2005927737]
 
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="Use_timer" to="." method="_on_use_timer_timeout"]
