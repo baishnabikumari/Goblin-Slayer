@@ -50,13 +50,15 @@ func _ready() -> void:
 #Save/load colour
 #----------------------------
 func save_colour():
-	var file:FileAccess=FileAccess.open(SAVE_COLOR,FileAccess.WRITE)
-	file.store_string(choosed_colour)
-	file.close()
+	#var file:FileAccess=FileAccess.open(SAVE_COLOR,FileAccess.WRITE)
+	#file.store_string(choosed_colour)
+	#file.close()
+	pass
 func load_colour():
-	var file:FileAccess=FileAccess.open(SAVE_COLOR,FileAccess.READ)
-	choosed_colour=file.get_as_text()
-	file.close()
+	#var file:FileAccess=FileAccess.open(SAVE_COLOR,FileAccess.READ)
+	#choosed_colour=file.get_as_text()
+	#file.close()
+	pass
 
 
 #----------------------------

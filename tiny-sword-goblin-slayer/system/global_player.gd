@@ -1,8 +1,9 @@
 extends Node
 
-var pawn:Array=[]
+var pawns:Array=[]
 var active_player:Node=null
 var active_player_position: Vector2
+var pawn_all_dead:bool=true
 
 var castle_position=Vector2.ZERO
 var camera_shake_func: Callable=Callable()
@@ -19,7 +20,7 @@ func register_pawn(pawn:Node)->void:
 		pawn.died.connect(_on_pawn_died)
 		
 	_update_pawn_state()
-	if pawn.size()==1:
+	if pawns.size()==1:
 		set_active_pawn(pawn)
 
 
@@ -46,7 +47,6 @@ func set_active_pawn(pawn:Node)->void:
 	if active_player and active_player!=pawn:
 		if active_player.has_method("deactivate"):
 			active_player.deactivate()
-		active_player.deactivate()
 	active_player=pawn
 	if active_player and active_player.has_method("activate_from_global"):
 		active_player.activate_from_global()

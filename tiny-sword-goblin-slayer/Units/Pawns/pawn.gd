@@ -224,7 +224,7 @@ func handle_movement():
 	last_input_dir=input_vector.normalized()
 	velocity=last_input_dir*speed
 	Current_state=state.RUN
-	#flip_sprite(last_input_dir)
+	flip_sprites(last_input_dir)
 	
 #-------------------------
 # USE CURRENT TOOL BY PRESSING USE "SPACE"
@@ -250,6 +250,7 @@ func use_current_tool():
 #-------------------------
 #func to use tool
 #-------------------------
+@warning_ignore("unused_parameter")
 func repeat_tool_action(Tool:tool,collect_type:String,tool_name:String,times:int)->void:
 	busy=true
 	can_use_tool=false
@@ -283,6 +284,7 @@ func spawn_tool_effect()->void:
 #-------------------------
 #func to pick nearby resources
 #-------------------------
+@warning_ignore("unused_parameter")
 func collect_nearby_resources(resource_type:String)->void:
 	if detector_zone==null:
 		return
