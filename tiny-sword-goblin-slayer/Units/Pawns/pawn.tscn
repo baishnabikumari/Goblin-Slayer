@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://dwkonjvqj0o1j" path="res://Tiny Swords (Free Pack)/Terrain/Resources/Tools/Tool_02.png" id="17_ass8d"]
 [ext_resource type="Texture2D" uid="uid://ce5r07ql6vyyp" path="res://Tiny Swords (Free Pack)/Terrain/Resources/Tools/Tool_03.png" id="18_2o8kx"]
 [ext_resource type="Texture2D" uid="uid://cew74574arxwo" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Cursors/Cursor_02.png" id="19_dhrtj"]
+[ext_resource type="AudioStream" uid="uid://dhad2axvd6tuw" path="res://Audio/hammer-correct.mp3" id="22_ass8d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ot816"]
 atlas = ExtResource("1_4t7gr")
@@ -786,8 +787,10 @@ script = ExtResource("1_jbbln")
 
 [node name="anim" type="AnimatedSprite2D" parent="." unique_id=1623781219]
 sprite_frames = SubResource("SpriteFrames_vmnnn")
-animation = &"use_knife"
+animation = &"idle_hammer"
 autoplay = "idle"
+frame = 4
+frame_progress = 0.24177615
 metadata/_edit_lock_ = true
 
 [node name="shape" type="CollisionShape2D" parent="." unique_id=17875598]
@@ -857,6 +860,7 @@ position_smoothing_speed = 2.0
 [node name="Use_timer" type="Timer" parent="." unique_id=965175855]
 
 [node name="Control" type="Control" parent="." unique_id=600409110]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -948,6 +952,7 @@ metadata/_edit_lock_ = true
 [node name="soundfx" type="Node2D" parent="." unique_id=905347400]
 
 [node name="hammer_audio" type="AudioStreamPlayer" parent="soundfx" unique_id=601439293]
+stream = ExtResource("22_ass8d")
 
 [node name="knife_audio" type="AudioStreamPlayer" parent="soundfx" unique_id=1039792332]
 
