@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://i256fpma8dk4" path="res://Tiny Swords (Free Pack)/Terrain/Decorations/Bushes/Bushe3.png" id="14_jjxhf"]
 [ext_resource type="Texture2D" uid="uid://d4gh3slijnmdy" path="res://Tiny Swords (Free Pack)/Terrain/Decorations/Bushes/Bushe4.png" id="15_lybtp"]
 [ext_resource type="Texture2D" uid="uid://b07i2dypoodrf" path="res://Tiny Swords (Free Pack)/UI Elements/UI Banners from the store page/Banner/Banner_Slots.png" id="16_jjxhf"]
-[ext_resource type="PackedScene" uid="uid://ii5i38sjnrr8" path="res://Units/Pawns/pawn.tscn" id="16_vmy0u"]
+[ext_resource type="PackedScene" uid="uid://ii5i38sjnrr8" path="res://Units/Pawns/pawn_black.tscn" id="16_vmy0u"]
 [ext_resource type="Script" uid="uid://dayg82fjmlnc5" path="res://Tiles/collider.gd" id="17_lybtp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gtnvv"]

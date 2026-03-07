@@ -21,7 +21,14 @@
 [ext_resource type="Texture2D" uid="uid://dwkonjvqj0o1j" path="res://Tiny Swords (Free Pack)/Terrain/Resources/Tools/Tool_02.png" id="17_ass8d"]
 [ext_resource type="Texture2D" uid="uid://ce5r07ql6vyyp" path="res://Tiny Swords (Free Pack)/Terrain/Resources/Tools/Tool_03.png" id="18_2o8kx"]
 [ext_resource type="Texture2D" uid="uid://cew74574arxwo" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Cursors/Cursor_02.png" id="19_dhrtj"]
-[ext_resource type="AudioStream" uid="uid://dhad2axvd6tuw" path="res://Audio/hammer-correct.mp3" id="22_ass8d"]
+[ext_resource type="AudioStream" uid="uid://di3ktlfciuj2r" path="res://Audio/Hammer.mp3" id="22_ass8d"]
+[ext_resource type="AudioStream" uid="uid://d0xtrptdqw7b" path="res://Audio/knife.mp3" id="23_2o8kx"]
+[ext_resource type="AudioStream" uid="uid://cm8uou2l357fr" path="res://Audio/axe.mp3" id="24_dhrtj"]
+[ext_resource type="AudioStream" uid="uid://dh4h4xt15nyqb" path="res://Audio/pickaxe.mp3" id="24_sbief"]
+[ext_resource type="AudioStream" uid="uid://chfn3cmwdt0fh" path="res://Audio/equipe_items.mp3" id="26_8jxpe"]
+[ext_resource type="AudioStream" uid="uid://2rtovt2dpmwh" path="res://Audio/click.mp3" id="27_sqa4h"]
+[ext_resource type="AudioStream" uid="uid://uu4waipmsag1" path="res://Audio/dying.mp3" id="28_hm1re"]
+[ext_resource type="AudioStream" uid="uid://cus6773dasgj2" path="res://Audio/hit_audio.mp3" id="29_k5ksa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ot816"]
 atlas = ExtResource("1_4t7gr")
@@ -674,7 +681,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5x78c")
 }],
-"loop": true,
+"loop": false,
 "name": &"use_hammer",
 "speed": 10.0
 }, {
@@ -787,10 +794,10 @@ script = ExtResource("1_jbbln")
 
 [node name="anim" type="AnimatedSprite2D" parent="." unique_id=1623781219]
 sprite_frames = SubResource("SpriteFrames_vmnnn")
-animation = &"idle_hammer"
+animation = &"use_hammer"
 autoplay = "idle"
-frame = 4
-frame_progress = 0.24177615
+frame = 2
+frame_progress = 1.0
 metadata/_edit_lock_ = true
 
 [node name="shape" type="CollisionShape2D" parent="." unique_id=17875598]
@@ -953,20 +960,35 @@ metadata/_edit_lock_ = true
 
 [node name="hammer_audio" type="AudioStreamPlayer" parent="soundfx" unique_id=601439293]
 stream = ExtResource("22_ass8d")
+volume_db = -9.401
 
 [node name="knife_audio" type="AudioStreamPlayer" parent="soundfx" unique_id=1039792332]
+stream = ExtResource("23_2o8kx")
+volume_db = -8.226
 
 [node name="pickaxe_audio" type="AudioStreamPlayer" parent="soundfx" unique_id=1100906369]
+stream = ExtResource("24_sbief")
+volume_db = -14.192
 
 [node name="axe_audio" type="AudioStreamPlayer" parent="soundfx" unique_id=601532134]
+stream = ExtResource("24_dhrtj")
+volume_db = -14.101
 
 [node name="equip_audio" type="AudioStreamPlayer" parent="soundfx" unique_id=1638016283]
+stream = ExtResource("26_8jxpe")
+volume_db = -5.288
 
 [node name="click_audio" type="AudioStreamPlayer" parent="soundfx" unique_id=980856578]
+stream = ExtResource("27_sqa4h")
+volume_db = -4.113
 
 [node name="death_audio" type="AudioStreamPlayer" parent="soundfx" unique_id=322143899]
+stream = ExtResource("28_hm1re")
+volume_db = -8.814
 
 [node name="hit_audio" type="AudioStreamPlayer" parent="soundfx" unique_id=2005927737]
+stream = ExtResource("29_k5ksa")
+volume_db = -9.401
 
 [connection signal="area_entered" from="detector_zone" to="." method="_on_detector_zone_area_entered"]
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]

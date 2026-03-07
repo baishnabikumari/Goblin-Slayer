@@ -469,7 +469,7 @@ func update_animation()->void:
 func _on_hammer_pressed() -> void:
 	set_tool_and_activate(tool.HAMMER)
 	hide_toolbox_if_visible()
-	#Global.pawn_tool="hammer"
+	Global.pawn_tool="hammer"
 	equip_audio.play()
 	
 func _on_pickaxe_pressed() -> void:
