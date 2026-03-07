@@ -12,9 +12,9 @@ enum state{IDLE,RUN,USE,DEAD}
 @export var use_duration:=0.5
 @export var tool_cooldown:=0.5 #time btw each pressed btn
 
-@export var attack_effect_scene= PackedScene
-@export var attack_repair_scene= PackedScene
-@export var skull_scene= PackedScene
+@export var attack_effect_scene= preload("res://materials_effects/attackeffect/attackeffect.tscn")
+@export var attack_repair_scene= preload("res://materials_effects/repaireffect/repaireffect.tscn")
+@export var skull_scene= preload("res://materials_effects/skull/skull.tscn")
 
 const INPUT_RIGHT:="move_right"
 const INPUT_left:="move_left"
@@ -107,7 +107,7 @@ func pickup_resource(resource_node)->void:
 	if resource_type in collected:
 		collected[resource_type]+=1
 		#calling the func
-		if resource_node.has_methode("collect"):
+		if resource_node.has_method("collect"):
 			resource_node.collect()
 		else:
 			resource_node.queue_free()
@@ -131,7 +131,7 @@ func _on_resource_entered(area:Area2D)->void:
 #Input ui
 #-------------------------
 func _input(event: InputEvent) -> void:
-	if not active or current_tool==state.DEAD:
+	if not active or Current_state==state.DEAD:
 		return
 	
 	#toggle toobox with input key "T"
@@ -250,7 +250,7 @@ func use_current_tool():
 #-------------------------
 #func to use tool
 #-------------------------
-func repeat_tool_action(tool:tool,collect_type:String,tool_name:String,times:int)->void:
+func repeat_tool_action(Tool:tool,collect_type:String,tool_name:String,times:int)->void:
 	busy=true
 	can_use_tool=false
 	Current_state=state.USE
@@ -301,15 +301,13 @@ func pick_nearby_items()->void:
 	if detector_zone==null:
 		return
 		
-		var overlapping_area=detector_zone.get_overlapping_areas()
-		for area in overlapping_area:
-			if area.has_method("collect") and area.has_property("resource_type"):
-				if not area.collected:
-					var resource_type=area.resource_type
-					if resource_type in collected:
-						pickup_resource(area)
-
-
+	var overlapping_area=detector_zone.get_overlapping_areas()
+	for area in overlapping_area:
+		if area.has_method("collect") and area.has_property("resource_type"):
+			if not area.collected:
+				var resource_type=area.resource_type
+				if resource_type in collected:
+					pickup_resource(area)
 
 #-------------------------
 #flip the anim
@@ -366,7 +364,7 @@ func spawn_attack_effect()->void:
 			fx.scale=Vector2(0.2,0.2)
 			
 func spawn_repair_effect()->void:
-	var fx:=attack_effect_scene.instantiate()
+	var fx:=attack_repair_scene.instantiate()
 	fx.global_position=marker_2d.global_position
 	fx.scale=Vector2(0.2,0.2)
 	get_parent().add_child(fx)
@@ -384,7 +382,7 @@ func spawn_repair_effect()->void:
 func take_damage(amount:int,from_pos:Vector2)->void:
 	show_combat_ui()
 	life-=amount
-	if GlobalPlayer.camera_shake_func.is_value():
+	if GlobalPlayer.camera_shake_func.is_valid():
 		GlobalPlayer.camera_shake_func.call()
 	progress_bar.value=life
 	knockback_velocity=(global_position-from_pos).normalized()*knockback_force
@@ -406,7 +404,7 @@ func red_flash():
 signal died(pawn)
 
 func die():
-	if Current_state.DEAD:
+	if Current_state == state.DEAD:
 		return
 	emit_signal("died",self)
 	
@@ -501,8 +499,8 @@ func _on_hand_pressed() -> void:
 #-------------------------
 func activate_this_pawn():
 	if GlobalPlayer.active_player and GlobalPlayer.active_player!=self:
-		if GlobalPlayer.is_active_player.has_method("deactivate"):
-			GlobalPlayer.is_active_player.deactive()
+		if GlobalPlayer.active_player.has_method("deactivate"):
+			GlobalPlayer.active_player.deactivate()
 	GlobalPlayer.active_player=self
 	
 	active=true
@@ -550,7 +548,7 @@ func _on_use_timer_timeout() -> void:
 func get_health_percentage()->float:
 	return float(life)/float(max_life)
 	
-func get_health()->void:
+func get_health()->int:
 	return life
 	
 func get_max_health()->int:

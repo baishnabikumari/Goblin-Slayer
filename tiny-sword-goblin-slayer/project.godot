@@ -22,6 +22,11 @@ GlobalPlayer="*uid://bxlp3cju5wfq1"
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 
+[global_group]
+
+attackeffect=""
+repaireffect=""
+
 [input]
 
 tools={

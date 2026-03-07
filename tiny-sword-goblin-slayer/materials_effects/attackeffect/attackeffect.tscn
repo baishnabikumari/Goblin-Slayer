@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://ckqlgqusanq2f"]
+
+[ext_resource type="Texture2D" uid="uid://cwwp21mruqner" path="res://Tiny Swords (Free Pack)/Buildings/Dead/hiteffect-2.png" id="1_bo2ad"]
+[ext_resource type="Script" uid="uid://cl0sbppcwhn0r" path="res://materials_effects/attackeffect/attackeffect.gd" id="2_3uqey"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqiba"]
+atlas = ExtResource("1_bo2ad")
+region = Rect2(0, 0, 624, 847)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjsly"]
+atlas = ExtResource("1_bo2ad")
+region = Rect2(1872, 0, 624, 847)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8sgbb"]
+atlas = ExtResource("1_bo2ad")
+region = Rect2(1248, 0, 624, 847)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1dqg"]
+atlas = ExtResource("1_bo2ad")
+region = Rect2(624, 0, 624, 847)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dok1e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqiba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjsly")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8sgbb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1dqg")
+}],
+"loop": false,
+"name": &"sp",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bo2ad"]
+radius = 112.28535
+
+[node name="attackeffect" type="AnimatedSprite2D" unique_id=1167941570]
+self_modulate = Color(1, 1, 1, 0)
+sprite_frames = SubResource("SpriteFrames_dok1e")
+animation = &"sp"
+autoplay = "sp"
+script = ExtResource("2_3uqey")
+
+[node name="attackeffect" type="Area2D" parent="." unique_id=1058837421 groups=["attackeffect"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attackeffect" unique_id=1390222766]
+visible = false
+shape = SubResource("CircleShape2D_bo2ad")
+metadata/_edit_lock_ = true
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

@@ -783,11 +783,6 @@ sources/0 = SubResource("TileSetAtlasSource_dikn6")
 
 [node name="pawn" type="CharacterBody2D" unique_id=563966811]
 script = ExtResource("1_jbbln")
-speed = null
-max_life = null
-knockback_force = null
-use_duration = null
-tool_cooldown = null
 
 [node name="anim" type="AnimatedSprite2D" parent="." unique_id=1623781219]
 sprite_frames = SubResource("SpriteFrames_vmnnn")
