@@ -141,7 +141,7 @@ func _input(event: InputEvent) -> void:
 		
 #tool usage
 	if event.is_action_pressed("use"):
-		#use_current_tool()
+		use_current_tool()
 		hide_toolbox_if_visible()
 		pass
 
@@ -181,7 +181,7 @@ func _physics_process(delta: float) -> void:
 			velocity=knockback_velocity
 			knockback_velocity=knockback_velocity.move_toward(Vector2.ZERO,delta*900)
 			move_and_slide()
-			#update_animation()
+			update_animation()
 			return
 			
 		if active and not busy:
@@ -193,7 +193,7 @@ func _physics_process(delta: float) -> void:
 				Current_state=state.IDLE
 
 		move_and_slide()
-		#update_animation()
+		update_animation()
 		
 #-------------------------
 #movement logic manual input(using arrow keys)

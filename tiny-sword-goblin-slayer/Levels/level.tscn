@@ -464,10 +464,10 @@ physics_layer_0/collision_mask = 31
 
 [node name="sea" type="TextureRect" parent="." unique_id=1921126012]
 z_index = -10
-offset_left = -296.0
-offset_top = -176.0
-offset_right = 1508.0
-offset_bottom = 935.0
+offset_left = -1265.0
+offset_top = -1008.0
+offset_right = 6098.0
+offset_bottom = 3815.0
 texture = ExtResource("1_s41d2")
 
 [node name="Tiles" type="Node2D" parent="." unique_id=1142818269]

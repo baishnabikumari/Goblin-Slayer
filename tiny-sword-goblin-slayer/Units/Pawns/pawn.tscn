@@ -302,6 +302,30 @@ region = Rect2(768, 0, 192, 192)
 atlas = ExtResource("10_jbbln")
 region = Rect2(960, 0, 192, 192)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_s670e"]
+atlas = ExtResource("13_dhrtj")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ly25i"]
+atlas = ExtResource("13_dhrtj")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ruryi"]
+atlas = ExtResource("13_dhrtj")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2jfa"]
+atlas = ExtResource("13_dhrtj")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67op7"]
+atlas = ExtResource("13_dhrtj")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rb4r"]
+atlas = ExtResource("13_dhrtj")
+region = Rect2(960, 0, 192, 192)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_oyv3i"]
 atlas = ExtResource("11_ass8d")
 region = Rect2(0, 0, 192, 192)
@@ -352,30 +376,6 @@ region = Rect2(768, 0, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1vk4d"]
 atlas = ExtResource("12_2o8kx")
-region = Rect2(960, 0, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s670e"]
-atlas = ExtResource("13_dhrtj")
-region = Rect2(0, 0, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ly25i"]
-atlas = ExtResource("13_dhrtj")
-region = Rect2(192, 0, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ruryi"]
-atlas = ExtResource("13_dhrtj")
-region = Rect2(384, 0, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w2jfa"]
-atlas = ExtResource("13_dhrtj")
-region = Rect2(576, 0, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_67op7"]
-atlas = ExtResource("13_dhrtj")
-region = Rect2(768, 0, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1rb4r"]
-atlas = ExtResource("13_dhrtj")
 region = Rect2(960, 0, 192, 192)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vmnnn"]
@@ -642,6 +642,29 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_s670e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ly25i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ruryi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2jfa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67op7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1rb4r")
+}],
+"loop": true,
+"name": &"use_axe",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_oyv3i")
 }, {
 "duration": 1.0,
@@ -651,7 +674,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_5x78c")
 }],
 "loop": true,
-"name": &"use__hammer",
+"name": &"use_hammer",
 "speed": 10.0
 }, {
 "frames": [{
@@ -668,7 +691,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_dikn6")
 }],
 "loop": true,
-"name": &"use__knife",
+"name": &"use_knife",
 "speed": 10.0
 }, {
 "frames": [{
@@ -691,30 +714,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_1vk4d")
 }],
 "loop": true,
-"name": &"use__pickaxe",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s670e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ly25i")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ruryi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w2jfa")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_67op7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1rb4r")
-}],
-"loop": true,
-"name": &"use_axe",
+"name": &"use_pickaxe",
 "speed": 10.0
 }]
 
@@ -786,10 +786,8 @@ script = ExtResource("1_jbbln")
 
 [node name="anim" type="AnimatedSprite2D" parent="." unique_id=1623781219]
 sprite_frames = SubResource("SpriteFrames_vmnnn")
-animation = &"run"
+animation = &"use_knife"
 autoplay = "idle"
-frame = 1
-frame_progress = 0.34591055
 metadata/_edit_lock_ = true
 
 [node name="shape" type="CollisionShape2D" parent="." unique_id=17875598]
@@ -852,6 +850,9 @@ text = "."
 [node name="Marker2D" type="Marker2D" parent="." unique_id=1699704722]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1438483373]
+zoom = Vector2(0.7, 0.7)
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
 
 [node name="Use_timer" type="Timer" parent="." unique_id=965175855]
 

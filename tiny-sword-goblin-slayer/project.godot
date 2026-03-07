@@ -18,6 +18,10 @@ config/features=PackedStringArray("4.6", "GL Compatibility")
 Global="*uid://pfk1u4j4aw5q"
 GlobalPlayer="*uid://bxlp3cju5wfq1"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
