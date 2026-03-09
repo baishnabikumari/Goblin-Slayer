@@ -18,6 +18,10 @@
 [ext_resource type="Texture2D" uid="uid://b07i2dypoodrf" path="res://Tiny Swords (Free Pack)/UI Elements/UI Banners from the store page/Banner/Banner_Slots.png" id="16_jjxhf"]
 [ext_resource type="PackedScene" uid="uid://ii5i38sjnrr8" path="res://Units/Pawns/pawn_black.tscn" id="16_vmy0u"]
 [ext_resource type="Script" uid="uid://dayg82fjmlnc5" path="res://Tiles/collider.gd" id="17_lybtp"]
+[ext_resource type="PackedScene" uid="uid://mjejki0lht32" path="res://Units/Pawns/pawn_blue.tscn" id="19_wjjle"]
+[ext_resource type="PackedScene" uid="uid://bwuobdfe5tn1m" path="res://Units/Pawns/pawn_red.tscn" id="20_1sae0"]
+[ext_resource type="PackedScene" uid="uid://c4cft0xtytsni" path="res://Units/Pawns/pawn_purple.tscn" id="21_twn60"]
+[ext_resource type="PackedScene" uid="uid://u5udfjwklglf" path="res://Units/Pawns/pawn_yellow.tscn" id="22_r2ueb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gtnvv"]
 texture = ExtResource("2_gtnvv")
@@ -807,3 +811,15 @@ script = ExtResource("17_lybtp")
 
 [node name="pawn" parent="." unique_id=563966811 instance=ExtResource("16_vmy0u")]
 position = Vector2(245, 557)
+
+[node name="pawn2" parent="." unique_id=805729638 instance=ExtResource("19_wjjle")]
+position = Vector2(176, 285)
+
+[node name="pawn3" parent="." unique_id=1455417415 instance=ExtResource("20_1sae0")]
+position = Vector2(540, 577)
+
+[node name="pawn4" parent="." unique_id=522646190 instance=ExtResource("21_twn60")]
+position = Vector2(569, -4)
+
+[node name="pawn5" parent="." unique_id=667010509 instance=ExtResource("22_r2ueb")]
+position = Vector2(314, 376)

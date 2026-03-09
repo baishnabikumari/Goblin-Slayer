@@ -101,7 +101,7 @@ frame = 10
 frame_progress = 1.0
 script = ExtResource("2_qbtev")
 
-[node name="repaireffect" type="Area2D" parent="." unique_id=1058837421 groups=["repaireffect"]]
+[node name="repaireffect" type="Area2D" parent="." unique_id=1058837421 groups=["repair_effect"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="repaireffect" unique_id=1390222766]
 visible = false

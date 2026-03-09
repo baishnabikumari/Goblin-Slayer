@@ -37,7 +37,25 @@ folder_colors={
 [global_group]
 
 attackeffect=""
-repaireffect=""
+arrow=""
+block_building=""
+building=""
+castle=""
+damaged_buildings=""
+explo=""
+goblin=""
+goblinbuildings=""
+ground_tilemap=""
+heal=""
+mines=""
+pawn=""
+player=""
+repair_effect=""
+resource=""
+safehouse=""
+sheep=""
+trees=""
+warrior=""
 
 [input]
 

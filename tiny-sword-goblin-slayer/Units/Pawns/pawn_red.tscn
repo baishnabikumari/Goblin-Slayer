@@ -789,7 +789,7 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_dikn6")
 
-[node name="pawn" type="CharacterBody2D" unique_id=563966811]
+[node name="pawn" type="CharacterBody2D" unique_id=563966811 groups=["block_building", "pawn", "player"]]
 script = ExtResource("1_veodv")
 
 [node name="anim" type="AnimatedSprite2D" parent="." unique_id=1623781219]
