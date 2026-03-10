@@ -16,9 +16,9 @@
 [ext_resource type="Texture2D" uid="uid://i256fpma8dk4" path="res://Tiny Swords (Free Pack)/Terrain/Decorations/Bushes/Bushe3.png" id="14_jjxhf"]
 [ext_resource type="Texture2D" uid="uid://d4gh3slijnmdy" path="res://Tiny Swords (Free Pack)/Terrain/Decorations/Bushes/Bushe4.png" id="15_lybtp"]
 [ext_resource type="Texture2D" uid="uid://b07i2dypoodrf" path="res://Tiny Swords (Free Pack)/UI Elements/UI Banners from the store page/Banner/Banner_Slots.png" id="16_jjxhf"]
-[ext_resource type="PackedScene" uid="uid://ii5i38sjnrr8" path="res://Units/Pawns/pawn_black.tscn" id="16_vmy0u"]
 [ext_resource type="Script" uid="uid://dayg82fjmlnc5" path="res://Tiles/collider.gd" id="17_lybtp"]
-[ext_resource type="PackedScene" uid="uid://m78nn4gj4rtr" path="res://Units/Monk/monk_black.tscn" id="19_8hqpc"]
+[ext_resource type="PackedScene" uid="uid://d1g2nj1uaj24o" path="res://Units/Monk/monk_purple.tscn" id="19_8hqpc"]
+[ext_resource type="PackedScene" uid="uid://bwuobdfe5tn1m" path="res://Units/Pawns/pawn_red.tscn" id="20_1sae0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gtnvv"]
 texture = ExtResource("2_gtnvv")
@@ -806,8 +806,8 @@ tile_map_data = PackedByteArray("AAAIAAoAAAAEAAQAAAAJAAoAAAAEAAQAAAAKAAoAAAAEAAQ
 tile_set = SubResource("TileSet_xsqsu")
 script = ExtResource("17_lybtp")
 
-[node name="pawn" parent="." unique_id=563966811 instance=ExtResource("16_vmy0u")]
-position = Vector2(245, 557)
+[node name="pawn" parent="." unique_id=563966811 instance=ExtResource("20_1sae0")]
+position = Vector2(547, 564)
 
-[node name="monk" parent="." unique_id=1395078697 instance=ExtResource("19_8hqpc")]
-position = Vector2(382, 561)
+[node name="monk" parent="." unique_id=964813039 instance=ExtResource("19_8hqpc")]
+position = Vector2(326, 540)

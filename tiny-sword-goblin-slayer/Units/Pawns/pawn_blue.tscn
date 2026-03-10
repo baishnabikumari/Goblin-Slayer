@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cqs0bhi1l7wmm" path="res://Tiny Swords (Free Pack)/Units/Blue Units/Pawn/Pawn_Interact Knife.png" id="14_ekeh2"]
 [ext_resource type="Texture2D" uid="uid://jbfoirauhnpt" path="res://Tiny Swords (Free Pack)/Units/Blue Units/Pawn/Pawn_Interact Pickaxe.png" id="15_82ite"]
 [ext_resource type="Texture2D" uid="uid://dktspgoimbvrk" path="res://Tiny Swords (Free Pack)/Terrain/Resources/Tools/Tool_01.png" id="16_1c6h5"]
+[ext_resource type="StyleBox" uid="uid://c1al17rfwidjo" path="res://Units/Monk/activation_buttons.tres" id="16_ujqly"]
 [ext_resource type="Texture2D" uid="uid://deajwnir4qhtx" path="res://Tiny Swords (Free Pack)/Terrain/Resources/Tools/Tool_04.png" id="17_p7skk"]
 [ext_resource type="Texture2D" uid="uid://dwkonjvqj0o1j" path="res://Tiny Swords (Free Pack)/Terrain/Resources/Tools/Tool_02.png" id="18_tcqgd"]
 [ext_resource type="Texture2D" uid="uid://ce5r07ql6vyyp" path="res://Tiny Swords (Free Pack)/Terrain/Resources/Tools/Tool_03.png" id="19_ew8sc"]
@@ -835,11 +836,17 @@ value = 50.0
 show_percentage = false
 metadata/_edit_lock_ = true
 
-[node name="Button" type="Button" parent="." unique_id=932450263]
+[node name="Button" type="Button" parent="." unique_id=775085303]
 offset_left = -24.0
 offset_top = -40.0
 offset_right = 24.0
 offset_bottom = 32.0
+theme_override_styles/normal = ExtResource("16_ujqly")
+theme_override_styles/pressed = ExtResource("16_ujqly")
+theme_override_styles/hover = ExtResource("16_ujqly")
+theme_override_styles/hover_pressed = ExtResource("16_ujqly")
+theme_override_styles/disabled = ExtResource("16_ujqly")
+theme_override_styles/focus = ExtResource("16_ujqly")
 flat = true
 metadata/_edit_lock_ = true
 

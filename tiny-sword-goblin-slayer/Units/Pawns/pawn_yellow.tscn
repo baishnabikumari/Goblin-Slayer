@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://ibyhxj73tnrt" path="res://Tiny Swords (Free Pack)/Units/Yellow Units/Pawn/Pawn_Interact Hammer.png" id="13_rm5wo"]
 [ext_resource type="Texture2D" uid="uid://ccq6ks0o5014l" path="res://Tiny Swords (Free Pack)/Units/Yellow Units/Pawn/Pawn_Interact Knife.png" id="14_ukl3w"]
 [ext_resource type="Texture2D" uid="uid://maxodfy57qnh" path="res://Tiny Swords (Free Pack)/Units/Yellow Units/Pawn/Pawn_Interact Pickaxe.png" id="15_skd5g"]
+[ext_resource type="StyleBox" uid="uid://c1al17rfwidjo" path="res://Units/Monk/activation_buttons.tres" id="16_3bvjo"]
 [ext_resource type="Texture2D" uid="uid://dktspgoimbvrk" path="res://Tiny Swords (Free Pack)/Terrain/Resources/Tools/Tool_01.png" id="16_45phf"]
 [ext_resource type="Texture2D" uid="uid://deajwnir4qhtx" path="res://Tiny Swords (Free Pack)/Terrain/Resources/Tools/Tool_04.png" id="17_xi62t"]
 [ext_resource type="Texture2D" uid="uid://dwkonjvqj0o1j" path="res://Tiny Swords (Free Pack)/Terrain/Resources/Tools/Tool_02.png" id="18_1rh4m"]
@@ -834,11 +835,17 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_shsyn")
 value = 50.0
 show_percentage = false
 
-[node name="Button" type="Button" parent="." unique_id=932450263]
+[node name="Button" type="Button" parent="." unique_id=1473671472]
 offset_left = -24.0
 offset_top = -40.0
 offset_right = 24.0
 offset_bottom = 32.0
+theme_override_styles/normal = ExtResource("16_3bvjo")
+theme_override_styles/pressed = ExtResource("16_3bvjo")
+theme_override_styles/hover = ExtResource("16_3bvjo")
+theme_override_styles/hover_pressed = ExtResource("16_3bvjo")
+theme_override_styles/disabled = ExtResource("16_3bvjo")
+theme_override_styles/focus = ExtResource("16_3bvjo")
 flat = true
 metadata/_edit_lock_ = true
 
