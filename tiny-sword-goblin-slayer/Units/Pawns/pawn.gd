@@ -85,7 +85,7 @@ func _ready() -> void:
 	toolbox_panel.z_index=7
 	z_index=4
 	scale=Vector2(0.7,0.7)
-	life=max_life
+	life=50
 	progress_bar.max_value=max_life
 	progress_bar.value=life
 	
