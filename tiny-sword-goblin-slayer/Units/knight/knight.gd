@@ -171,7 +171,7 @@ func change_state(new_state:State)->void:
 func _unhandled_input(event: InputEvent) -> void:
 	if not selected pr state==State.DEAD:
 		return
-	if event is InputEventMouseButton and event.button_index==MOUSE_BUTTON_LEFT and event.prsssed:
+	if event is InputEventMouseButton and event.button_index==MOUSE_BUTTON_LEFT and event.pressed:
 		issue_move(get_global_mouse_position())
 
 func issue_move(pos:Vector2):
@@ -201,4 +201,145 @@ func _physics_process(delta: float) -> void:
 	
 	#update random shield
 	if random_shield_enabled and not guard_locked and state!=State.GUARD and state !=State.DEAD:
-		random
+		random_shield_timer+=delta
+		if random_shield_timer>=next_shield_time:
+			try_active_random_shield()
+	
+	
+	#ui auto hide
+	if ui_visible:
+		ui_timer+=delta
+		if ui_timer>=ui_hide_delay:
+			ui_visible=false
+			
+			var tween :=create_tween()
+			tween.tween_property(hp_bar, "modulate.a",0.0,0.3)
+			tween.tween_property(shieldbar,"modulate.a",0.0,0.3)
+	
+	if guard_locked:
+		return
+	
+	match state:
+		State.IDLE:
+			state_idle()
+		State.RUN:
+			state.run()
+		State.ATTACK:
+			pass
+		State.GUARD:
+			state_guard(delta)
+func try_activate_random_shield():
+	if action_locked or guard_cooldown or guard<20:
+		return
+	if randf()<0.7:
+		start_guard()
+		reset_random_shield_timer()
+
+#-----------------------
+#states
+#-----------------------
+func state_idle():
+	anim.play("idle")
+	acquire_target()
+	if target:
+		start_attack
+
+func state_run():
+	anim.play("run")
+	
+	if is_instance_valid(target):
+		nav.target_position=target.global_position
+		var dist:=global_position.distance_to(target.global_position)
+		if dist<= ATTACK_RANGE:
+			stop_navigation()
+			velocity=Vector2.ZERO
+			change_state(State.ATTACK)
+			start_attack()
+			return
+	if nav.distance_to_target()<=stop_distance:
+		velocity=Vector2.ZERO
+		manual_mode=false
+		movement_priority=false
+		change_state(State.IDLE)
+		return
+	var dir:=(nav.get_next_path_position()-global-position).normalized()
+	update_facing(dir)
+	nav.set_velocity(dir*speed)
+
+#-----------------------
+#Attack lock action
+#-----------------------
+func start_attack():
+	if action_locked or not is_instance_valid(target):
+		return
+	action_locked=true
+	change_state(State.ATTACK)
+	stop_navigation()
+	facing_dir=(target.global_position-global_position).narmalized()
+	attack_loop()
+
+func attack_loop()-> void:
+	if not (target.is_in_group("goblin") or target.is_in_group("goblinbuildings")):
+		return
+	attack_effect_active=true
+	while is_instance_valid(target):
+		if not (target.is_in_group("goblin") or target.is_in_group("goblinbuildings")):
+			break
+		var dir:=(target.global_position-global_position).normalized()
+		update_facing(dir)
+		
+		#animation
+		anim.play(pick_attack_anim())
+		if not sword_audio.playing:
+			sword_audio.play()
+		#spawn damage/ attackeffect
+		if target.is_in_group("goblin"):
+			apply_damage(target)
+		else:
+			apply_damage_building(target)
+		
+		#cooldown
+		await get_tree().create_timer(attack_cooldown).timeout
+	#attack finished
+	reset_combat()
+	change_state(State.IDLE)
+	attack_effect_active=false
+
+#-----------------------
+#Guard
+#-----------------------
+func start_guard():
+	if action_locked:
+		return
+	action_locked=true
+	guard_timer=0.0
+	change_state(State.GUARD)
+	stop_navigation()
+	anim.play("guard")
+
+func state_guard(delta):
+	guard_timer+=delta
+	guard_stamina=min(guard_stamina+int(25*delta),max_guard)
+	update_bars()
+	
+	face_closest_goblin()
+	
+	if guard_timer>=GUARD_DURATION:
+		reset_combat()
+		reset_random_shield_timer()
+		change_state(State.IDLE)
+
+#-----------------------
+#Targeting
+#-----------------------
+func acquire_target(delta:=0.0):
+	if is_instance_valid(target):
+		target_lock_time+=delta
+		if target_lock_time<TARGET_LOCK_DURATION:
+			return
+	else :
+		target_lock_time=0.0
+	var closest:Node2D=null
+	var dist: INF
+	for body in detector_zone.get_overlapping_bodies():
+		if

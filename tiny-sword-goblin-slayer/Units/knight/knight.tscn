@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cn6j5krgxicgi" path="res://Tiny Swords (Free Pack)/Units/Black Units/Warrior/Warrior_Idle.png" id="1_l5awm"]
 [ext_resource type="StyleBox" uid="uid://c1al17rfwidjo" path="res://Units/Monk/activation_buttons.tres" id="2_6utxe"]
 [ext_resource type="Texture2D" uid="uid://bljifxi0eygic" path="res://Tiny Swords (Free Pack)/Units/Black Units/Warrior/Warrior_Attack2.png" id="2_b7hoo"]
+[ext_resource type="Texture2D" uid="uid://dogxykgu5qcv2" path="res://Tiny Swords (Free Pack)/Units/Black Units/Warrior/Warrior_Guard.png" id="4_5ua20"]
 [ext_resource type="Texture2D" uid="uid://qoo117j8m7gx" path="res://Tiny Swords (Free Pack)/Units/Black Units/Warrior/Warrior_Run.png" id="4_i1ofu"]
 [ext_resource type="AudioStream" uid="uid://2rtovt2dpmwh" path="res://Audio/click.mp3" id="6_q7tyn"]
 [ext_resource type="AudioStream" uid="uid://uu4waipmsag1" path="res://Audio/dying.mp3" id="7_hw5pr"]
@@ -43,6 +44,30 @@ region = Rect2(384, 0, 192, 192)
 [sub_resource type="AtlasTexture" id="AtlasTexture_7n6gv"]
 atlas = ExtResource("2_b7hoo")
 region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dgloj"]
+atlas = ExtResource("4_5ua20")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4x6jk"]
+atlas = ExtResource("4_5ua20")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cnbrs"]
+atlas = ExtResource("4_5ua20")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kibt"]
+atlas = ExtResource("4_5ua20")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3ryk"]
+atlas = ExtResource("4_5ua20")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxnug"]
+atlas = ExtResource("4_5ua20")
+region = Rect2(960, 0, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tk8or"]
 atlas = ExtResource("1_l5awm")
@@ -135,6 +160,29 @@ animations = [{
 "loop": true,
 "name": &"attack2",
 "speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dgloj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4x6jk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cnbrs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5kibt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3ryk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxnug")
+}],
+"loop": false,
+"name": &"guard",
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -255,8 +303,9 @@ attack_cooldown = null
 
 [node name="anim" type="AnimatedSprite2D" parent="." unique_id=300139173]
 sprite_frames = SubResource("SpriteFrames_5ua20")
-animation = &"attack1"
+animation = &"guard"
 autoplay = "idle"
+frame_progress = 0.034180555
 
 [node name="shape" type="CollisionShape2D" parent="." unique_id=1937841952]
 visible = false
