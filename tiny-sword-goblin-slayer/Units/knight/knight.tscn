@@ -293,13 +293,6 @@ corner_detail = 20
 
 [node name="knight" type="CharacterBody2D" unique_id=1612883873 groups=["block_building", "player"]]
 script = ExtResource("1_hw5pr")
-max_life = null
-life = null
-max_guard = null
-guard_stamina = null
-speed = null
-attack_damage = null
-attack_cooldown = null
 
 [node name="anim" type="AnimatedSprite2D" parent="." unique_id=300139173]
 sprite_frames = SubResource("SpriteFrames_5ua20")
@@ -380,6 +373,7 @@ text = "."
 zoom = Vector2(0.7, 0.7)
 position_smoothing_enabled = true
 position_smoothing_speed = 2.0
+rotation_smoothing_enabled = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=459147640]
 
@@ -387,7 +381,7 @@ position_smoothing_speed = 2.0
 visible = false
 shape = SubResource("CircleShape2D_yeus6")
 target_position = Vector2(0, 15)
-max_results = 40
+max_results = 5
 collision_mask = 31
 
 [node name="soundfx" type="Node2D" parent="." unique_id=509448888]
@@ -415,3 +409,6 @@ pitch_scale = 0.98
 [node name="shield_audio" type="AudioStreamPlayer2D" parent="soundfx" unique_id=954650726]
 stream = ExtResource("10_pr1f1")
 volume_db = -8.104
+
+[connection signal="body_entered" from="detector zone" to="." method="_on_detector_zone_body_entered"]
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
