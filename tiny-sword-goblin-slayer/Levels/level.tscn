@@ -17,7 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://d4gh3slijnmdy" path="res://Tiny Swords (Free Pack)/Terrain/Decorations/Bushes/Bushe4.png" id="15_lybtp"]
 [ext_resource type="Texture2D" uid="uid://b07i2dypoodrf" path="res://Tiny Swords (Free Pack)/UI Elements/UI Banners from the store page/Banner/Banner_Slots.png" id="16_jjxhf"]
 [ext_resource type="Script" uid="uid://dayg82fjmlnc5" path="res://Tiles/collider.gd" id="17_lybtp"]
-[ext_resource type="PackedScene" uid="uid://c0r4rgkt5cdbt" path="res://Units/knight/knight.tscn" id="18_lybtp"]
+[ext_resource type="PackedScene" uid="uid://c0r4rgkt5cdbt" path="res://Units/knight/knight_black.tscn" id="18_lybtp"]
+[ext_resource type="PackedScene" uid="uid://ii5i38sjnrr8" path="res://Units/Pawns/pawn_black.tscn" id="20_jmcc3"]
+[ext_resource type="Script" uid="uid://ds186kysurn5p" path="res://system/selectionbox.gd" id="23_1sae0"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lybtp"]
 vertices = PackedVector2Array(32, 32, -32, 32, -32, -32, 32, -32)
@@ -1101,7 +1103,7 @@ tile_map_data = PackedByteArray("AAADACoAAAAAAAAAAAAEABUAAAAAAAAAAAAEACIAAQAAAAA
 tile_set = SubResource("TileSet_8hqpc")
 
 [node name="plants" type="TileMapLayer" parent="Tiles" unique_id=1911314371]
-tile_map_data = PackedByteArray("AADz/woAAAAAAAAAAAApABkAAQAAAAAAAAApAAgAAgAAAAAAAAAlAAgAAgAAAAAAAAAhAAgAAgAAAAAAAAAeABAAAgAAAAAAAAAiABAAAgAAAAAAAAAoACAAAgAAAAAAAAAkACAAAgAAAAAAAAAhACAAAwAAAAAAAAAlABAAAwAAAAAAAADz/xAAAwAAAAAAAAD1/xAAAwAAAAAAAAAOAA4AAwAAAAAAAAAMAA4AAwAAAAAAAAAVAAkAAgAAAAAAAAATAAkAAgAAAAAAAAApAP7/AQAAAAAAAAAnAP7/AAAAAAAAAABmABUAAwAAAAAAAABoABUAAwAAAAAAAABpABUAAwAAAAAAAABrABUAAwAAAAAAAABkADgAAQAAAAAAAAA=")
+tile_map_data = PackedByteArray("AADz/woAAAAAAAAAAAApABkAAQAAAAAAAAApAAgAAgAAAAAAAAAlAAgAAgAAAAAAAAAhAAgAAgAAAAAAAAAeABAAAgAAAAAAAAAiABAAAgAAAAAAAAAoACAAAgAAAAAAAAAkACAAAgAAAAAAAAAhACAAAwAAAAAAAAAlABAAAwAAAAAAAADz/xAAAwAAAAAAAAD1/xAAAwAAAAAAAAAOAA4AAwAAAAAAAAAMAA4AAwAAAAAAAAAVAAkAAgAAAAAAAAATAAkAAgAAAAAAAAApAP7/AQAAAAAAAAAnAP7/AAAAAAAAAABmABUAAwAAAAAAAABoABUAAwAAAAAAAABpABUAAwAAAAAAAABrABUAAwAAAAAAAABkADgAAQAAAAAAAABMAA8AAAAAAAAAAAAxAA4AAQAAAAAAAAA3AA0AAgAAAAAAAAA7AA0AAgAAAAAAAAAUADcAAgAAAAAAAABHADYAAwAAAAAAAAA8ACMAAwAAAAAAAABoABwAAwAAAAAAAABfADwAAwAAAAAAAAA=")
 tile_set = SubResource("TileSet_1sae0")
 
 [node name="Collider" type="TileMapLayer" parent="Tiles" unique_id=1167319583 groups=["block_building"]]
@@ -1112,3 +1114,14 @@ script = ExtResource("17_lybtp")
 
 [node name="knight" parent="." unique_id=1612883873 instance=ExtResource("18_lybtp")]
 position = Vector2(310, 554)
+
+[node name="selectionbox" type="Node2D" parent="." unique_id=554861874]
+script = ExtResource("23_1sae0")
+
+[node name="Camera2D" type="Camera2D" parent="selectionbox" unique_id=512420119]
+zoom = Vector2(0.6, 0.6)
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0
+
+[node name="pawn" parent="." unique_id=563966811 instance=ExtResource("20_jmcc3")]
+position = Vector2(536, 739)
