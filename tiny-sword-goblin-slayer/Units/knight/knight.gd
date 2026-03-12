@@ -86,7 +86,7 @@ const TARGET_LOCK_DURATION:=0.5
 @export var max_guard:=200
 @export var guard_stamina:=200
 
-@export var speed:=700.0
+@export var speed:=500.0
 @export var attack_damage:=10
 @export var attack_cooldown:=1.0
 
@@ -94,7 +94,7 @@ const TARGET_LOCK_DURATION:=0.5
 #Control
 #-----------------------
 var selected:=false
-var stop_distance:=5
+var stop_distance:=10
 
 #-----------------------
 #combat
