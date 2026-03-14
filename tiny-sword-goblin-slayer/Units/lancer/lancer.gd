@@ -22,7 +22,7 @@ extends CharacterBody2D
 @onready var click_audio: AudioStreamPlayer2D = $soundfx/click_audio
 @onready var death_audio: AudioStreamPlayer2D = $soundfx/death_audio
 @onready var hit_audio: AudioStreamPlayer2D = $soundfx/hit_audio
-@onready var sword_audio: AudioStreamPlayer2D = $soundfx/sword_audio
+#@onready var sword_audio: AudioStreamPlayer2D = $soundfx/sword_audio
 @onready var shield_audio: AudioStreamPlayer2D = $soundfx/shield_audio
 @onready var spear_audio_1: AudioStreamPlayer2D = $soundfx/spear_audio1
 @onready var spear_audio_2: AudioStreamPlayer2D = $soundfx/spear_audio2
@@ -54,7 +54,7 @@ const LOW_HP_SHIELD_THRESHOLD:=0.2
 enum State{IDLE,RUN,ATTACK,GUARD,DEAD}
 var state:State=State.IDLE
 
-const ATTACK_RANGE:=10.0
+const ATTACK_RANGE:=20.0
 
 #-----------------------
 #stuck and avoidance system
@@ -89,14 +89,14 @@ const TARGET_LOCK_DURATION:=0.5
 @export var guard_stamina:=200
 
 @export var speed:=500.0
-@export var attack_damage:=10
-@export var attack_cooldown:=1.0
+@export var attack_damage:=15
+@export var attack_cooldown:=0.8
 
 #-----------------------
 #Control
 #-----------------------
 var selected:=false
-var stop_distance:=10
+var stop_distance:=15
 
 #-----------------------
 #combat
@@ -281,6 +281,8 @@ func start_attack():
 	attack_loop()
 
 func attack_loop()-> void:
+	if attack_effect_active:
+		return
 	if not (target.is_in_group("goblin") or target.is_in_group("goblinbuildings")):
 		return
 	attack_effect_active=true
@@ -291,9 +293,9 @@ func attack_loop()-> void:
 		update_facing(dir)
 		
 		#animation
-		anim.play(pick_attack_anim())
-		if not sword_audio.playing:
-			sword_audio.play()
+		#anim.play(pick_attack_anim())
+		play_attack_animation(target.position)
+
 		#spawn damage/ attackeffect
 		if target.is_in_group("goblin"):
 			apply_damage(target)
@@ -454,7 +456,56 @@ func apply_damage_building(enemy:Node2D):
 func pick_attack_anim()->String:
 	return "attack" if randf()<0.5 else "attack2"
 
+func play_attack_animation(target_pos:Vector2):
+	var dir:=(target_pos-global_position).normalized()
+	var angle:=dir.angle()
+	if angle>= -PI/8 and angle< PI/8:
+		play_state("attack side")
+	elif angle>= PI/8 and angle< 3*PI/8:
+		play_state("attack down side")
+	elif angle>= 3*PI/8 and angle< 5*PI/8:
+		play_state("attack down")
+	elif angle>= 5*PI/8 and angle< 7*PI/8:
+		play_state("attack down side")
+	elif angle>= 7*PI/8 and angle< -7*PI/8:
+		play_state("attack side")
+	elif angle>= -7*PI/8 and angle< -5*PI/8:
+		play_state("attack up side")
+	elif angle>= -5*PI/8 and angle< -3*PI/8:
+		play_state("attack up")
+	elif angle>= -3*PI/8 and angle< -PI/8:
+		play_state("attack up side")
 
+func play_state(state_name:String):
+	match state_name:
+		"idle":anim.play("idle")
+		"run":anim.play("run")
+		"attack down":
+			anim.play("attack down")
+			if not spear_audio_1.playing:
+				spear_audio_1.play()
+		"attack down side":
+			anim.play("attack down side")
+			if not spear_audio_1.playing:
+				spear_audio_1.play()
+		"attack side":
+			anim.play("attack side")
+			if not spear_audio_1.playing:
+				spear_audio_1.play()
+		"attack up":
+			anim.play("attack up")
+			if not spear_audio_1.playing:
+				spear_audio_1.play()
+		"attack up side":
+			anim.play("attack up side")
+			if not spear_audio_1.playing:
+				spear_audio_1.play()
+		"guard":
+			anim.play("idle")
+			if not shield_audio.playing:
+				shield_audio.play()
+		"dead":
+			anim.play("idle")
 #-----------------------
 #Targeting
 #-----------------------
