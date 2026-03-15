@@ -1,3 +1,138 @@
 [gd_scene format=3 uid="uid://b0btyyhmooypw"]
 
-[node name="tower" type="StaticBody2D" unique_id=329213917]
+[ext_resource type="Script" uid="uid://d1o41f47uh2wv" path="res://Unit_buildings/Tower/tower.gd" id="1_1vljo"]
+[ext_resource type="Texture2D" uid="uid://dcyguouav1p1u" path="res://Tiny Swords (Free Pack)/Knights/Buildings/Tower/Tower_Construction.png" id="1_ief50"]
+[ext_resource type="Texture2D" uid="uid://bmnxm7kb2ycvq" path="res://Tiny Swords (Free Pack)/Knights/Buildings/Tower/Tower_Destroyed.png" id="2_r21jb"]
+[ext_resource type="Texture2D" uid="uid://b0x2kkveqttah" path="res://Tiny Swords (Free Pack)/Buildings/Black Buildings/Tower.png" id="3_1vljo"]
+[ext_resource type="AudioStream" uid="uid://kw0xs0hue6tx" path="res://Audio/tower_distroyed.mp3" id="4_mbfqe"]
+[ext_resource type="AudioStream" uid="uid://xeavloqoq5l8" path="res://Audio/contruction_fx.mp3" id="5_ccgn1"]
+[ext_resource type="Script" uid="uid://chvls76lcfjjc" path="res://Unit_buildings/Tower/anim.gd" id="5_mbfqe"]
+[ext_resource type="AudioStream" uid="uid://bxvlk3ouvi65p" path="res://Audio/place_fx.mp3" id="6_8k3yb"]
+[ext_resource type="AudioStream" uid="uid://dqlhycdsqp8xs" path="res://Audio/wooden-drop_fx2.mp3" id="7_lw8qk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5pcd"]
+atlas = ExtResource("1_ief50")
+region = Rect2(0, 0, 128, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_do777"]
+atlas = ExtResource("2_r21jb")
+region = Rect2(0, 0, 128, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8u4l"]
+atlas = ExtResource("3_1vljo")
+region = Rect2(0, 0, 128, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fsh0b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5pcd")
+}],
+"loop": true,
+"name": &"construct",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_do777")
+}],
+"loop": true,
+"name": &"destroyed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g8u4l")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ftx6u"]
+radius = 39.0
+height = 152.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3b7ny"]
+radius = 36.221542
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2lnps"]
+radius = 32.0
+height = 138.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4sa8d"]
+radius = 27.018513
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_800pv"]
+radius = 25.179358
+
+[node name="tower" type="StaticBody2D" unique_id=329213917 groups=["block_building", "building"]]
+script = ExtResource("1_1vljo")
+
+[node name="anim" type="AnimatedSprite2D" parent="." unique_id=1396377992]
+sprite_frames = SubResource("SpriteFrames_fsh0b")
+animation = &"idle"
+autoplay = "construct"
+script = ExtResource("5_mbfqe")
+
+[node name="shape" type="CollisionShape2D" parent="." unique_id=1935726478]
+visible = false
+position = Vector2(1, 20)
+shape = SubResource("CapsuleShape2D_ftx6u")
+metadata/_edit_lock_ = true
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=114198055]
+
+[node name="tower" type="Area2D" parent="." unique_id=1655481709]
+visible = false
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tower" unique_id=632566686]
+position = Vector2(0, 56)
+shape = SubResource("CircleShape2D_3b7ny")
+debug_color = Color(0, 0.6, 0, 0.41960785)
+
+[node name="ExploreDetector" type="Area2D" parent="." unique_id=566309606]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExploreDetector" unique_id=1027975639]
+visible = false
+position = Vector2(0, 20)
+shape = SubResource("CapsuleShape2D_2lnps")
+debug_color = Color(0.75041264, 0.04686486, 0, 0.41960785)
+metadata/_edit_lock_ = true
+
+[node name="RepairDetector" type="Area2D" parent="." unique_id=1371839938]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RepairDetector" unique_id=2022645390]
+visible = false
+position = Vector2(0, 64)
+shape = SubResource("CircleShape2D_4sa8d")
+debug_color = Color(0.6886315, 0.49931753, 5.7756904e-07, 0.41960785)
+metadata/_edit_lock_ = true
+
+[node name="PlacementChecker" type="Area2D" parent="." unique_id=436867746]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlacementChecker" unique_id=1507331885]
+visible = false
+position = Vector2(0, 66)
+shape = SubResource("CircleShape2D_800pv")
+debug_color = Color(0.19262493, 0.48804015, 5.7756904e-07, 0.41960785)
+metadata/_edit_lock_ = true
+
+[node name="Sound fx" type="Node2D" parent="." unique_id=84550724]
+
+[node name="destroyed_fx" type="AudioStreamPlayer" parent="Sound fx" unique_id=822170561]
+stream = ExtResource("4_mbfqe")
+volume_db = -5.403
+
+[node name="construct_fx" type="AudioStreamPlayer" parent="Sound fx" unique_id=427438801]
+stream = ExtResource("5_ccgn1")
+volume_db = -3.377
+pitch_scale = 0.84
+
+[node name="place_fx" type="AudioStreamPlayer" parent="Sound fx" unique_id=1710629467]
+stream = ExtResource("6_8k3yb")
+
+[node name="drop_fx" type="AudioStreamPlayer" parent="Sound fx" unique_id=1545110495]
+stream = ExtResource("7_lw8qk")
+volume_db = -4.052
