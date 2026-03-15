@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://6kpfr2erognf"]
+
+[ext_resource type="Texture2D" uid="uid://t7key3lewvg0" path="res://Tiny Swords (Free Pack)/Knights/Troops/Archer/Arrow/Arrow.png" id="1_avfxh"]
+[ext_resource type="Script" uid="uid://gipke3repj03" path="res://Units/archer/arrow.gd" id="1_sbejn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbejn"]
+atlas = ExtResource("1_avfxh")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1poih"]
+atlas = ExtResource("1_avfxh")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1poih"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sbejn")
+}],
+"loop": true,
+"name": &"sp",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1poih")
+}],
+"loop": true,
+"name": &"stuck",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3103l"]
+size = Vector2(38, 2)
+
+[node name="arrow" type="Area2D" unique_id=1141990447 groups=["arrow"]]
+script = ExtResource("1_sbejn")
+
+[node name="anim" type="AnimatedSprite2D" parent="." unique_id=471680845]
+sprite_frames = SubResource("SpriteFrames_1poih")
+animation = &"sp"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1250614349]
+visible = false
+position = Vector2(-1, 3)
+shape = SubResource("RectangleShape2D_3103l")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

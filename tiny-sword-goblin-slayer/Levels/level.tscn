@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://d4gh3slijnmdy" path="res://Tiny Swords (Free Pack)/Terrain/Decorations/Bushes/Bushe4.png" id="15_lybtp"]
 [ext_resource type="Texture2D" uid="uid://b07i2dypoodrf" path="res://Tiny Swords (Free Pack)/UI Elements/UI Banners from the store page/Banner/Banner_Slots.png" id="16_jjxhf"]
 [ext_resource type="Script" uid="uid://dayg82fjmlnc5" path="res://Tiles/collider.gd" id="17_lybtp"]
+[ext_resource type="PackedScene" uid="uid://dqt1ywyyh4865" path="res://Units/archer/archer_black.tscn" id="20_fw3l5"]
 [ext_resource type="PackedScene" uid="uid://ii5i38sjnrr8" path="res://Units/Pawns/pawn_black.tscn" id="20_jmcc3"]
 [ext_resource type="Script" uid="uid://ds186kysurn5p" path="res://system/selectionbox.gd" id="23_1sae0"]
 
@@ -1121,3 +1122,18 @@ position_smoothing_speed = 3.0
 
 [node name="pawn" parent="." unique_id=563966811 instance=ExtResource("20_jmcc3")]
 position = Vector2(536, 739)
+
+[node name="archer" parent="." unique_id=1612883873 instance=ExtResource("20_fw3l5")]
+position = Vector2(883, 813)
+
+[node name="archer2" parent="." unique_id=1245973921 instance=ExtResource("20_fw3l5")]
+position = Vector2(795, 946)
+
+[node name="archer3" parent="." unique_id=752186328 instance=ExtResource("20_fw3l5")]
+position = Vector2(844, 629)
+
+[node name="archer4" parent="." unique_id=543204058 instance=ExtResource("20_fw3l5")]
+position = Vector2(1107, 841)
+
+[node name="archer5" parent="." unique_id=1825612711 instance=ExtResource("20_fw3l5")]
+position = Vector2(1095, 676)
