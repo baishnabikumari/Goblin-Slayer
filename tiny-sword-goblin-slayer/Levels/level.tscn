@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://dayg82fjmlnc5" path="res://Tiles/collider.gd" id="17_lybtp"]
 [ext_resource type="PackedScene" uid="uid://b0btyyhmooypw" path="res://Unit_buildings/Tower/tower.tscn" id="20_fw3l5"]
 [ext_resource type="PackedScene" uid="uid://ii5i38sjnrr8" path="res://Units/Pawns/pawn_black.tscn" id="20_jmcc3"]
+[ext_resource type="PackedScene" uid="uid://cxv1yopyaxn51" path="res://Unit_buildings/monastery/monastery.tscn" id="21_fw3l5"]
 [ext_resource type="Script" uid="uid://ds186kysurn5p" path="res://system/selectionbox.gd" id="23_1sae0"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lybtp"]
@@ -1065,10 +1066,10 @@ sources/0 = SubResource("TileSetAtlasSource_1sae0")
 
 [node name="sea" type="TextureRect" parent="." unique_id=1921126012]
 z_index = -10
-offset_left = -1265.0
-offset_top = -1008.0
-offset_right = 6098.0
-offset_bottom = 3815.0
+offset_left = -1212.0
+offset_top = -1101.0
+offset_right = 6151.0
+offset_bottom = 3722.0
 texture = ExtResource("1_s41d2")
 
 [node name="Tiles" type="Node2D" parent="." unique_id=1142818269]
@@ -1125,3 +1126,6 @@ position = Vector2(536, 739)
 
 [node name="tower" parent="." unique_id=329213917 instance=ExtResource("20_fw3l5")]
 position = Vector2(901, 813)
+
+[node name="monastery" parent="." unique_id=676351306 instance=ExtResource("21_fw3l5")]
+position = Vector2(1108, 387)
