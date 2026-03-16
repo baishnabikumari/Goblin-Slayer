@@ -366,6 +366,7 @@ func spawn_archer()->void:
 	
 	spawned_archer=scene.instantiate()
 	add_child(spawned_archer)
+	spawned_archer.scale=Vector2(0.9,0.9)
 	spawned_archer.global_position=marker_2d.global_position
 
 var last_collision_state:bool=false

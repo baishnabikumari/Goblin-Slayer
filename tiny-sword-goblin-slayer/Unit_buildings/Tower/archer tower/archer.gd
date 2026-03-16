@@ -31,6 +31,7 @@ var cooldown_timer:float=0.0
 #-----------------------
 func _ready() -> void:
 	z_index=5
+	#scale=Vector2(0.6,0.6)
 	anim.play("idle")
 	_scan_for_new_targets()
 
