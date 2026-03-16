@@ -52,11 +52,11 @@ var hit_flash_timer:=0.0
 #------------------------------
 #Archers scenes "not moving archers
 #------------------------------
-var archer_black=preload("res://Units/archer/archer_black.tscn")
-var archer_blue=preload("res://Units/archer/archer_blue.tscn")
-var archer_purple=preload("res://Units/archer/archer_purple.tscn")
-var archer_red=preload("res://Units/archer/archer_red.tscn")
-var archer_yellow=preload("res://Units/archer/archer_yellow.tscn")
+var archer_black=preload("res://Unit_buildings/Tower/archer tower/archer_black.tscn")
+var archer_blue=preload("res://Unit_buildings/Tower/archer tower/archer_black.tscn")
+var archer_purple=preload("res://Unit_buildings/Tower/archer tower/archer_black.tscn")
+var archer_red=preload("res://Unit_buildings/Tower/archer tower/archer_black.tscn")
+var archer_yellow=preload("res://Unit_buildings/Tower/archer tower/archer_black.tscn")
 
 var spawned_archer:Node2D=null
 
@@ -251,7 +251,7 @@ func enter_destroyed_state()->void:
 	state=STATE_DESTROYED
 	update_collision_logic()
 	is_dead=true
-	emit_signal("dead")
+	#emit_signal("dead")  #---------will look at this after
 	emit_signal("died",self)
 	
 	anim.play("destroyed")

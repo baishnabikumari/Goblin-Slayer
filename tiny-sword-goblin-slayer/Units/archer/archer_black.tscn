@@ -305,27 +305,27 @@ collision_mask = 31
 
 [node name="soundfx" type="Node2D" parent="." unique_id=509448888]
 
-[node name="click_audio" type="AudioStreamPlayer2D" parent="soundfx" unique_id=1660819879]
+[node name="click_audio" type="AudioStreamPlayer" parent="soundfx" unique_id=169359742]
 stream = ExtResource("8_8u2b0")
 volume_db = -10.0
 pitch_scale = 1.5
 
-[node name="death_audio" type="AudioStreamPlayer2D" parent="soundfx" unique_id=853097796]
+[node name="death_audio" type="AudioStreamPlayer" parent="soundfx" unique_id=1638924059]
 stream = ExtResource("9_ft2l1")
 volume_db = -10.13
 pitch_scale = 1.5
 
-[node name="hit_audio" type="AudioStreamPlayer2D" parent="soundfx" unique_id=1321510843]
+[node name="hit_audio" type="AudioStreamPlayer" parent="soundfx" unique_id=1558323822]
 stream = ExtResource("10_tv27b")
 volume_db = -10.13
 pitch_scale = 1.5
 
-[node name="shoot_audio" type="AudioStreamPlayer2D" parent="soundfx" unique_id=726595163]
+[node name="shoot_audio" type="AudioStreamPlayer" parent="soundfx" unique_id=462553620]
 stream = ExtResource("9_8tyd2")
 volume_db = -10.055
 pitch_scale = 0.96
 
-[node name="shield_audio" type="AudioStreamPlayer2D" parent="soundfx" unique_id=954650726]
+[node name="shield_audio" type="AudioStreamPlayer" parent="soundfx" unique_id=1101892323]
 stream = ExtResource("12_wsibv")
 volume_db = -8.104
 

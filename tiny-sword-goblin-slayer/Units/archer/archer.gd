@@ -19,11 +19,11 @@ extends CharacterBody2D
 #-----------------------
 #Soundfx
 #-----------------------
-@onready var click_audio: AudioStreamPlayer2D = $soundfx/click_audio
-@onready var death_audio: AudioStreamPlayer2D = $soundfx/death_audio
-@onready var hit_audio: AudioStreamPlayer2D = $soundfx/hit_audio
-@onready var shoot_audio: AudioStreamPlayer2D = $soundfx/shoot_audio
-@onready var shield_audio: AudioStreamPlayer2D = $soundfx/shield_audio
+@onready var click_audio: AudioStreamPlayer = $soundfx/click_audio
+@onready var death_audio: AudioStreamPlayer = $soundfx/death_audio
+@onready var hit_audio: AudioStreamPlayer = $soundfx/hit_audio
+@onready var shoot_audio: AudioStreamPlayer = $soundfx/shoot_audio
+@onready var shield_audio: AudioStreamPlayer = $soundfx/shield_audio
 
 #-----------------------
 #Hp/Shield
