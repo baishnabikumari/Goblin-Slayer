@@ -88,7 +88,7 @@ var last_click_time:=0.0
 #ready func
 #------------------------------
 func _ready() -> void:
-	z_index=5
+	z_index=4
 	scale=Vector2(0.7,0.7)
 	Global.load_colour()
 	life=max_life

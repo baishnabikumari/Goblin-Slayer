@@ -25,7 +25,7 @@ var collision_disabled:bool=false
 @export var construction_time:float=2.0
 @export var max_life:int=6
 @export var repair_time:float=4.0
-@export var lancer_capacity:int=4
+@export var lancer_capacity:int=2
 @export var spawn_radius:float=40.0
 @export var repair_gold_cost:=30
 @export var repair_wood_cost:=20
@@ -60,15 +60,15 @@ var is_being_repaired:=false
 var spawn_cooldown:=0.0
 
 #------------------------------
-#Archers scenes "not moving archers
+#Knights scenes "not moving knight
 #------------------------------
-var lancer_black=preload("res://Units/lancer/lancer_black.tscn")
-var lancer_blue=preload("res://Units/lancer/lancer_blue.tscn")
-var lancer_purple=preload("res://Units/lancer/lancer_purple.tscn")
-var lancer_red=preload("res://Units/lancer/lancer_red.tscn")
-var lancer_yellow=preload("res://Units/lancer/lancer_yellow.tscn")
+var knight_black=preload("res://Units/knight/knight_black.tscn")
+var knight_blue=preload("res://Units/knight/knight_blue.tscn")
+var knight_purple=preload("res://Units/knight/knight_purple.tscn")
+var knight_red=preload("res://Units/knight/knight_red.tscn")
+var knight_yellow=preload("res://Units/knight/knight_yellow.tscn")
 
-var spawned_lancer=[]
+var spawned_knight=[]
 
 #------------------------------
 #timer and tweens
@@ -130,7 +130,7 @@ func _ready() -> void:
 #------------------------------
 func _process(delta: float) -> void:
 	spawn_cooldown-=delta
-	if state==STATE_IDLE and spawned_lancer.size()<lancer_capacity and Global.can_spawn():
+	if state==STATE_IDLE and spawned_knight.size()<lancer_capacity and Global.can_spawn():
 		if spawn_cooldown<=0.0:
 			spawn_lancer()
 			spawn_cooldown=SPAWN_INTERVAL
@@ -201,13 +201,26 @@ func start_moving()->void:
 		anim.modulate=Color.WHITE
 
 func finilize_movement()->void:
-	if !movement_valid:
+	# check if building is on water/collider
+	var space_state=get_world_2d().direct_space_state
+	var query=PhysicsPointQueryParameters2D.new()
+	query.position=global_position
+	query.collision_mask=1
+	var results=space_state.intersect_point(query)
+	
+	var on_water=false
+	for r in results:
+		if r.collider is TileMapLayer:
+			on_water=true
+			break
+	
+	if on_water or !movement_valid:
+		# send back to original position
 		var return_tween=create_tween()
 		return_tween.tween_property(self,"global_position",original_position,0.2)
 		return_tween.finished.connect(_reset_after_movement)
 	else:
 		_reset_after_movement()
-
 
 func _reset_after_movement():
 	update_collision_logic()
@@ -266,14 +279,14 @@ func _on_placement_area_exited(area:Area2D)->void:
 func _on_placement_body_entered(body:Node)->void:
 	if not is_moving:return
 	if body!=self:
-		if body.is_in_group("building") or body.is_in_group("block_building"):
+		if body.is_in_group("building") or body.is_in_group("block_building") or body is TileMapLayer:
 			overlapping_objects_count+=1
 			_update_collision_state()
 
 func _on_placement_body_exited(body:Node)->void:
 	if not is_moving:return
 	if body!=self:
-		if body.is_in_group("building") or body.is_in_group("block_building"):
+		if body.is_in_group("building") or body.is_in_group("block_building") or body is TileMapLayer:
 			overlapping_objects_count=max(0,overlapping_objects_count-1)
 			_update_collision_state()
 
@@ -289,8 +302,27 @@ func _update_collision_state():
 
 func _check_movement_collisions()->void:
 	if not is_moving or is_awaiting_placement:return
+	
+	# check if on water/collider tilemap
+	var space_state=get_world_2d().direct_space_state
+	var query=PhysicsPointQueryParameters2D.new()
+	query.position=global_position
+	query.collision_mask=1
+	var results=space_state.intersect_point(query)
+	
+	var on_water=false
+	for r in results:
+		if r.collider is TileMapLayer:
+			on_water=true
+			break
+	
+	if on_water:
+		movement_valid=false
+	else:
+		movement_valid=overlapping_objects_count==0
+	
 	if anim:
-		anim.modulate=Color.GREEN if movement_valid else  Color.RED
+		anim.modulate=Color.GREEN if movement_valid else Color.RED
 
 func _unhandled_input(event: InputEvent) -> void:
 	if is_moving and event is InputEventMouseButton:
@@ -364,7 +396,7 @@ func enter_idle_state()->void:
 	placement_checker.monitoring=false
 	if anim:
 		anim.modulate=Color.WHITE
-	spawned_lancer.clear()
+	spawned_knight.clear()
 	spawn_lancer()
 
 signal died(building:Node2D)
@@ -505,15 +537,15 @@ func show_repair_pulse()->void:
 #Death handler
 #------------------------------
 func _on_lancer_died(lancer)->void:
-	if spawned_lancer.has(lancer):
-		spawned_lancer.erase(lancer)
+	if spawned_knight.has(lancer):
+		spawned_knight.erase(lancer)
 		
 
 #------------------------------
 #spawn archer
 #------------------------------
 func spawn_lancer()->void:
-	if spawned_lancer.size()>=lancer_capacity:
+	if spawned_knight.size()>=lancer_capacity:
 		return
 	
 	#meat availability
@@ -522,18 +554,18 @@ func spawn_lancer()->void:
 		return
 	
 	#count max lancer capacity
-	var remaining_capacity=lancer_capacity-spawned_lancer.size()
+	var remaining_capacity=lancer_capacity-spawned_knight.size()
 	var spawn_count=min(remaining_capacity,meat_available)
 	if spawn_count<=0:
 		return
 	
 	var lancer_scene:PackedScene
 	match Global.choosed_colour.to_lower():
-		"black":lancer_scene=lancer_black
-		"blue":lancer_scene=lancer_blue
-		"purple":lancer_scene=lancer_purple
-		"red":lancer_scene=lancer_red
-		"yellow":lancer_scene=lancer_yellow
+		"black":lancer_scene=knight_black
+		"blue":lancer_scene=knight_blue
+		"purple":lancer_scene=knight_purple
+		"red":lancer_scene=knight_red
+		"yellow":lancer_scene=knight_yellow
 		_: return
 	
 	var half=int(ceil(spawn_count/2.0))
@@ -554,7 +586,7 @@ func _spawn_lancer_around_marker(center:Vector2,count:int,lancer_scene:PackedSce
 			var radius=randf()*spawn_radius
 			pos=center+Vector2(cos(angle),sin(angle))*radius
 			var overlapping=false
-			for other in spawned_lancer:
+			for other in spawned_knight:
 				if pos.distance_to(other.global_position)<16.0:
 					overlapping=true
 					break
@@ -562,7 +594,7 @@ func _spawn_lancer_around_marker(center:Vector2,count:int,lancer_scene:PackedSce
 				break
 			tries+=1
 		new_lancer.global_position=pos
-		spawned_lancer.append(new_lancer)
+		spawned_knight.append(new_lancer)
 		
 		#death signal connected
 		new_lancer.died.connect(_on_lancer_died.bind(new_lancer))
