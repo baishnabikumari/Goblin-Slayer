@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://b07i2dypoodrf" path="res://Tiny Swords (Free Pack)/UI Elements/UI Banners from the store page/Banner/Banner_Slots.png" id="16_jjxhf"]
 [ext_resource type="Script" uid="uid://dayg82fjmlnc5" path="res://Tiles/collider.gd" id="17_lybtp"]
 [ext_resource type="PackedScene" uid="uid://ii5i38sjnrr8" path="res://Units/Pawns/pawn_black.tscn" id="20_jmcc3"]
+[ext_resource type="PackedScene" uid="uid://cxv1yopyaxn51" path="res://Unit_buildings/monastery/monastery.tscn" id="21_fw3l5"]
 [ext_resource type="Script" uid="uid://ds186kysurn5p" path="res://system/selectionbox.gd" id="23_1sae0"]
 [ext_resource type="PackedScene" uid="uid://dmx3k6vmex3ab" path="res://Unit_buildings/house1/house1.tscn" id="24_twn60"]
 
@@ -1125,3 +1126,6 @@ position = Vector2(536, 739)
 
 [node name="house" parent="." unique_id=329213917 instance=ExtResource("24_twn60")]
 position = Vector2(1120, 632)
+
+[node name="monastery" parent="." unique_id=574907400 instance=ExtResource("21_fw3l5")]
+position = Vector2(816, 744)

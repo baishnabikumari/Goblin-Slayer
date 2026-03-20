@@ -117,8 +117,8 @@ func _ready() -> void:
 	
 	placement_checker.area_entered.connect(_on_placement_area_entered)
 	placement_checker.area_exited.connect(_on_placement_area_exited)
-	placement_checker.area_entered.connect(_on_placement_body_entered)
-	placement_checker.area_exited.connect(_on_placement_body_exited)
+	placement_checker.body_entered.connect(_on_placement_body_entered)
+	placement_checker.body_exited.connect(_on_placement_body_exited)
 	
 	explore_detector.area_entered.connect(_on_explo_area_entered)
 	repair_detector.area_entered.connect(_on_repair_detector_area_entered)
@@ -154,19 +154,25 @@ func _process(delta: float) -> void:
 #------------------------------
 @warning_ignore("unused_parameter")
 func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
-	if event is InputEventMouseButton and event.button_index==MOUSE_BUTTON_LEFT:
-		if event.pressed:
+	if not event is InputEventMouseButton:
+		return
+	var mouse_event := event as InputEventMouseButton
+	
+	if mouse_event.button_index == MOUSE_BUTTON_LEFT:
+		if mouse_event.pressed:
 			var now=Time.get_ticks_msec()/1000.0 #added now never was decleareed
 			if now-last_click_time<=DOUBLE_CLICK_TIME:
 				_on_double_click()
 			else:
 				_on_single_click()
 			last_click_time=now
-	else:
-		if is_awaiting_placement:
-			finilize_movement()
-		elif is_moving:
-			_cancel_movement()
+		else:
+			if is_awaiting_placement:
+				finilize_movement()
+			elif is_moving:
+				_cancel_movement()
+	elif mouse_event.button_index==MOUSE_BUTTON_RIGHT and mouse_event.pressed:
+		_cancel_movement()
 
 func _on_single_click()->void:
 	is_selected=true
@@ -192,6 +198,8 @@ func start_moving()->void:
 	movement_colliding=false
 	
 	collision.disabled=true
+	explore_detector.monitoring = false
+	repair_detector.monitoring = false
 	
 	if not place_fx.playing:
 		place_fx.play()
@@ -206,6 +214,8 @@ func finilize_movement()->void:
 		return_tween.tween_property(self,"global_position",original_position,0.2)
 		return_tween.finished.connect(_reset_after_movement)
 	else:
+		if not drop_fx.playing:
+			drop_fx.play()
 		_reset_after_movement()
 
 
@@ -215,8 +225,8 @@ func _reset_after_movement():
 	is_awaiting_placement=false
 	overlapping_objects_count=0
 	movement_valid=true
-	if not drop_fx.playing:
-		drop_fx.play()
+	#if not drop_fx.playing:
+		#drop_fx.play()
 	movement_colliding=false
 	input_pickable=true
 	
@@ -397,6 +407,10 @@ func _on_explo_area_entered(area:Area2D)->void:
 		take_damage(1)
 
 func take_damage(amount:int)->void:
+	if is_moving or is_awaiting_placement:
+		return
+	if state != STATE_IDLE:
+		return
 	life-=amount
 	is_hit=true
 	hit_flash_timer=0.15

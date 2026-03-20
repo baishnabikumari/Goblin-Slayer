@@ -222,6 +222,8 @@ func finilize_movement()->void:
 		return_tween.tween_property(self,"global_position",original_position,0.2)
 		return_tween.finished.connect(_reset_after_movement)
 	else:
+		if not drop_fx.playing:
+			drop_fx.play()
 		_reset_after_movement()
 
 func _reset_after_movement():
@@ -230,14 +232,14 @@ func _reset_after_movement():
 	is_awaiting_placement=false
 	overlapping_objects_count=0
 	movement_valid=true
-	if not drop_fx.playing:
-		drop_fx.play()
+	#if not drop_fx.playing:
+		#drop_fx.play()
 	movement_colliding = false
 	input_pickable = true
 	
 	placement_checker.monitoring = false
-	explore_detector.monitoring = false
-	repair_detector.monitoring = false
+	explore_detector.monitoring = true
+	repair_detector.monitoring = true
 	collision.disabled = false
 	anim.modulate=Color.WHITE
 	
