@@ -123,7 +123,7 @@ func _ready() -> void:
 	explore_detector.area_entered.connect(_on_explo_area_entered)
 	repair_detector.area_entered.connect(_on_repair_detector_area_entered)
 	
-	enter_idle_state()
+	enter_construct_state()
 
 #------------------------------
 #Process
