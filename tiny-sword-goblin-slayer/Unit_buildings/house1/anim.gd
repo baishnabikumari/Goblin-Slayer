@@ -1,10 +1,10 @@
 extends AnimatedSprite2D
 
-var image_black=preload("res://Tiny Swords (Free Pack)/Buildings/Black Buildings/Archery.png")
-var image_blue=preload("res://Tiny Swords (Free Pack)/Buildings/Black Buildings/Archery.png")
-var image_purple=preload("res://Tiny Swords (Free Pack)/Buildings/Purple Buildings/Archery.png")
-var image_red=preload("res://Tiny Swords (Free Pack)/Buildings/Red Buildings/Archery.png")
-var image_yellow=preload("res://Tiny Swords (Free Pack)/Buildings/Yellow Buildings/Archery.png")
+var image_black=preload("res://Tiny Swords (Free Pack)/Buildings/Black Buildings/House1.png")
+var image_blue=preload("res://Tiny Swords (Free Pack)/Buildings/Blue Buildings/House1.png")
+var image_purple=preload("res://Tiny Swords (Free Pack)/Buildings/Purple Buildings/House1.png")
+var image_red=preload("res://Tiny Swords (Free Pack)/Buildings/Red Buildings/House1.png")
+var image_yellow=preload("res://Tiny Swords (Free Pack)/Buildings/Yellow Buildings/House1.png")
 
 func _ready() -> void:
 	Global.load_colour()

@@ -4,7 +4,7 @@ extends StaticBody2D
 @onready var anim: AnimatedSprite2D = $anim
 @onready var collision: CollisionShape2D = $shape
 @onready var marker_1: Marker2D = $Marker1
-@onready var marker_2: Marker2D = $Marker2
+#@onready var marker_2: Marker2D = $Marker2
 #@onready var tower: Area2D = $tower
 @onready var explore_detector: Area2D = $ExploreDetector
 @onready var repair_detector: Area2D = $RepairDetector
@@ -25,7 +25,7 @@ var collision_disabled:bool=false
 @export var construction_time:float=2.0
 @export var max_life:int=6
 @export var repair_time:float=4.0
-@export var lancer_capacity:int=2
+@export var lancer_capacity:int=1
 @export var spawn_radius:float=40.0
 @export var repair_gold_cost:=30
 @export var repair_wood_cost:=20
@@ -35,7 +35,7 @@ var is_dead:bool=false
 #------------------------------
 #contants
 #------------------------------
-const FINAL_SCALE:=Vector2(0.7,0.7)
+const FINAL_SCALE:=Vector2(0.8,0.8)
 const DOUBLE_CLICK_TIME:=0.3
 const SPAWN_INTERVAL:=2.0
 
@@ -62,11 +62,11 @@ var spawn_cooldown:=0.0
 #------------------------------
 #Knights scenes "not moving knight
 #------------------------------
-var archer_black=preload("res://Units/archer/archer_black.tscn")
-var knight_blue=preload("res://Units/archer/archer_blue.tscn")
-var knight_purple=preload("res://Units/archer/archer_purple.tscn")
-var knight_red=preload("res://Units/archer/archer_red.tscn")
-var knight_yellow=preload("res://Units/archer/archer_yellow.tscn")
+var knight_black=preload("res://Units/Pawns/pawn_black.tscn")
+var knight_blue=preload("res://Units/Pawns/pawn_blue.tscn")
+var knight_purple=preload("res://Units/Pawns/pawn_purple.tscn")
+var knight_red=preload("res://Units/Pawns/pawn_red.tscn")
+var knight_yellow=preload("res://Units/Pawns/pawn_yellow.tscn")
 
 var spawned_knight=[]
 
@@ -105,7 +105,7 @@ var is_selected:=false
 #------------------------------
 func _ready() -> void:
 	z_index=4
-	scale=Vector2(0.8,0.8)
+	scale=Vector2(0.7,0.7)
 	Global.load_colour()
 	life=max_life
 	add_to_group("building")
@@ -117,20 +117,20 @@ func _ready() -> void:
 	
 	placement_checker.area_entered.connect(_on_placement_area_entered)
 	placement_checker.area_exited.connect(_on_placement_area_exited)
-	placement_checker.area_entered.connect(_on_placement_body_entered)
-	placement_checker.area_exited.connect(_on_placement_body_exited)
+	placement_checker.body_entered.connect(_on_placement_body_entered)
+	placement_checker.body_exited.connect(_on_placement_body_exited)
 	
 	explore_detector.area_entered.connect(_on_explo_area_entered)
 	repair_detector.area_entered.connect(_on_repair_detector_area_entered)
 	
-	enter_idle_state()
+	enter_construct_state()
 
 #------------------------------
 #Process
 #------------------------------
 func _process(delta: float) -> void:
 	spawn_cooldown-=delta
-	if state==STATE_IDLE and spawned_knight.size()<lancer_capacity and Global.can_spawn():
+	if state==STATE_IDLE and spawned_knight.size()<lancer_capacity and Global.meat>0:
 		if spawn_cooldown<=0.0:
 			spawn_lancer()
 			spawn_cooldown=SPAWN_INTERVAL
@@ -154,23 +154,23 @@ func _process(delta: float) -> void:
 #------------------------------
 @warning_ignore("unused_parameter")
 func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
-	if event is InputEventMouseButton and event.button_index==MOUSE_BUTTON_LEFT:
-		if event.pressed:
-			var now=Time.get_ticks_msec()/1000.0 #added now never was decleareed
-			if now-last_click_time<=DOUBLE_CLICK_TIME:
-				_on_double_click()
-			else:
-				_on_single_click()
-			last_click_time=now
-	else:
-		if is_awaiting_placement:
-			finilize_movement()
-		elif is_moving:
-			_cancel_movement()
+	if not event is InputEventMouseButton:
+		return
+	if event.button_index != MOUSE_BUTTON_LEFT:
+		return
+	
+	if event.pressed:
+		# left mouse pressed, which handles single/double click
+		var now=Time.get_ticks_msec()/1000.0
+		if now-last_click_time<=DOUBLE_CLICK_TIME:
+			_on_double_click()
+		else:
+			_on_single_click()
+		last_click_time=now
 
 func _on_single_click()->void:
 	is_selected=true
-	if anim:
+	if anim and not is_moving:
 		anim.modulate=Color(1,1,1,1)
 
 func _on_double_click()->void:
@@ -192,6 +192,8 @@ func start_moving()->void:
 	movement_colliding=false
 	
 	collision.disabled=true
+	explore_detector.monitoring = false
+	repair_detector.monitoring = false
 	
 	if not place_fx.playing:
 		place_fx.play()
@@ -230,11 +232,13 @@ func _reset_after_movement():
 	movement_valid=true
 	if not drop_fx.playing:
 		drop_fx.play()
-	movement_colliding=false
-	input_pickable=true
+	movement_colliding = false
+	input_pickable = true
 	
-	placement_checker.monitoring=false
-	collision.disabled=false
+	placement_checker.monitoring = false
+	explore_detector.monitoring = false
+	repair_detector.monitoring = false
+	collision.disabled = false
 	anim.modulate=Color.WHITE
 	
 	if state==STATE_IDLE:
@@ -340,8 +344,20 @@ func _unhandled_input(event: InputEvent) -> void:
 func _update_movement_color()->void:
 	if not is_moving:
 		return
-	
-	movement_valid=overlapping_objects_count==0
+	var space_state=get_world_2d().direct_space_state
+	var query=PhysicsPointQueryParameters2D.new()
+	query.position=global_position
+	query.collision_mask=1
+	var results=space_state.intersect_point(query)
+	var on_water=false
+	for r in results:
+		if r.collider is TileMapLayer:
+			on_water=true
+			break
+	if on_water:
+		movement_valid=false
+	else:
+		movement_valid=overlapping_objects_count==0
 	anim.modulate=Color.GREEN if movement_valid else Color.RED
 
 func clear_timer_and_tweens()->void:
@@ -397,11 +413,13 @@ func enter_idle_state()->void:
 	if anim:
 		anim.modulate=Color.WHITE
 	spawned_knight.clear()
-	spawn_lancer()
+	call_deferred("spawn_lancer")
 
 signal died(building:Node2D)
 func enter_destroyed_state()->void:
 	if state==STATE_DESTROYED:
+		return
+	if is_moving:
 		return
 	
 	input_pickable=false
@@ -425,10 +443,18 @@ func enter_destroyed_state()->void:
 #damage logic
 #------------------------------
 func _on_explo_area_entered(area:Area2D)->void:
-	if state==STATE_IDLE and area.is_in_group("explo"):
+	if is_moving or is_awaiting_placement:
+		return
+	if state != STATE_IDLE:
+		return
+	if area.is_in_group("explo"):
 		take_damage(1)
 
 func take_damage(amount:int)->void:
+	if is_moving or is_awaiting_placement:
+		return
+	if state != STATE_IDLE:
+		return
 	life-=amount
 	is_hit=true
 	hit_flash_timer=0.15
@@ -561,16 +587,15 @@ func spawn_lancer()->void:
 	
 	var lancer_scene:PackedScene
 	match Global.choosed_colour.to_lower():
-		"black":lancer_scene=archer_black
+		"black":lancer_scene=knight_black
 		"blue":lancer_scene=knight_blue
 		"purple":lancer_scene=knight_purple
 		"red":lancer_scene=knight_red
 		"yellow":lancer_scene=knight_yellow
 		_: return
 	
-	var half=int(ceil(spawn_count/2.0))
-	_spawn_lancer_around_marker(marker_1.global_position,half,lancer_scene)
-	_spawn_lancer_around_marker(marker_2.global_position,spawn_count-half,lancer_scene)
+	#var half=int(ceil(spawn_count/2.0))
+	_spawn_lancer_around_marker(marker_1.global_position,spawn_count,lancer_scene)
 
 func _spawn_lancer_around_marker(center:Vector2,count:int,lancer_scene:PackedScene)->void:
 	for i in count:

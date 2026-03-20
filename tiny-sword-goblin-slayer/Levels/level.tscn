@@ -17,12 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://d4gh3slijnmdy" path="res://Tiny Swords (Free Pack)/Terrain/Decorations/Bushes/Bushe4.png" id="15_lybtp"]
 [ext_resource type="Texture2D" uid="uid://b07i2dypoodrf" path="res://Tiny Swords (Free Pack)/UI Elements/UI Banners from the store page/Banner/Banner_Slots.png" id="16_jjxhf"]
 [ext_resource type="Script" uid="uid://dayg82fjmlnc5" path="res://Tiles/collider.gd" id="17_lybtp"]
-[ext_resource type="PackedScene" uid="uid://5viylrm1ssly" path="res://Unit_buildings/archery/archery.tscn" id="18_1sae0"]
-[ext_resource type="PackedScene" uid="uid://b0btyyhmooypw" path="res://Unit_buildings/Tower/tower.tscn" id="20_fw3l5"]
 [ext_resource type="PackedScene" uid="uid://ii5i38sjnrr8" path="res://Units/Pawns/pawn_black.tscn" id="20_jmcc3"]
-[ext_resource type="PackedScene" uid="uid://cxv1yopyaxn51" path="res://Unit_buildings/monastery/monastery.tscn" id="21_fw3l5"]
-[ext_resource type="PackedScene" uid="uid://bypjkx8bem77j" path="res://Unit_buildings/barrack/barrack.tscn" id="22_wjjle"]
 [ext_resource type="Script" uid="uid://ds186kysurn5p" path="res://system/selectionbox.gd" id="23_1sae0"]
+[ext_resource type="PackedScene" uid="uid://dmx3k6vmex3ab" path="res://Unit_buildings/house1/house1.tscn" id="24_twn60"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lybtp"]
 vertices = PackedVector2Array(32, 32, -32, 32, -32, -32, 32, -32)
@@ -1115,17 +1112,6 @@ tile_map_data = PackedByteArray("AAAIAAoAAAAEAAQAAAAJAAoAAAAEAAQAAAAKAAoAAAAEAAQ
 tile_set = SubResource("TileSet_twn60")
 script = ExtResource("17_lybtp")
 
-[node name="archery" parent="Tiles" unique_id=329213917 instance=ExtResource("18_1sae0")]
-position = Vector2(776, 608)
-construction_time = 2.0
-max_life = 6
-repair_time = 4.0
-lancer_capacity = 2
-spawn_radius = 40.0
-repair_gold_cost = 30
-repair_wood_cost = 20
-repair_health_amount = 2
-
 [node name="selectionbox" type="Node2D" parent="." unique_id=554861874]
 script = ExtResource("23_1sae0")
 
@@ -1137,11 +1123,5 @@ position_smoothing_speed = 3.0
 [node name="pawn" parent="." unique_id=563966811 instance=ExtResource("20_jmcc3")]
 position = Vector2(536, 739)
 
-[node name="tower" parent="." unique_id=1665373095 instance=ExtResource("20_fw3l5")]
-position = Vector2(901, 813)
-
-[node name="monastery" parent="." unique_id=676351306 instance=ExtResource("21_fw3l5")]
-position = Vector2(1108, 387)
-
-[node name="barrack" parent="." unique_id=1116185987 instance=ExtResource("22_wjjle")]
-position = Vector2(324, 659)
+[node name="house" parent="." unique_id=329213917 instance=ExtResource("24_twn60")]
+position = Vector2(1120, 632)
