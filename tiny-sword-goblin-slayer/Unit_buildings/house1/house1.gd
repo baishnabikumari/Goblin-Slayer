@@ -334,11 +334,11 @@ func _unhandled_input(event: InputEvent) -> void:
 	if is_moving and event is InputEventMouseButton:
 		var mouse_event=event as InputEventMouseButton
 		if mouse_event.button_index==MOUSE_BUTTON_LEFT and not mouse_event.pressed:
-			if is_awaiting_placement:
+			#if is_awaiting_placement:
 				finilize_movement()
-			else:
-				is_awaiting_placement=true
-				_update_movement_color()
+			#else:
+				#is_awaiting_placement=true
+				#_update_movement_color()
 		#press right click to cancle the placement or Event ESC
 		elif mouse_event.button_index==MOUSE_BUTTON_RIGHT and mouse_event.pressed:
 			_cancel_movement()
