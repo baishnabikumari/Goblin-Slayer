@@ -417,6 +417,10 @@ func _on_explo_area_entered(area:Area2D)->void:
 		take_damage(1)
 
 func take_damage(amount:int)->void:
+	if is_moving or is_awaiting_placement:
+		return
+	if state != STATE_IDLE:
+		return
 	life-=amount
 	is_hit=true
 	hit_flash_timer=0.15
