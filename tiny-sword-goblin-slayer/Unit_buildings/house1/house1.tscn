@@ -62,7 +62,7 @@ size = Vector2(79.5, 111.125)
 size = Vector2(80, 104)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wvcqi"]
-size = Vector2(112, 149.5)
+size = Vector2(80, 109.5)
 
 [node name="house" type="StaticBody2D" unique_id=329213917 groups=["block_building", "building"]]
 script = ExtResource("1_8grnj")
@@ -114,10 +114,9 @@ collision_layer = 31
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlacementChecker" unique_id=1507331885]
 visible = false
-position = Vector2(0, -5.25)
+position = Vector2(0, 14.75)
 shape = SubResource("RectangleShape2D_wvcqi")
 debug_color = Color(0.19262493, 0.48804015, 5.7756904e-07, 0.41960785)
-metadata/_edit_lock_ = true
 
 [node name="Sound fx" type="Node2D" parent="." unique_id=84550724]
 metadata/_edit_lock_ = true

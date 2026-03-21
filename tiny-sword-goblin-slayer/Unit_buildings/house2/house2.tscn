@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dpubnxjfbe857" path="res://Unit_buildings/house2/house2.gd" id="1_6y700"]
 [ext_resource type="Texture2D" uid="uid://dcy1daq8a6k3h" path="res://Tiny Swords (Free Pack)/Knights/Buildings/House/House_Construction.png" id="2_wrg24"]
 [ext_resource type="Texture2D" uid="uid://dcuu7trs5mfno" path="res://Tiny Swords (Free Pack)/Knights/Buildings/House/House_Destroyed.png" id="3_wnar2"]
-[ext_resource type="Texture2D" uid="uid://cqw168mgtobjy" path="res://Tiny Swords (Free Pack)/Buildings/Black Buildings/House1.png" id="4_sqsoo"]
+[ext_resource type="Texture2D" uid="uid://b6as0bhutrifv" path="res://Tiny Swords (Free Pack)/Buildings/Black Buildings/House2.png" id="4_3akso"]
 [ext_resource type="Script" uid="uid://bo78awqmtymop" path="res://Unit_buildings/house2/anim.gd" id="5_cfvu7"]
 [ext_resource type="AudioStream" uid="uid://kw0xs0hue6tx" path="res://Audio/tower_distroyed.mp3" id="6_qcof1"]
 [ext_resource type="AudioStream" uid="uid://xeavloqoq5l8" path="res://Audio/contruction_fx.mp3" id="7_wa78i"]
@@ -18,8 +18,8 @@ region = Rect2(0, 0, 128, 192)
 atlas = ExtResource("3_wnar2")
 region = Rect2(0, 0, 128, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bbhv2"]
-atlas = ExtResource("4_sqsoo")
+[sub_resource type="AtlasTexture" id="AtlasTexture_te66a"]
+atlas = ExtResource("4_3akso")
 region = Rect2(0, 0, 128, 192)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fsh0b"]
@@ -42,27 +42,28 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bbhv2")
+"texture": SubResource("AtlasTexture_te66a")
 }],
 "loop": true,
 "name": &"idle",
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g662r"]
-size = Vector2(133, 150)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3akso"]
+radius = 69.25
+height = 138.5
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3b7ny"]
-radius = 56.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_te66a"]
+radius = 64.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dju32"]
-size = Vector2(79.5, 111.125)
+[sub_resource type="CircleShape2D" id="CircleShape2D_v57ml"]
+radius = 64.001495
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_iu5rn"]
-size = Vector2(80, 104)
+[sub_resource type="CircleShape2D" id="CircleShape2D_wsehm"]
+radius = 64.12488
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wvcqi"]
-size = Vector2(112, 149.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3akso"]
+size = Vector2(112, 58)
 
 [node name="house" type="StaticBody2D" unique_id=329213917 groups=["block_building", "building"]]
 script = ExtResource("1_6y700")
@@ -76,8 +77,9 @@ metadata/_edit_lock_ = true
 
 [node name="shape" type="CollisionShape2D" parent="." unique_id=1935726478]
 visible = false
-position = Vector2(-8, 24)
-shape = SubResource("RectangleShape2D_g662r")
+position = Vector2(0, 8)
+shape = SubResource("CapsuleShape2D_3akso")
+metadata/_edit_lock_ = true
 
 [node name="Marker1" type="Marker2D" parent="." unique_id=114198055]
 position = Vector2(0, 96)
@@ -87,16 +89,15 @@ position = Vector2(0, 96)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="house" unique_id=632566686]
 visible = false
 position = Vector2(0, 8)
-shape = SubResource("CircleShape2D_3b7ny")
+shape = SubResource("CircleShape2D_te66a")
 debug_color = Color(0, 0.6, 0, 0.41960785)
-metadata/_edit_lock_ = true
 
 [node name="ExploreDetector" type="Area2D" parent="." unique_id=566309606]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExploreDetector" unique_id=1027975639]
 visible = false
-position = Vector2(0, 15.5625)
-shape = SubResource("RectangleShape2D_dju32")
+position = Vector2(0, 8)
+shape = SubResource("CircleShape2D_v57ml")
 debug_color = Color(0.75041264, 0.04686486, 0, 0.41960785)
 metadata/_edit_lock_ = true
 
@@ -104,8 +105,8 @@ metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RepairDetector" unique_id=2022645390]
 visible = false
-position = Vector2(0, 12)
-shape = SubResource("RectangleShape2D_iu5rn")
+position = Vector2(0, 8)
+shape = SubResource("CircleShape2D_wsehm")
 debug_color = Color(0.6886315, 0.49931753, 5.7756904e-07, 0.41960785)
 metadata/_edit_lock_ = true
 
@@ -114,8 +115,8 @@ collision_layer = 31
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlacementChecker" unique_id=1507331885]
 visible = false
-position = Vector2(0, -5.25)
-shape = SubResource("RectangleShape2D_wvcqi")
+position = Vector2(0, 27)
+shape = SubResource("RectangleShape2D_3akso")
 debug_color = Color(0.19262493, 0.48804015, 5.7756904e-07, 0.41960785)
 metadata/_edit_lock_ = true
 

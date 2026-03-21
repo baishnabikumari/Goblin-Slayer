@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://bypjkx8bem77j" path="res://Unit_buildings/barrack/barrack.tscn" id="22_wjjle"]
 [ext_resource type="Script" uid="uid://ds186kysurn5p" path="res://system/selectionbox.gd" id="23_1sae0"]
 [ext_resource type="PackedScene" uid="uid://dmx3k6vmex3ab" path="res://Unit_buildings/house1/house1.tscn" id="24_twn60"]
+[ext_resource type="PackedScene" uid="uid://cebgii2gdivhy" path="res://Unit_buildings/house2/house2.tscn" id="25_r2ueb"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lybtp"]
 vertices = PackedVector2Array(32, 32, -32, 32, -32, -32, 32, -32)
@@ -1141,3 +1142,6 @@ position = Vector2(296, 640)
 
 [node name="barrack" parent="." unique_id=1798370616 instance=ExtResource("22_wjjle")]
 position = Vector2(832, 392)
+
+[node name="house2" parent="." unique_id=2144308561 instance=ExtResource("25_r2ueb")]
+position = Vector2(328, 344)
