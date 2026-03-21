@@ -100,8 +100,8 @@ func _ready() -> void:
 	
 	placement_checker.area_entered.connect(_on_placement_area_entered)
 	placement_checker.area_exited.connect(_on_placement_area_exited)
-	placement_checker.area_entered.connect(_on_placement_body_entered)
-	placement_checker.area_exited.connect(_on_placement_body_exited)
+	placement_checker.body_entered.connect(_on_placement_body_entered)
+	placement_checker.body_exited.connect(_on_placement_body_exited)
 	
 	explore_detector.area_entered.connect(_on_explo_area_entered)
 	repair_detector.area_entered.connect(_on_repair_detector_area_entered)
@@ -126,18 +126,30 @@ func _process(delta: float) -> void:
 #------------------------------
 @warning_ignore("unused_parameter")
 func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
-	if event is InputEventMouseButton and event.button_index==MOUSE_BUTTON_LEFT and event.pressed:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 				var now=Time.get_ticks_msec()/1000.0 #added now never was decleareed
 				if now-last_click_time<=DOUBLE_CLICK_TIME:
 					if state==STATE_IDLE:
 						start_moving()
-					last_click_time=now
+				last_click_time=now
 
-func _unhandled_input(event):
-	if not is_moving:
-		return
-	if event is InputEventMouseButton and event.button_index==MOUSE_BUTTON_LEFT and event.pressed:
+func _unhandled_input(event: InputEvent) -> void:
+	if is_moving and event is InputEventMouseButton:
+		var mouse_event=event as InputEventMouseButton
+		if mouse_event.button_index==MOUSE_BUTTON_LEFT and not mouse_event.pressed:
+			#if is_awaiting_placement:
 				finilize_movement()
+			#else:
+				#is_awaiting_placement=true
+				#_update_movement_color()
+		#press right click to cancle the placement or Event ESC
+		elif mouse_event.button_index==MOUSE_BUTTON_RIGHT and mouse_event.pressed:
+			_cancel_movement()
+
+func _cancel_movement()->void:
+	var return_tween=create_tween()
+	return_tween.tween_property(self,"global_position",original_position,0.2)
+	return_tween.finished.connect(_reset_after_movement)
 
 #------------------------------
 #Movement
@@ -161,20 +173,22 @@ func start_moving()->void:
 	placement_checker.monitoring=true
 
 func finilize_movement()->void:
-	if movement_valid:
-		_reset_after_movement()
+	if !movement_valid:
+		var return_tween=create_tween()
+		return_tween.tween_property(self,"global_position",original_position,0.2)
+		return_tween.finished.connect(_reset_after_movement)
 	else:
-		var t:=create_tween()
-		t.tween_property(self,"global_position",original_position,0.25)
-		t.finished.connect(_reset_after_movement)
+		if not drop_fx.playing:
+			drop_fx.play()
+		_reset_after_movement()
 
 func _reset_after_movement():
 	update_collision_logic()
 	is_moving=false
 	overlapping_objects_count=0
 	movement_valid=true
-	if not drop_fx.playing:
-		drop_fx.play()
+	#if not drop_fx.playing:
+		#drop_fx.play()
 	
 	placement_checker.monitoring=false
 	collision.disabled=false
@@ -201,9 +215,9 @@ func _on_placement_area_entered(area:Area2D)->void:
 func _on_placement_area_exited(area:Area2D)->void:
 	_handle_overlap(area.get_parent(),false)
 func _on_placement_body_entered(body:Node)->void:
-	_handle_overlap(body.get_parent(),true)
+	_handle_overlap(body,true)
 func _on_placement_body_exited(body:Node)->void:
-	_handle_overlap(body.get_parent(),false)
+	_handle_overlap(body,false)
 
 func _update_movement_color()->void:
 	if not is_moving:
@@ -275,6 +289,10 @@ func _on_explo_area_entered(area:Area2D)->void:
 		take_damage(1)
 
 func take_damage(amount:int)->void:
+	if is_moving:
+		return
+	if state != STATE_IDLE:
+		return
 	life-=amount
 	is_hit=true
 	hit_flash_timer=0.15
