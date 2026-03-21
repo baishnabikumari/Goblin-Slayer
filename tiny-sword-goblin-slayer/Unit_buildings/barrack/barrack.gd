@@ -117,8 +117,8 @@ func _ready() -> void:
 	
 	placement_checker.area_entered.connect(_on_placement_area_entered)
 	placement_checker.area_exited.connect(_on_placement_area_exited)
-	placement_checker.area_entered.connect(_on_placement_body_entered)
-	placement_checker.area_exited.connect(_on_placement_body_exited)
+	placement_checker.body_entered.connect(_on_placement_body_entered)
+	placement_checker.body_exited.connect(_on_placement_body_exited)
 	
 	explore_detector.area_entered.connect(_on_explo_area_entered)
 	repair_detector.area_entered.connect(_on_repair_detector_area_entered)
@@ -154,19 +154,22 @@ func _process(delta: float) -> void:
 #------------------------------
 @warning_ignore("unused_parameter")
 func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
-	if event is InputEventMouseButton and event.button_index==MOUSE_BUTTON_LEFT:
-		if event.pressed:
+	if not event is InputEventMouseButton:
+		return
+	var mouse_event := event as InputEventMouseButton
+	
+	if mouse_event.button_index == MOUSE_BUTTON_LEFT:
+		if mouse_event.pressed:
 			var now=Time.get_ticks_msec()/1000.0 #added now never was decleareed
 			if now-last_click_time<=DOUBLE_CLICK_TIME:
 				_on_double_click()
 			else:
 				_on_single_click()
 			last_click_time=now
-	else:
-		if is_awaiting_placement:
-			finilize_movement()
-		elif is_moving:
-			_cancel_movement()
+		else:
+			pass
+	elif mouse_event.button_index==MOUSE_BUTTON_RIGHT and mouse_event.pressed:
+		_cancel_movement()
 
 func _on_single_click()->void:
 	is_selected=true
@@ -201,25 +204,13 @@ func start_moving()->void:
 		anim.modulate=Color.WHITE
 
 func finilize_movement()->void:
-	# check if building is on water/collider
-	var space_state=get_world_2d().direct_space_state
-	var query=PhysicsPointQueryParameters2D.new()
-	query.position=global_position
-	query.collision_mask=1
-	var results=space_state.intersect_point(query)
-	
-	var on_water=false
-	for r in results:
-		if r.collider is TileMapLayer:
-			on_water=true
-			break
-	
-	if on_water or !movement_valid:
-		# send back to original position
+	if !movement_valid:
 		var return_tween=create_tween()
 		return_tween.tween_property(self,"global_position",original_position,0.2)
 		return_tween.finished.connect(_reset_after_movement)
 	else:
+		if not drop_fx.playing:
+			drop_fx.play()
 		_reset_after_movement()
 
 func _reset_after_movement():
@@ -228,8 +219,8 @@ func _reset_after_movement():
 	is_awaiting_placement=false
 	overlapping_objects_count=0
 	movement_valid=true
-	if not drop_fx.playing:
-		drop_fx.play()
+	#if not drop_fx.playing:
+		#drop_fx.play()
 	movement_colliding=false
 	input_pickable=true
 	
@@ -325,16 +316,13 @@ func _check_movement_collisions()->void:
 		anim.modulate=Color.GREEN if movement_valid else Color.RED
 
 func _unhandled_input(event: InputEvent) -> void:
-	if is_moving and event is InputEventMouseButton:
-		var mouse_event=event as InputEventMouseButton
-		if mouse_event.button_index==MOUSE_BUTTON_LEFT and not mouse_event.pressed:
-			if is_awaiting_placement:
-				finilize_movement()
-			else:
-				is_awaiting_placement=true
-				_update_movement_color()
-		#press right click to cancle the placement or Event ESC
-		elif mouse_event.button_index==MOUSE_BUTTON_RIGHT and mouse_event.pressed:
+	if not is_moving:
+		return
+	if event is InputEventMouseButton:
+		var mouse_event = event as InputEventMouseButton
+		if mouse_event.button_index == MOUSE_BUTTON_LEFT and not mouse_event.pressed:
+			finilize_movement()
+		elif mouse_event.button_index == MOUSE_BUTTON_RIGHT and mouse_event.pressed:
 			_cancel_movement()
 
 func _update_movement_color()->void:
@@ -356,8 +344,8 @@ func clear_timer_and_tweens()->void:
 func enter_construct_state()->void:
 	state=STATE_CONSTRUCT
 	anim.play("construct")
-	if not construct_fx.playing:
-		construct_fx.play()
+	construct_fx.stop()
+	construct_fx.play()
 	scale=Vector2.ZERO
 	collision.disabled=true
 	update_collision_logic()

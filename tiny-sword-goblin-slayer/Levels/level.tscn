@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://b0btyyhmooypw" path="res://Unit_buildings/Tower/tower.tscn" id="20_fw3l5"]
 [ext_resource type="PackedScene" uid="uid://ii5i38sjnrr8" path="res://Units/Pawns/pawn_black.tscn" id="20_jmcc3"]
 [ext_resource type="PackedScene" uid="uid://cxv1yopyaxn51" path="res://Unit_buildings/monastery/monastery.tscn" id="21_fw3l5"]
+[ext_resource type="PackedScene" uid="uid://bypjkx8bem77j" path="res://Unit_buildings/barrack/barrack.tscn" id="22_wjjle"]
 [ext_resource type="Script" uid="uid://ds186kysurn5p" path="res://system/selectionbox.gd" id="23_1sae0"]
 [ext_resource type="PackedScene" uid="uid://dmx3k6vmex3ab" path="res://Unit_buildings/house1/house1.tscn" id="24_twn60"]
 
@@ -1137,3 +1138,6 @@ position = Vector2(1064, 352)
 
 [node name="archery" parent="." unique_id=984724644 instance=ExtResource("18_1sae0")]
 position = Vector2(296, 640)
+
+[node name="barrack" parent="." unique_id=1798370616 instance=ExtResource("22_wjjle")]
+position = Vector2(832, 392)

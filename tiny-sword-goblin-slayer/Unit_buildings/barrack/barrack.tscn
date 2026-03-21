@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://kw0xs0hue6tx" path="res://Audio/tower_distroyed.mp3" id="6_x6q30"]
 [ext_resource type="AudioStream" uid="uid://xeavloqoq5l8" path="res://Audio/contruction_fx.mp3" id="7_cfbth"]
 [ext_resource type="AudioStream" uid="uid://bxvlk3ouvi65p" path="res://Audio/place_fx.mp3" id="8_xxwcm"]
-[ext_resource type="AudioStream" uid="uid://dqlhycdsqp8xs" path="res://Audio/wooden-drop_fx2.mp3" id="9_e83vh"]
+[ext_resource type="AudioStream" uid="uid://boikykswnh4j0" path="res://Audio/tower_100%correct_drop-fx.mp3" id="9_lja62"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dju32"]
 atlas = ExtResource("2_lja62")
@@ -69,7 +69,7 @@ script = ExtResource("5_xpjf6")
 
 [node name="anim" type="AnimatedSprite2D" parent="." unique_id=1396377992]
 sprite_frames = SubResource("SpriteFrames_fsh0b")
-animation = &"construct"
+animation = &"idle"
 autoplay = "construct"
 script = ExtResource("5_17eel")
 metadata/_edit_lock_ = true
@@ -142,5 +142,6 @@ pitch_scale = 0.84
 stream = ExtResource("8_xxwcm")
 
 [node name="drop_fx" type="AudioStreamPlayer" parent="Sound fx" unique_id=1545110495]
-stream = ExtResource("9_e83vh")
-volume_db = -4.052
+stream = ExtResource("9_lja62")
+volume_db = -13.507
+pitch_scale = 2.28
