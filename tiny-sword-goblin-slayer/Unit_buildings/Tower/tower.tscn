@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://xeavloqoq5l8" path="res://Audio/contruction_fx.mp3" id="5_ccgn1"]
 [ext_resource type="Script" uid="uid://chvls76lcfjjc" path="res://Unit_buildings/Tower/anim.gd" id="5_mbfqe"]
 [ext_resource type="AudioStream" uid="uid://bxvlk3ouvi65p" path="res://Audio/place_fx.mp3" id="6_8k3yb"]
-[ext_resource type="AudioStream" uid="uid://dqlhycdsqp8xs" path="res://Audio/wooden-drop_fx2.mp3" id="7_lw8qk"]
+[ext_resource type="AudioStream" uid="uid://boikykswnh4j0" path="res://Audio/tower_100%correct_drop-fx.mp3" id="9_1vljo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e5pcd"]
 atlas = ExtResource("1_ief50")
@@ -139,5 +139,6 @@ pitch_scale = 0.84
 stream = ExtResource("6_8k3yb")
 
 [node name="drop_fx" type="AudioStreamPlayer" parent="Sound fx" unique_id=1545110495]
-stream = ExtResource("7_lw8qk")
-volume_db = -4.052
+stream = ExtResource("9_1vljo")
+volume_db = -9.454
+pitch_scale = 0.9

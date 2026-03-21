@@ -397,7 +397,7 @@ func start_guard():
 	guard_timer=0.0
 	change_state(State.GUARD)
 	stop_navigation()
-	anim.play("guard")
+	anim.play("idle")
 
 func state_guard(delta):
 	guard_timer+=delta
