@@ -329,5 +329,6 @@ pitch_scale = 0.96
 stream = ExtResource("12_wsibv")
 volume_db = -8.104
 
+[connection signal="area_entered" from="detector zone" to="." method="_on_detector_zone_area_entered"]
 [connection signal="body_entered" from="detector zone" to="." method="_on_detector_zone_body_entered"]
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]

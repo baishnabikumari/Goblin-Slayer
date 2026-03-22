@@ -76,7 +76,8 @@ func _ready() -> void:
 	use_timer.wait_time=use_duration
 	use_timer.one_shot=true
 	
-	use_timer.timeout.connect(_on_use_timer_timeout)
+	if not use_timer.timeout.is_connected(_on_use_timer_timeout):
+		use_timer.timeout.connect(_on_use_timer_timeout)
 
 #-------------------------
 #Input ui

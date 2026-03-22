@@ -81,10 +81,10 @@ shape = SubResource("RectangleShape2D_g662r")
 metadata/_edit_lock_ = true
 
 [node name="Marker1" type="Marker2D" parent="." unique_id=114198055]
-position = Vector2(-144, 104)
+position = Vector2(-64, 136)
 
 [node name="Marker2" type="Marker2D" parent="." unique_id=1512003610]
-position = Vector2(144, 104)
+position = Vector2(112, 104)
 
 [node name="barrack" type="Area2D" parent="." unique_id=1655481709]
 visible = false

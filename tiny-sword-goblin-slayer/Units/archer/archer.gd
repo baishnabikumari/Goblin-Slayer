@@ -136,6 +136,8 @@ func _ready() -> void:
 	
 	button.pressed.connect(_on_button_pressed)
 	#hitbox.area_entered.connect(_on_hitbox_area_entered)
+	if not detector_zone.area_entered.is_connected(_on_detector_zone_area_entered):
+		detector_zone.area_entered.connect(_on_detector_zone_area_entered)
 	
 	nav.avoidance_enabled=true
 	nav.max_speed=speed
@@ -270,9 +272,9 @@ func _physics_process(delta: float) -> void:
 		if ui_timer>=ui_hide_delay:
 			ui_visible=false
 			
-			var tween :=create_tween()
-			tween.tween_property(hp_bar, "modulate.a",0.0,0.3)
-			tween.tween_property(shieldbar,"modulate.a",0.0,0.3)
+			var tween := create_tween()
+			tween.tween_property(hp_bar, "modulate", Color(1, 1, 1, 0), 0.3)
+			tween.tween_property(shieldbar, "modulate", Color(1, 1, 1, 0), 0.3)
 	
 	if guard_locked:
 		return
@@ -584,9 +586,6 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		take_damage(30,area.global_position-global_position)
 		if not hit_audio.playing:
 			hit_audio.play()
-		if area.is_in_group("heal"):
-			life=max_life
-			show_combat_ui()
 
 #-----------------------
 #death
@@ -685,5 +684,14 @@ func show_combat_ui():
 	hp_bar.visible=true
 	shieldbar.visible=true
 	
-	hp_bar.modulate.a=1.0
-	shieldbar.modulate.a=1.0
+	hp_bar.modulate = Color(1,1,1,1)
+	shieldbar.modulate = Color(1,1,1,1)
+
+#-----------------------
+#heal effect
+#-----------------------
+func _on_detector_zone_area_entered(area: Area2D) -> void:
+	if area.is_in_group("heal"):
+		life=max_life
+		update_bars()
+		show_combat_ui()
