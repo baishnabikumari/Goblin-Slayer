@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://ii5i38sjnrr8" path="res://Units/Pawns/pawn_black.tscn" id="20_jmcc3"]
 [ext_resource type="PackedScene" uid="uid://bypjkx8bem77j" path="res://Unit_buildings/barrack/barrack.tscn" id="20_wjjle"]
 [ext_resource type="PackedScene" uid="uid://5viylrm1ssly" path="res://Unit_buildings/archery/archery.tscn" id="21_1sae0"]
+[ext_resource type="PackedScene" uid="uid://bw4s3lcfya36o" path="res://Unit_buildings/castle/castle.tscn" id="22_twn60"]
 [ext_resource type="Script" uid="uid://ds186kysurn5p" path="res://system/selectionbox.gd" id="23_1sae0"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lybtp"]
@@ -1125,6 +1126,9 @@ position = Vector2(264, 688)
 
 [node name="archery" parent="Tiles" unique_id=1681550181 instance=ExtResource("21_1sae0")]
 position = Vector2(912, 336)
+
+[node name="castle" parent="Tiles" unique_id=870703430 instance=ExtResource("22_twn60")]
+position = Vector2(864, 856)
 
 [node name="selectionbox" type="Node2D" parent="." unique_id=554861874]
 script = ExtResource("23_1sae0")
