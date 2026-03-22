@@ -62,11 +62,11 @@ var spawn_cooldown:=0.0
 #------------------------------
 #Knights scenes "not moving knight
 #------------------------------
-var knight_black=preload("res://Units/Pawns/pawn_black.tscn")
-var knight_blue=preload("res://Units/Pawns/pawn_blue.tscn")
-var knight_purple=preload("res://Units/Pawns/pawn_purple.tscn")
-var knight_red=preload("res://Units/Pawns/pawn_red.tscn")
-var knight_yellow=preload("res://Units/Pawns/pawn_yellow.tscn")
+var knight_black=preload("res://Units/Monk/monk_black.tscn")
+var knight_blue=preload("res://Units/Monk/monk_blue.tscn")
+var knight_purple=preload("res://Units/Monk/monk_purple.tscn")
+var knight_red=preload("res://Units/Monk/monk_red.tscn")
+var knight_yellow=preload("res://Units/Monk/monk_yellow.tscn")
 
 var spawned_knight=[]
 

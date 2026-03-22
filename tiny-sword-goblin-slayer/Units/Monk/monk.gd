@@ -178,6 +178,13 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 #spawn attack effect
 #-------------------------
 func spawn_heal_effect()->void:
+	if busy or not can_use_tool:
+		return
+	busy = true
+	can_use_tool = false
+	Current_state = state.USE
+	use_timer.start()
+	
 	var fx:=repair_effect_scene.instantiate()
 	fx.global_position=marker_2d.global_position
 	fx.scale=Vector2(1.0,1.0)
@@ -282,6 +289,7 @@ func _on_detector_zone_area_entered(area: Area2D) -> void:
 	if area.is_in_group("heal"): #using for healing via monk
 		show_combat_ui()
 		life=max_life
+		progress_bar.value = life
 
 #-------------------------
 #button signal
