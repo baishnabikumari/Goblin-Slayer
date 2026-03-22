@@ -134,6 +134,7 @@ func _ready() -> void:
 	
 	button.pressed.connect(_on_button_pressed)
 	#hitbox.area_entered.connect(_on_hitbox_area_entered)
+	detector_zone.area_entered.connect(_on_detector_zone_area_entered)
 	
 	nav.avoidance_enabled=true
 	nav.max_speed=speed
@@ -497,9 +498,6 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		take_damage(30,area.global_position-global_position)
 		if not hit_audio.playing:
 			hit_audio.play()
-		if area.is_in_group("heal"):
-			life=max_life
-			show_combat_ui()
 
 #-----------------------
 #death
@@ -600,3 +598,12 @@ func show_combat_ui():
 	
 	hp_bar.modulate.a=1.0
 	shieldbar.modulate.a=1.0
+
+#----------------------------
+#heal effect
+#----------------------------
+func _on_detector_zone_area_entered(area: Area2D) -> void:
+	if area.is_in_group("heal"):
+		life = max_life
+		update_bars()
+		show_combat_ui()
