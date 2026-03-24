@@ -58,14 +58,6 @@ size = Vector2(272, 158)
 
 [node name="castle" type="StaticBody2D" unique_id=329213917 groups=["block_building", "building", "castle"]]
 script = ExtResource("1_swre6")
-construction_time = null
-max_life = null
-repair_time = null
-lancer_capacity = null
-spawn_radius = null
-repair_gold_cost = null
-repair_wood_cost = null
-repair_health_amount = null
 
 [node name="anim" type="AnimatedSprite2D" parent="." unique_id=1396377992]
 sprite_frames = SubResource("SpriteFrames_fsh0b")
@@ -87,7 +79,7 @@ position = Vector2(-96, -32)
 position = Vector2(96, -32)
 
 [node name="Marker3" type="Marker2D" parent="." unique_id=1780797007]
-position = Vector2(-40, 128)
+position = Vector2(48, 144)
 
 [node name="ExploreDetector" type="Area2D" parent="." unique_id=566309606]
 

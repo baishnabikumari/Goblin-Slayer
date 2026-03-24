@@ -1137,7 +1137,7 @@ position_smoothing_enabled = true
 position_smoothing_speed = 3.0
 
 [node name="pawn" parent="." unique_id=563966811 instance=ExtResource("20_jmcc3")]
-position = Vector2(536, 739)
+position = Vector2(448, 696)
 
 [node name="castle" parent="." unique_id=1743452114 instance=ExtResource("24_twn60")]
-position = Vector2(808, 728)
+position = Vector2(840, 744)

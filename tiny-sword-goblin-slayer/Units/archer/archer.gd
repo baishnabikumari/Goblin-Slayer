@@ -93,6 +93,7 @@ const TARGET_LOCK_DURATION:=0.5
 #-----------------------
 var selected:=false
 var stop_distance:=60
+var movement_priority := false
 
 #-----------------------
 #combat
@@ -170,6 +171,7 @@ func _ready() -> void:
 	target_check_timer.one_shot=false
 	target_check_timer.autostart=false
 	target_check_timer.connect("timeout",Callable(self,"_check_current_target"))
+	target_check_timer.start()
 
 func reset_random_shield_timer():
 	random_shield_timer=0.0
@@ -179,7 +181,7 @@ func reset_random_shield_timer():
 #Target validation system
 #-----------------------
 func is_target_valid(target_node:Node2D)->bool:
-	if target==null:
+	if target_node == null:
 		return false
 	if not target_node.is_inside_tree():
 		return false
@@ -205,7 +207,7 @@ func can_attack_target()->bool:
 		return false
 	return true
 
-func check_current_target():
+func _check_current_target():
 	if target!=null and not can_attack_target():
 		target=null
 		if attack_timer and attack_timer.is_stopped()==false:
@@ -321,7 +323,7 @@ func state_run(delta:float):
 			change_state(State.IDLE)
 			start_attack()
 			return
-	if nav.navigation_finished and nav.distance_to_target()>stop_distance*2:
+	if nav.is_navigation_finished() and nav.distance_to_target() > stop_distance * 2:
 		nav.target_position+=Vector2(
 			randf_range(-64,64),
 			randf_range(-46,64)
@@ -346,15 +348,14 @@ func start_attack():
 		reset_combat()
 		change_state(State.IDLE)
 		return
+
 	action_locked=true
 	change_state(State.ATTACK)
-	
 	stop_navigation()
 	update_facing((target.global_position-global_position).normalized())
-	
 	anim.play("shoot")
 	spawn_arrow()
-	
+
 	if not attack_timer.is_stopped():
 		attack_timer.stop()
 	attack_timer.start()
@@ -385,7 +386,7 @@ func spawn_arrow():
 	arrow.z_index=z_index+1
 	#launch arrow to target
 	if arrow.has_method("launch"):
-		if not shootpoint.play():
+		if not shootpoint.playing():
 			shoot_audio.play()
 		arrow.launch(target.global_position,800) #this is the speed of arrow that is 800
 
@@ -444,9 +445,9 @@ func face_closest_goblin():
 	for body in detector_zone.get_overlapping_bodies():
 		if body == null:
 			continue
-		if not (body.is_in_group("goblin") and body.is_in_group("goblinbuildings")):
-			if not body.is_inside_tree():
-				continue
+		if not body.is_inside_tree():
+			continue
+		if body.is_in_group("goblin") or  body.is_in_group("goblinbuildings"):
 			var d:=global_position.distance_to(body.global_position)
 			if d<dist:
 				dist=d
@@ -642,7 +643,7 @@ func resolve_stuck():
 	move_and_slide()
 	nav.target_position+= axis * randf_range(24,48)
 
-var movement_priority:=false
+#var movement_priority:=false
 func _on_detector_zone_body_entered(body: Node2D) -> void:
 	if movement_priority or action_locked or state==State.DEAD:
 		return

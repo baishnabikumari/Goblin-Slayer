@@ -2,7 +2,7 @@ extends StaticBody2D
 
 #nodes
 @onready var anim: AnimatedSprite2D = $anim
-@onready var collision: CollisionShape2D = $shape
+@onready var shape: CollisionShape2D = $shape
 @onready var marker_1: Marker2D = $Marker1
 @onready var marker_2: Marker2D = $Marker2
 @onready var marker_3: Marker2D = $Marker3
@@ -19,7 +19,7 @@ var collision_disabled:bool=false
 #------------------------------
 #variables
 #------------------------------
-@export var construction_time:float
+@export var construction_time:= 0.2
 @export var max_life:int=10
 
 #------------------------------
@@ -68,7 +68,7 @@ var spawned_pawn:Node2D=null
 #timer and tweens
 #------------------------------
 var tween:Tween
-var construct_timer:Timer
+var construction_timer:Timer
 var spawn_timer:Timer
 
 #------------------------------
@@ -111,7 +111,8 @@ func _ready() -> void:
 	placement_checker.body_entered.connect(_on_placement_body_entered)
 	placement_checker.body_exited.connect(_on_placement_body_exited)
 	
-	explore_detector.area_entered.connect(_on_explo_area_entered)
+	if not explore_detector.area_entered.is_connected(_on_explore_detector_area_entered):
+		explore_detector.area_entered.connect(_on_explore_detector_area_entered)
 	
 	enter_construct_state()
 
@@ -156,6 +157,16 @@ func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void
 	elif mouse_event.button_index==MOUSE_BUTTON_RIGHT and mouse_event.pressed:
 		_cancel_movement()
 
+func _on_single_click()->void:
+	is_selected=true
+	if anim:
+		anim.modulate=Color.WHITE
+
+func _on_double_click()->void:
+	if state != STATE_IDLE:
+		return
+	start_moving()
+
 func _update_movement_color()->void:
 	if not is_moving:
 		return
@@ -176,10 +187,7 @@ func start_moving()->void:
 	is_awaiting_placement=false
 	movement_colliding=false
 	
-	collision.disabled=true
-	
-	if not place_fx.playing:
-		place_fx.play()
+	shape.disabled=true
 	
 	placement_checker.monitoring=true
 	if anim:
@@ -191,8 +199,6 @@ func finilize_movement()->void:
 		return_tween.tween_property(self,"global_position",original_position,0.2)
 		return_tween.finished.connect(_reset_after_movement)
 	else:
-		if not drop_fx.playing:
-			drop_fx.play()
 		_reset_after_movement()
 
 func _reset_after_movement():
@@ -207,7 +213,7 @@ func _reset_after_movement():
 	input_pickable=true
 	
 	placement_checker.monitoring=false
-	collision.disabled=false
+	shape.disabled=false
 	anim.modulate=Color.WHITE
 
 func _cancel_movement()->void:
@@ -305,21 +311,21 @@ func _unhandled_input(event: InputEvent) -> void:
 		elif mouse_event.button_index == MOUSE_BUTTON_RIGHT and mouse_event.pressed:
 			_cancel_movement()
 
-func _update_movement_color()->void:
-	if not is_moving:
-		return
-	
-	movement_valid=overlapping_objects_count==0
-	anim.modulate=Color.GREEN if movement_valid else Color.RED
+#func _update_movement_color()->void:
+	#if not is_moving:
+		#return
+	#
+	#movement_valid=overlapping_objects_count==0
+	#anim.modulate=Color.GREEN if movement_valid else Color.RED
 
 func clear_timer_and_tweens()->void:
 	if tween and tween.is_running():
 		tween.kill()
 	tween=null
 	
-	if construct_timer:
-		construct_timer.queue_free()
-		construct_timer=null
+	if construction_timer:
+		construction_timer.queue_free()
+		construction_timer=null
 	if spawn_timer:
 		spawn_timer.queue_free()
 		spawn_timer=null
@@ -359,7 +365,7 @@ func enter_idle_state()->void:
 	anim.play("idle")
 	construct_fx.stop()
 	scale=FINAL_SCALE
-	collision.disabled=false
+	shape.disabled=false
 	input_pickable=true
 	is_moving=false
 	is_awaiting_placement=false
@@ -378,7 +384,7 @@ func enter_destroyed_state()->void:
 		return
 	
 	shape.disabled=true
-	explo_detector.monitoring=false
+	explore_detector.monitoring=false
 	placement_checker.monitoring=false
 	placement_checker.monitorable=false
 	input_pickable=false
@@ -464,23 +470,26 @@ func spawn_archer()->void:
 	spawned_archer2.scale=Vector2(0.7,0.7)
 
 func spawn_pawn()->void:
-	if spawned_pawn!=null:
+	if spawned_pawn != null:
 		return
-	#if spawned_archer2!=null:
-		#return
-	
-	var archer_scene:PackedScene
+
+	var pawn_scene: PackedScene
 	match Global.choosed_colour.to_lower():
-		"black":pawn_scene=pawn_black
-		"blue":pawn_scene=pawn_blue
-		"purple":pawn_scene=pawn_purple
-		"red":pawn_scene=pawn_red
-		"yellow":pawn_scene=pawn_yellow
+		"black": pawn_scene = pawn_black
+		"blue": pawn_scene = pawn_blue
+		"purple": pawn_scene = pawn_purple
+		"red": pawn_scene = pawn_red
+		"yellow": pawn_scene = pawn_yellow
 		_: return
 	
 	spawned_pawn=pawn_scene.instantiate()
 	add_child(spawned_pawn)
-	spawned_pawn.global_position=marker_1.global_position
+	spawned_pawn.global_position=marker_3.global_position
 	spawned_pawn.z_index=5
-	spawned_pawn.scale=Vector2(0.7,0.7)
+	#spawned_pawn.scale=Vector2(0.7,0.7)
 	Global.consume_meat(1)
+
+func update_collision_logic() -> void:
+	var new_disabled := (state == STATE_CONSTRUCT) or (state == STATE_DESTROYED) or is_moving
+	if shape.disabled != new_disabled:
+		shape.disabled = new_disabled
