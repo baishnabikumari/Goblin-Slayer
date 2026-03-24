@@ -95,7 +95,7 @@ var is_selected:=false
 func _ready() -> void:
 	state=STATE_CONSTRUCT
 	GlobalPlayer.castle_position=global_position
-	z_index=4
+	z_index=6
 	scale=Vector2(0.8,0.8)
 	Global.load_colour()
 	life=max_life
