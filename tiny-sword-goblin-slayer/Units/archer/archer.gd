@@ -17,7 +17,7 @@ extends CharacterBody2D
 @onready var predict_cast: ShapeCast2D = $PredictCast
 
 #-----------------------
-#Soundfx
+#Soundfx containing all the sounds need for archer and archer buildings.
 #-----------------------
 @onready var click_audio: AudioStreamPlayer = $soundfx/click_audio
 @onready var death_audio: AudioStreamPlayer = $soundfx/death_audio
