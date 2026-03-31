@@ -17,7 +17,12 @@
 [ext_resource type="Texture2D" uid="uid://d4gh3slijnmdy" path="res://Tiny Swords (Free Pack)/Terrain/Decorations/Bushes/Bushe4.png" id="15_lybtp"]
 [ext_resource type="Texture2D" uid="uid://b07i2dypoodrf" path="res://Tiny Swords (Free Pack)/UI Elements/UI Banners from the store page/Banner/Banner_Slots.png" id="16_jjxhf"]
 [ext_resource type="Script" uid="uid://dayg82fjmlnc5" path="res://Tiles/collider.gd" id="17_lybtp"]
+[ext_resource type="StyleBox" uid="uid://c1al17rfwidjo" path="res://Units/Monk/activation_buttons.tres" id="20_twn60"]
+[ext_resource type="Texture2D" uid="uid://bba2g5k5t5v8y" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Icons/Icon_11.png" id="21_r2ueb"]
+[ext_resource type="Texture2D" uid="uid://cc852t5fqmfrf" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Icons/Icon_12.png" id="22_o8jhj"]
 [ext_resource type="Script" uid="uid://ds186kysurn5p" path="res://system/selectionbox.gd" id="23_1sae0"]
+[ext_resource type="Texture2D" uid="uid://dihqi8wblme4h" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Icons/Icon_09.png" id="23_nflnv"]
+[ext_resource type="Texture2D" uid="uid://kc5qmtbtuh7r" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Icons/Icon_10.png" id="24_3kmy4"]
 [ext_resource type="PackedScene" uid="uid://bw4s3lcfya36o" path="res://Unit_buildings/castle/castle.tscn" id="24_twn60"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lybtp"]
@@ -1060,6 +1065,8 @@ physics_layer_0/collision_layer = 31
 physics_layer_0/collision_mask = 31
 sources/0 = SubResource("TileSetAtlasSource_1sae0")
 
+[sub_resource type="TileSet" id="TileSet_gaktt"]
+
 [node name="level_stage" type="Node2D" unique_id=1383739427]
 
 [node name="sea" type="TextureRect" parent="." unique_id=1921126012]
@@ -1133,9 +1140,11 @@ position = Vector2(672, 688)
 [node name="Panel" type="Panel" parent="UI/ui" unique_id=646436492]
 offset_right = 1368.0
 offset_bottom = 1072.0
+theme_override_styles/panel = ExtResource("20_twn60")
 metadata/_edit_use_anchors_ = true
 
 [node name="Info panel" type="TileMapLayer" parent="UI/ui/Panel" unique_id=1246538296]
+tile_set = SubResource("TileSet_gaktt")
 
 [node name="Info label" type="Label" parent="UI/ui/Panel" unique_id=2078282690]
 layout_mode = 0
@@ -1145,28 +1154,44 @@ offset_bottom = 23.0
 [node name="sets buttons" type="Node2D" parent="UI/ui/Panel" unique_id=756825979]
 
 [node name="Info btn" type="Button" parent="UI/ui/Panel/sets buttons" unique_id=460788861]
-offset_right = 60.0
-offset_bottom = 60.0
+offset_left = 856.0
+offset_top = 16.0
+offset_right = 956.0
+offset_bottom = 76.0
 
 [node name="Icon" type="Sprite2D" parent="UI/ui/Panel/sets buttons/Info btn" unique_id=841422656]
+position = Vector2(50, 30)
+texture = ExtResource("21_r2ueb")
 
 [node name="Mute btn" type="Button" parent="UI/ui/Panel/sets buttons" unique_id=741622555]
-offset_right = 60.0
-offset_bottom = 60.0
+offset_left = 968.0
+offset_top = 16.0
+offset_right = 1068.0
+offset_bottom = 76.0
 
 [node name="Icon" type="Sprite2D" parent="UI/ui/Panel/sets buttons/Mute btn" unique_id=1280097812]
+position = Vector2(52, 30)
+texture = ExtResource("22_o8jhj")
 
 [node name="Quit btn" type="Button" parent="UI/ui/Panel/sets buttons" unique_id=1242410786]
-offset_right = 60.0
-offset_bottom = 60.0
+offset_left = 1192.0
+offset_top = 16.0
+offset_right = 1292.0
+offset_bottom = 76.0
 
 [node name="Icon" type="Sprite2D" parent="UI/ui/Panel/sets buttons/Quit btn" unique_id=1960680577]
+position = Vector2(50, 29)
+texture = ExtResource("23_nflnv")
 
 [node name="Setting Btn" type="Button" parent="UI/ui/Panel/sets buttons" unique_id=2136631183]
-offset_right = 60.0
-offset_bottom = 60.0
+offset_left = 1080.0
+offset_top = 16.0
+offset_right = 1180.0
+offset_bottom = 76.0
 
 [node name="Icon" type="Sprite2D" parent="UI/ui/Panel/sets buttons/Setting Btn" unique_id=1617866994]
+position = Vector2(50, 30)
+texture = ExtResource("24_3kmy4")
 
 [node name="player" type="Node2D" parent="UI/ui/Panel" unique_id=1584232215]
 
@@ -1312,7 +1337,7 @@ offset_right = 8.0
 offset_bottom = 8.0
 metadata/_edit_lock_ = true
 
-[node name="Label" type="Label" parent="UI/ui/Panel/Game Over/Button" unique_id=1113645597]
+[node name="Label retry" type="Label" parent="UI/ui/Panel/Game Over/Button" unique_id=1113645597]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
@@ -1326,13 +1351,19 @@ offset_bottom = 40.0
 metadata/_edit_lock_ = true
 
 [node name="pause" type="Label" parent="UI/ui/Panel/Pause" unique_id=1503547522]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 metadata/_edit_lock_ = true
 
 [node name="resume" type="Label" parent="UI/ui/Panel/Pause" unique_id=340751554]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 metadata/_edit_lock_ = true
+
+[node name="Building Manager" type="Node2D" parent="UI/ui/Panel" unique_id=115640910]
+
+[node name="Ghost" type="Node2D" parent="." unique_id=1778209828]
