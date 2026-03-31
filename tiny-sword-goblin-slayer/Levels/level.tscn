@@ -1125,3 +1125,214 @@ position_smoothing_speed = 3.0
 
 [node name="castle" parent="Buildings/castle" unique_id=329213917 instance=ExtResource("24_twn60")]
 position = Vector2(672, 688)
+
+[node name="UI" type="Node2D" parent="." unique_id=8295559]
+
+[node name="ui" type="CanvasLayer" parent="UI" unique_id=1768763956]
+
+[node name="Panel" type="Panel" parent="UI/ui" unique_id=646436492]
+offset_right = 1368.0
+offset_bottom = 1072.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Info panel" type="TileMapLayer" parent="UI/ui/Panel" unique_id=1246538296]
+
+[node name="Info label" type="Label" parent="UI/ui/Panel" unique_id=2078282690]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="sets buttons" type="Node2D" parent="UI/ui/Panel" unique_id=756825979]
+
+[node name="Info btn" type="Button" parent="UI/ui/Panel/sets buttons" unique_id=460788861]
+offset_right = 60.0
+offset_bottom = 60.0
+
+[node name="Icon" type="Sprite2D" parent="UI/ui/Panel/sets buttons/Info btn" unique_id=841422656]
+
+[node name="Mute btn" type="Button" parent="UI/ui/Panel/sets buttons" unique_id=741622555]
+offset_right = 60.0
+offset_bottom = 60.0
+
+[node name="Icon" type="Sprite2D" parent="UI/ui/Panel/sets buttons/Mute btn" unique_id=1280097812]
+
+[node name="Quit btn" type="Button" parent="UI/ui/Panel/sets buttons" unique_id=1242410786]
+offset_right = 60.0
+offset_bottom = 60.0
+
+[node name="Icon" type="Sprite2D" parent="UI/ui/Panel/sets buttons/Quit btn" unique_id=1960680577]
+
+[node name="Setting Btn" type="Button" parent="UI/ui/Panel/sets buttons" unique_id=2136631183]
+offset_right = 60.0
+offset_bottom = 60.0
+
+[node name="Icon" type="Sprite2D" parent="UI/ui/Panel/sets buttons/Setting Btn" unique_id=1617866994]
+
+[node name="player" type="Node2D" parent="UI/ui/Panel" unique_id=1584232215]
+
+[node name="Unit Construction" type="Panel" parent="UI/ui/Panel/player" unique_id=1333358606]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Next" type="Button" parent="UI/ui/Panel/player/Unit Construction" unique_id=1478049347]
+layout_mode = 0
+offset_right = 60.0
+offset_bottom = 60.0
+
+[node name="InfoLabel" type="Label" parent="UI/ui/Panel/player/Unit Construction" unique_id=578116239]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Unit construction" type="TileMapLayer" parent="UI/ui/Panel/player/Unit Construction" unique_id=284133224]
+
+[node name="Build_House1_btn" type="Button" parent="UI/ui/Panel/player/Unit Construction" unique_id=1833011074]
+process_mode = 3
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+
+[node name="anim" type="AnimatedSprite2D" parent="UI/ui/Panel/player/Unit Construction/Build_House1_btn" unique_id=2134608719]
+
+[node name="Marker2D" type="Marker2D" parent="UI/ui/Panel/player/Unit Construction/Build_House1_btn" unique_id=1842697051]
+
+[node name="Build_House2_btn" type="Button" parent="UI/ui/Panel/player/Unit Construction" unique_id=674292578]
+process_mode = 3
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+
+[node name="anim" type="AnimatedSprite2D" parent="UI/ui/Panel/player/Unit Construction/Build_House2_btn" unique_id=314586362]
+
+[node name="Marker2D" type="Marker2D" parent="UI/ui/Panel/player/Unit Construction/Build_House2_btn" unique_id=379595744]
+
+[node name="Build_House3_btn" type="Button" parent="UI/ui/Panel/player/Unit Construction" unique_id=1814311461]
+process_mode = 3
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+
+[node name="anim" type="AnimatedSprite2D" parent="UI/ui/Panel/player/Unit Construction/Build_House3_btn" unique_id=457849469]
+
+[node name="Marker2D" type="Marker2D" parent="UI/ui/Panel/player/Unit Construction/Build_House3_btn" unique_id=1129804925]
+
+[node name="Build_Tower_btn" type="Button" parent="UI/ui/Panel/player/Unit Construction" unique_id=427180775]
+process_mode = 3
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+
+[node name="anim" type="AnimatedSprite2D" parent="UI/ui/Panel/player/Unit Construction/Build_Tower_btn" unique_id=2027327964]
+
+[node name="Marker2D" type="Marker2D" parent="UI/ui/Panel/player/Unit Construction/Build_Tower_btn" unique_id=142046005]
+
+[node name="Build_barrack_btn" type="Button" parent="UI/ui/Panel/player/Unit Construction" unique_id=52014000]
+process_mode = 3
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+
+[node name="anim" type="AnimatedSprite2D" parent="UI/ui/Panel/player/Unit Construction/Build_barrack_btn" unique_id=321037865]
+
+[node name="Marker2D" type="Marker2D" parent="UI/ui/Panel/player/Unit Construction/Build_barrack_btn" unique_id=1546997985]
+
+[node name="Build_monastery_btn" type="Button" parent="UI/ui/Panel/player/Unit Construction" unique_id=1895888089]
+process_mode = 3
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+
+[node name="anim" type="AnimatedSprite2D" parent="UI/ui/Panel/player/Unit Construction/Build_monastery_btn" unique_id=1609898970]
+
+[node name="Marker2D" type="Marker2D" parent="UI/ui/Panel/player/Unit Construction/Build_monastery_btn" unique_id=1963876773]
+
+[node name="Build_archery_btn" type="Button" parent="UI/ui/Panel/player/Unit Construction" unique_id=1669929936]
+process_mode = 3
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+
+[node name="anim" type="AnimatedSprite2D" parent="UI/ui/Panel/player/Unit Construction/Build_archery_btn" unique_id=2107884915]
+
+[node name="Marker2D" type="Marker2D" parent="UI/ui/Panel/player/Unit Construction/Build_archery_btn" unique_id=690057860]
+
+[node name="Unit Resources" type="Panel" parent="UI/ui/Panel/player" unique_id=2125908692]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="unit resource" type="TileMapLayer" parent="UI/ui/Panel/player/Unit Resources" unique_id=1699867066]
+
+[node name="GIcon" type="Sprite2D" parent="UI/ui/Panel/player/Unit Resources" unique_id=142671662]
+
+[node name="Gold_Label" type="Label" parent="UI/ui/Panel/player/Unit Resources/GIcon" unique_id=35874828]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="MIcon2" type="Sprite2D" parent="UI/ui/Panel/player/Unit Resources" unique_id=41974754]
+
+[node name="Meat_Label" type="Label" parent="UI/ui/Panel/player/Unit Resources/MIcon2" unique_id=1504649672]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="WIcon3" type="Sprite2D" parent="UI/ui/Panel/player/Unit Resources" unique_id=1037561681]
+
+[node name="Wood_Label" type="Label" parent="UI/ui/Panel/player/Unit Resources/WIcon3" unique_id=2020868155]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Timer Label" type="Label" parent="UI/ui/Panel" unique_id=1833174920]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Main Panel" type="TileMapLayer" parent="UI/ui/Panel" unique_id=753899831]
+
+[node name="Game Over" type="Panel" parent="UI/ui/Panel" unique_id=1639303284]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_lock_ = true
+
+[node name="Label Game Over" type="Label" parent="UI/ui/Panel/Game Over" unique_id=228991220]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+metadata/_edit_lock_ = true
+
+[node name="Instruction" type="Label" parent="UI/ui/Panel/Game Over" unique_id=1109480659]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+metadata/_edit_lock_ = true
+
+[node name="Button" type="Button" parent="UI/ui/Panel/Game Over" unique_id=1567450011]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="UI/ui/Panel/Game Over/Button" unique_id=1113645597]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+metadata/_edit_lock_ = true
+
+[node name="Pause" type="Panel" parent="UI/ui/Panel" unique_id=2060400892]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_lock_ = true
+
+[node name="pause" type="Label" parent="UI/ui/Panel/Pause" unique_id=1503547522]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+metadata/_edit_lock_ = true
+
+[node name="resume" type="Label" parent="UI/ui/Panel/Pause" unique_id=340751554]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+metadata/_edit_lock_ = true
