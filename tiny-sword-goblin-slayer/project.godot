@@ -20,7 +20,11 @@ GlobalPlayer="*uid://bxlp3cju5wfq1"
 
 [display]
 
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/mode=3
 window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [editor_plugins]
 
