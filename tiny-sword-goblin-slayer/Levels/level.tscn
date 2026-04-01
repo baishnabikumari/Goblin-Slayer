@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://kc5qmtbtuh7r" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Icons/Icon_10.png" id="24_3kmy4"]
 [ext_resource type="PackedScene" uid="uid://bw4s3lcfya36o" path="res://Unit_buildings/castle/castle.tscn" id="24_twn60"]
 [ext_resource type="PackedScene" uid="uid://m78nn4gj4rtr" path="res://Units/Monk/monk_black.tscn" id="25_r2ueb"]
+[ext_resource type="PackedScene" uid="uid://c0r4rgkt5cdbt" path="res://Units/knight/knight_black.tscn" id="26_o8jhj"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lybtp"]
 vertices = PackedVector2Array(32, 32, -32, 32, -32, -32, 32, -32)
@@ -1156,10 +1157,10 @@ offset_bottom = 23.0
 
 [node name="Info btn" type="Button" parent="UI/ui/Panel/sets buttons" unique_id=460788861]
 process_mode = 3
-offset_left = 919.0
-offset_top = 16.0
-offset_right = 1019.0
-offset_bottom = 76.0
+offset_left = 1048.0
+offset_top = 21.0
+offset_right = 1148.0
+offset_bottom = 81.0
 scale = Vector2(0.5, 0.5)
 theme_override_styles/normal = ExtResource("20_twn60")
 theme_override_styles/pressed = ExtResource("20_twn60")
@@ -1171,14 +1172,13 @@ theme_override_styles/focus = ExtResource("20_twn60")
 [node name="Icon" type="Sprite2D" parent="UI/ui/Panel/sets buttons/Info btn" unique_id=841422656]
 position = Vector2(50, 30)
 texture = ExtResource("21_r2ueb")
-metadata/_edit_lock_ = true
 
 [node name="Mute btn" type="Button" parent="UI/ui/Panel/sets buttons" unique_id=741622555]
 process_mode = 3
-offset_left = 975.0
-offset_top = 16.0
-offset_right = 1075.0
-offset_bottom = 76.0
+offset_left = 1104.0
+offset_top = 21.0
+offset_right = 1204.0
+offset_bottom = 81.0
 scale = Vector2(0.5, 0.5)
 theme_override_styles/normal = ExtResource("20_twn60")
 theme_override_styles/pressed = ExtResource("20_twn60")
@@ -1190,14 +1190,13 @@ theme_override_styles/focus = ExtResource("20_twn60")
 [node name="Icon" type="Sprite2D" parent="UI/ui/Panel/sets buttons/Mute btn" unique_id=1280097812]
 position = Vector2(52, 30)
 texture = ExtResource("22_o8jhj")
-metadata/_edit_lock_ = true
 
 [node name="Quit btn" type="Button" parent="UI/ui/Panel/sets buttons" unique_id=1242410786]
 process_mode = 3
-offset_left = 1087.0
-offset_top = 16.0
-offset_right = 1187.0
-offset_bottom = 76.0
+offset_left = 1216.0
+offset_top = 21.0
+offset_right = 1316.0
+offset_bottom = 81.0
 scale = Vector2(0.5, 0.5)
 theme_override_styles/normal = ExtResource("20_twn60")
 theme_override_styles/pressed = ExtResource("20_twn60")
@@ -1209,14 +1208,13 @@ theme_override_styles/focus = ExtResource("20_twn60")
 [node name="Icon" type="Sprite2D" parent="UI/ui/Panel/sets buttons/Quit btn" unique_id=1960680577]
 position = Vector2(50, 29)
 texture = ExtResource("23_nflnv")
-metadata/_edit_lock_ = true
 
 [node name="Setting Btn" type="Button" parent="UI/ui/Panel/sets buttons" unique_id=2136631183]
 process_mode = 3
-offset_left = 1031.0
-offset_top = 16.0
-offset_right = 1131.0
-offset_bottom = 76.0
+offset_left = 1160.0
+offset_top = 21.0
+offset_right = 1260.0
+offset_bottom = 81.0
 scale = Vector2(0.5, 0.5)
 theme_override_styles/normal = ExtResource("20_twn60")
 theme_override_styles/pressed = ExtResource("20_twn60")
@@ -1228,7 +1226,6 @@ theme_override_styles/focus = ExtResource("20_twn60")
 [node name="Icon" type="Sprite2D" parent="UI/ui/Panel/sets buttons/Setting Btn" unique_id=1617866994]
 position = Vector2(50, 30)
 texture = ExtResource("24_3kmy4")
-metadata/_edit_lock_ = true
 
 [node name="player" type="Node2D" parent="UI/ui/Panel" unique_id=1584232215]
 
@@ -1407,3 +1404,6 @@ metadata/_edit_lock_ = true
 
 [node name="monk" parent="." unique_id=563966811 instance=ExtResource("25_r2ueb")]
 position = Vector2(824, 400)
+
+[node name="knight" parent="." unique_id=1612883873 instance=ExtResource("26_o8jhj")]
+position = Vector2(368, 580)
