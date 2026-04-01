@@ -88,15 +88,14 @@ func _ready() -> void:
 	life=50
 	progress_bar.max_value=max_life
 	progress_bar.value=life
-	
 	toolbox_panel.hide()
-	use_timer.wait_time=use_duration
-	use_timer.one_shot=true
 	
+	#use_timer.wait_time=use_duration
+	#use_timer.one_shot=true
 	#use_timer.timeout.connect(_on_use_timer_timeout)
 	
 	#connet detector zone signals
-	if detector_zone!=null:
+	if detector_zone != null and not detector_zone.area_entered.is_connected(_on_resource_entered):
 		detector_zone.area_entered.connect(_on_resource_entered)
 
 #-------------------------
@@ -117,16 +116,19 @@ func pickup_resource(resource_node)->void:
 #-------------------------
 func _on_resource_entered(area:Area2D)->void:
 	#check if it is a resource
-	if area.has_method("collect") and area.has_property("resource_type"):
-		if not area.collected:
-			var resource_type=area.resource_type
-			#check
-			if (resource_type=="wood" and current_tool==tool.AXE) or \
-			(resource_type=="stone" and current_tool==tool.PICKAXE) or \
-			(resource_type=="meat" and current_tool==tool.AXE):
-				pickup_resource(area)
-			
-			
+	if area.has_method("collect"):
+		return
+	var resource_type = area.get("resource_type")
+	if resource_type == null:
+		return
+	if area.get("collected") == true:
+		return
+	#check
+	if (resource_type=="wood" and current_tool==tool.AXE) or \
+		(resource_type=="stone" and current_tool==tool.PICKAXE) or \
+		(resource_type=="meat" and current_tool==tool.AXE):
+			pickup_resource(area)
+
 #-------------------------
 #Input ui
 #-------------------------
@@ -274,10 +276,8 @@ func repeat_tool_action(Tool:tool,collect_type:String,tool_name:String,times:int
 	
 func spawn_tool_effect()->void:
 	if current_tool==tool.HAMMER:
-		pass
 		spawn_repair_effect()
 	else:
-		pass
 		spawn_attack_effect()
 
 

@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://dihqi8wblme4h" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Icons/Icon_09.png" id="23_nflnv"]
 [ext_resource type="Texture2D" uid="uid://kc5qmtbtuh7r" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Icons/Icon_10.png" id="24_3kmy4"]
 [ext_resource type="PackedScene" uid="uid://bw4s3lcfya36o" path="res://Unit_buildings/castle/castle.tscn" id="24_twn60"]
+[ext_resource type="PackedScene" uid="uid://m78nn4gj4rtr" path="res://Units/Monk/monk_black.tscn" id="25_r2ueb"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lybtp"]
 vertices = PackedVector2Array(32, 32, -32, 32, -32, -32, 32, -32)
@@ -1403,3 +1404,6 @@ metadata/_edit_lock_ = true
 [node name="Building Manager" type="Node2D" parent="UI/ui/Panel" unique_id=115640910]
 
 [node name="Ghost" type="Node2D" parent="." unique_id=1778209828]
+
+[node name="monk" parent="." unique_id=563966811 instance=ExtResource("25_r2ueb")]
+position = Vector2(824, 400)

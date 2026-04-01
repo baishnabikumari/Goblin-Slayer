@@ -795,10 +795,9 @@ script = ExtResource("1_jbbln")
 
 [node name="anim" type="AnimatedSprite2D" parent="." unique_id=1623781219]
 sprite_frames = SubResource("SpriteFrames_vmnnn")
-animation = &"use_hammer"
+animation = &"use_knife"
 autoplay = "idle"
-frame = 2
-frame_progress = 1.0
+frame_progress = 0.6074227
 metadata/_edit_lock_ = true
 
 [node name="shape" type="CollisionShape2D" parent="." unique_id=17875598]
