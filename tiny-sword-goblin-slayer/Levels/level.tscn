@@ -25,6 +25,41 @@
 [ext_resource type="Texture2D" uid="uid://kc5qmtbtuh7r" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Icons/Icon_10.png" id="24_3kmy4"]
 [ext_resource type="PackedScene" uid="uid://bw4s3lcfya36o" path="res://Unit_buildings/castle/castle.tscn" id="24_twn60"]
 [ext_resource type="Texture2D" uid="uid://b5mirvy0xrt42" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Papers/RegularPaper.png" id="25_r2ueb"]
+[ext_resource type="Texture2D" uid="uid://cqw168mgtobjy" path="res://Tiny Swords (Free Pack)/Buildings/Black Buildings/House1.png" id="26_3fdi5"]
+[ext_resource type="Texture2D" uid="uid://ba07evy1x63b7" path="res://Tiny Swords (Free Pack)/Buildings/Blue Buildings/House1.png" id="27_papoo"]
+[ext_resource type="Texture2D" uid="uid://c2h1c6gj2u0fw" path="res://Tiny Swords (Free Pack)/Buildings/Purple Buildings/House1.png" id="28_vawf4"]
+[ext_resource type="Texture2D" uid="uid://b0e6sru5qdbyq" path="res://Tiny Swords (Free Pack)/Buildings/Red Buildings/House1.png" id="29_pf7nj"]
+[ext_resource type="Texture2D" uid="uid://bx3an3crrewgd" path="res://Tiny Swords (Free Pack)/Buildings/Yellow Buildings/House1.png" id="30_tse5p"]
+[ext_resource type="Texture2D" uid="uid://b6as0bhutrifv" path="res://Tiny Swords (Free Pack)/Buildings/Black Buildings/House2.png" id="31_6yn0q"]
+[ext_resource type="Texture2D" uid="uid://cletnptc0qj4" path="res://Tiny Swords (Free Pack)/Buildings/Blue Buildings/House2.png" id="32_bntju"]
+[ext_resource type="Texture2D" uid="uid://c8j6a7m0p4rkd" path="res://Tiny Swords (Free Pack)/Buildings/Purple Buildings/House2.png" id="33_y0mwd"]
+[ext_resource type="Texture2D" uid="uid://dhibonxmoyums" path="res://Tiny Swords (Free Pack)/Buildings/Red Buildings/House2.png" id="34_6rh7a"]
+[ext_resource type="Texture2D" uid="uid://df4nlekrfxoqj" path="res://Tiny Swords (Free Pack)/Buildings/Yellow Buildings/House2.png" id="35_y11fb"]
+[ext_resource type="Texture2D" uid="uid://2iju50hi2nke" path="res://Tiny Swords (Free Pack)/Buildings/Black Buildings/House3.png" id="36_ysn1r"]
+[ext_resource type="Texture2D" uid="uid://rpyqdagxxfmq" path="res://Tiny Swords (Free Pack)/Buildings/Blue Buildings/House3.png" id="37_2etax"]
+[ext_resource type="Texture2D" uid="uid://cvwhm5p5dykqo" path="res://Tiny Swords (Free Pack)/Buildings/Purple Buildings/House3.png" id="38_5c6r3"]
+[ext_resource type="Texture2D" uid="uid://p21t28iaxa7y" path="res://Tiny Swords (Free Pack)/Buildings/Red Buildings/House3.png" id="39_eod1j"]
+[ext_resource type="Texture2D" uid="uid://cpq88g3xhu52t" path="res://Tiny Swords (Free Pack)/Buildings/Yellow Buildings/House3.png" id="40_3o7ty"]
+[ext_resource type="Texture2D" uid="uid://b0x2kkveqttah" path="res://Tiny Swords (Free Pack)/Buildings/Black Buildings/Tower.png" id="41_ply2f"]
+[ext_resource type="Texture2D" uid="uid://bqhj8htth1vs2" path="res://Tiny Swords (Free Pack)/Buildings/Blue Buildings/Tower.png" id="42_oqntg"]
+[ext_resource type="Texture2D" uid="uid://iwtvnol11v5a" path="res://Tiny Swords (Free Pack)/Buildings/Purple Buildings/Tower.png" id="43_n3ayw"]
+[ext_resource type="Texture2D" uid="uid://dx1g1tdhflpkr" path="res://Tiny Swords (Free Pack)/Buildings/Red Buildings/Tower.png" id="44_p4cle"]
+[ext_resource type="Texture2D" uid="uid://cx4qft0uxow14" path="res://Tiny Swords (Free Pack)/Buildings/Yellow Buildings/Tower.png" id="45_n087y"]
+[ext_resource type="Texture2D" uid="uid://bqbp6eg8705bo" path="res://Tiny Swords (Free Pack)/Buildings/Black Buildings/Barracks.png" id="46_ply2f"]
+[ext_resource type="Texture2D" uid="uid://co2wgcd7dfo5b" path="res://Tiny Swords (Free Pack)/Buildings/Blue Buildings/Barracks.png" id="47_oqntg"]
+[ext_resource type="Texture2D" uid="uid://dp1h7h68oevio" path="res://Tiny Swords (Free Pack)/Buildings/Purple Buildings/Barracks.png" id="48_n3ayw"]
+[ext_resource type="Texture2D" uid="uid://desv80ste21vg" path="res://Tiny Swords (Free Pack)/Buildings/Red Buildings/Barracks.png" id="49_p4cle"]
+[ext_resource type="Texture2D" uid="uid://b6thrnwhrnrk" path="res://Tiny Swords (Free Pack)/Buildings/Yellow Buildings/Barracks.png" id="50_n087y"]
+[ext_resource type="Texture2D" uid="uid://b7atfqlauc3dh" path="res://Tiny Swords (Free Pack)/Buildings/Black Buildings/Monastery.png" id="51_wcipo"]
+[ext_resource type="Texture2D" uid="uid://dq8k0w5p32d6k" path="res://Tiny Swords (Free Pack)/Buildings/Blue Buildings/Monastery.png" id="52_yf7rk"]
+[ext_resource type="Texture2D" uid="uid://xpm6saiyu4x7" path="res://Tiny Swords (Free Pack)/Buildings/Purple Buildings/Monastery.png" id="53_fmy0k"]
+[ext_resource type="Texture2D" uid="uid://bt3jkx830mgbr" path="res://Tiny Swords (Free Pack)/Buildings/Red Buildings/Monastery.png" id="54_ntwpu"]
+[ext_resource type="Texture2D" uid="uid://ccysdulaaceag" path="res://Tiny Swords (Free Pack)/Buildings/Yellow Buildings/Monastery.png" id="55_011lf"]
+[ext_resource type="Texture2D" uid="uid://bbswyyff80tjw" path="res://Tiny Swords (Free Pack)/Buildings/Black Buildings/Archery.png" id="56_wcipo"]
+[ext_resource type="Texture2D" uid="uid://dml0hochiqcqn" path="res://Tiny Swords (Free Pack)/Buildings/Blue Buildings/Archery.png" id="57_yf7rk"]
+[ext_resource type="Texture2D" uid="uid://78aj41tyrp61" path="res://Tiny Swords (Free Pack)/Buildings/Purple Buildings/Archery.png" id="58_fmy0k"]
+[ext_resource type="Texture2D" uid="uid://dcbu1i4wtrvma" path="res://Tiny Swords (Free Pack)/Buildings/Red Buildings/Archery.png" id="59_ntwpu"]
+[ext_resource type="Texture2D" uid="uid://b6r4ldnww5my4" path="res://Tiny Swords (Free Pack)/Buildings/Yellow Buildings/Archery.png" id="60_011lf"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lybtp"]
 vertices = PackedVector2Array(32, 32, -32, 32, -32, -32, 32, -32)
@@ -1085,6 +1120,464 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_o8jhj")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_3fdi5"]
+atlas = ExtResource("26_3fdi5")
+region = Rect2(0, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_papoo"]
+atlas = ExtResource("27_papoo")
+region = Rect2(0, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vawf4"]
+atlas = ExtResource("28_vawf4")
+region = Rect2(0, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pf7nj"]
+atlas = ExtResource("29_pf7nj")
+region = Rect2(0, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tse5p"]
+atlas = ExtResource("30_tse5p")
+region = Rect2(0, 0, 128, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wcipo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3fdi5")
+}],
+"loop": true,
+"name": &"black",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_papoo")
+}],
+"loop": true,
+"name": &"blue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vawf4")
+}],
+"loop": true,
+"name": &"purple",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pf7nj")
+}],
+"loop": true,
+"name": &"red",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tse5p")
+}],
+"loop": true,
+"name": &"yellow",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yf7rk"]
+atlas = ExtResource("31_6yn0q")
+region = Rect2(0, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmy0k"]
+atlas = ExtResource("32_bntju")
+region = Rect2(0, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ntwpu"]
+atlas = ExtResource("33_y0mwd")
+region = Rect2(0, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_011lf"]
+atlas = ExtResource("34_6rh7a")
+region = Rect2(0, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5qva"]
+atlas = ExtResource("35_y11fb")
+region = Rect2(0, 0, 128, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kqel0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yf7rk")
+}],
+"loop": true,
+"name": &"black",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmy0k")
+}],
+"loop": true,
+"name": &"blue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ntwpu")
+}],
+"loop": true,
+"name": &"purple",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_011lf")
+}],
+"loop": true,
+"name": &"red",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5qva")
+}],
+"loop": true,
+"name": &"yellow",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nf2ov"]
+atlas = ExtResource("36_ysn1r")
+region = Rect2(0, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xc0q5"]
+atlas = ExtResource("37_2etax")
+region = Rect2(0, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwx2r"]
+atlas = ExtResource("38_5c6r3")
+region = Rect2(0, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_alt0v"]
+atlas = ExtResource("39_eod1j")
+region = Rect2(0, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2og4"]
+atlas = ExtResource("40_3o7ty")
+region = Rect2(0, 0, 128, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0tv2o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nf2ov")
+}],
+"loop": true,
+"name": &"black",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xc0q5")
+}],
+"loop": true,
+"name": &"blue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hwx2r")
+}],
+"loop": true,
+"name": &"purple",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_alt0v")
+}],
+"loop": true,
+"name": &"red",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2og4")
+}],
+"loop": true,
+"name": &"yellow",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sy5sx"]
+atlas = ExtResource("41_ply2f")
+region = Rect2(0, 0, 128, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2h62v"]
+atlas = ExtResource("42_oqntg")
+region = Rect2(0, 0, 128, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oncvo"]
+atlas = ExtResource("43_n3ayw")
+region = Rect2(0, 0, 128, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1upps"]
+atlas = ExtResource("44_p4cle")
+region = Rect2(0, 0, 128, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_07u00"]
+atlas = ExtResource("45_n087y")
+region = Rect2(0, 0, 128, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_unfds"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sy5sx")
+}],
+"loop": true,
+"name": &"black",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2h62v")
+}],
+"loop": true,
+"name": &"blue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oncvo")
+}],
+"loop": true,
+"name": &"purple",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1upps")
+}],
+"loop": true,
+"name": &"red",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_07u00")
+}],
+"loop": true,
+"name": &"yellow",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kqel0"]
+atlas = ExtResource("46_ply2f")
+region = Rect2(0, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0tv2o"]
+atlas = ExtResource("47_oqntg")
+region = Rect2(0, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_unfds"]
+atlas = ExtResource("48_n3ayw")
+region = Rect2(0, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_03wqq"]
+atlas = ExtResource("49_p4cle")
+region = Rect2(0, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0qdx"]
+atlas = ExtResource("50_n087y")
+region = Rect2(0, 0, 192, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_03wqq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kqel0")
+}],
+"loop": true,
+"name": &"black",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0tv2o")
+}],
+"loop": true,
+"name": &"blue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_unfds")
+}],
+"loop": true,
+"name": &"purple",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_03wqq")
+}],
+"loop": true,
+"name": &"red",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f0qdx")
+}],
+"loop": true,
+"name": &"yellow",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mato"]
+atlas = ExtResource("51_wcipo")
+region = Rect2(0, 0, 192, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1clg"]
+atlas = ExtResource("52_yf7rk")
+region = Rect2(0, 0, 192, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgi8s"]
+atlas = ExtResource("53_fmy0k")
+region = Rect2(0, 0, 192, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oeejg"]
+atlas = ExtResource("54_ntwpu")
+region = Rect2(0, 0, 192, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_luo2f"]
+atlas = ExtResource("55_011lf")
+region = Rect2(0, 0, 192, 320)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_euja3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3mato")
+}],
+"loop": true,
+"name": &"black",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a1clg")
+}],
+"loop": true,
+"name": &"blue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qgi8s")
+}],
+"loop": true,
+"name": &"purple",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oeejg")
+}],
+"loop": true,
+"name": &"red",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_luo2f")
+}],
+"loop": true,
+"name": &"yellow",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_euja3"]
+atlas = ExtResource("56_wcipo")
+region = Rect2(0, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdhhr"]
+atlas = ExtResource("57_yf7rk")
+region = Rect2(0, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpma2"]
+atlas = ExtResource("58_fmy0k")
+region = Rect2(0, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2l68y"]
+atlas = ExtResource("59_ntwpu")
+region = Rect2(0, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhg77"]
+atlas = ExtResource("60_011lf")
+region = Rect2(0, 0, 192, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kdhhr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_euja3")
+}],
+"loop": true,
+"name": &"black",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdhhr")
+}],
+"loop": true,
+"name": &"blue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpma2")
+}],
+"loop": true,
+"name": &"purple",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2l68y")
+}],
+"loop": true,
+"name": &"red",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhg77")
+}],
+"loop": true,
+"name": &"yellow",
+"speed": 5.0
+}]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r2ueb"]
+texture = ExtResource("25_r2ueb")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+2:0/0 = 0
+4:0/0 = 0
+0:2/0 = 0
+2:2/0 = 0
+4:2/0 = 0
+0:4/0 = 0
+2:4/0 = 0
+4:4/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_o8jhj"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_r2ueb")
+
 [node name="level_stage" type="Node2D" unique_id=1383739427]
 
 [node name="sea" type="TextureRect" parent="." unique_id=1921126012]
@@ -1282,7 +1775,9 @@ layout_mode = 0
 offset_right = 80.0
 offset_bottom = 80.0
 
-[node name="anim" type="AnimatedSprite2D" parent="UI/ui/Panel/player/Unit Construction/Build_House1_btn" unique_id=2134608719]
+[node name="anim" type="AnimatedSprite2D" parent="UI/ui/Panel/player/Unit Construction/Build_House1_btn" unique_id=748741979]
+sprite_frames = SubResource("SpriteFrames_wcipo")
+animation = &"yellow"
 
 [node name="Marker2D" type="Marker2D" parent="UI/ui/Panel/player/Unit Construction/Build_House1_btn" unique_id=1842697051]
 
@@ -1292,7 +1787,9 @@ layout_mode = 0
 offset_right = 80.0
 offset_bottom = 80.0
 
-[node name="anim" type="AnimatedSprite2D" parent="UI/ui/Panel/player/Unit Construction/Build_House2_btn" unique_id=314586362]
+[node name="anim" type="AnimatedSprite2D" parent="UI/ui/Panel/player/Unit Construction/Build_House2_btn" unique_id=915453354]
+sprite_frames = SubResource("SpriteFrames_kqel0")
+animation = &"yellow"
 
 [node name="Marker2D" type="Marker2D" parent="UI/ui/Panel/player/Unit Construction/Build_House2_btn" unique_id=379595744]
 
@@ -1302,7 +1799,9 @@ layout_mode = 0
 offset_right = 80.0
 offset_bottom = 80.0
 
-[node name="anim" type="AnimatedSprite2D" parent="UI/ui/Panel/player/Unit Construction/Build_House3_btn" unique_id=457849469]
+[node name="anim" type="AnimatedSprite2D" parent="UI/ui/Panel/player/Unit Construction/Build_House3_btn" unique_id=1789946666]
+sprite_frames = SubResource("SpriteFrames_0tv2o")
+animation = &"yellow"
 
 [node name="Marker2D" type="Marker2D" parent="UI/ui/Panel/player/Unit Construction/Build_House3_btn" unique_id=1129804925]
 
@@ -1312,7 +1811,10 @@ layout_mode = 0
 offset_right = 80.0
 offset_bottom = 80.0
 
-[node name="anim" type="AnimatedSprite2D" parent="UI/ui/Panel/player/Unit Construction/Build_Tower_btn" unique_id=2027327964]
+[node name="anim" type="AnimatedSprite2D" parent="UI/ui/Panel/player/Unit Construction/Build_Tower_btn" unique_id=1376492575]
+position = Vector2(0, -1)
+sprite_frames = SubResource("SpriteFrames_unfds")
+animation = &"black"
 
 [node name="Marker2D" type="Marker2D" parent="UI/ui/Panel/player/Unit Construction/Build_Tower_btn" unique_id=142046005]
 
@@ -1322,7 +1824,9 @@ layout_mode = 0
 offset_right = 80.0
 offset_bottom = 80.0
 
-[node name="anim" type="AnimatedSprite2D" parent="UI/ui/Panel/player/Unit Construction/Build_barrack_btn" unique_id=321037865]
+[node name="anim" type="AnimatedSprite2D" parent="UI/ui/Panel/player/Unit Construction/Build_barrack_btn" unique_id=874496950]
+sprite_frames = SubResource("SpriteFrames_03wqq")
+animation = &"yellow"
 
 [node name="Marker2D" type="Marker2D" parent="UI/ui/Panel/player/Unit Construction/Build_barrack_btn" unique_id=1546997985]
 
@@ -1332,7 +1836,9 @@ layout_mode = 0
 offset_right = 80.0
 offset_bottom = 80.0
 
-[node name="anim" type="AnimatedSprite2D" parent="UI/ui/Panel/player/Unit Construction/Build_monastery_btn" unique_id=1609898970]
+[node name="anim" type="AnimatedSprite2D" parent="UI/ui/Panel/player/Unit Construction/Build_monastery_btn" unique_id=918469413]
+sprite_frames = SubResource("SpriteFrames_euja3")
+animation = &"yellow"
 
 [node name="Marker2D" type="Marker2D" parent="UI/ui/Panel/player/Unit Construction/Build_monastery_btn" unique_id=1963876773]
 
@@ -1342,7 +1848,9 @@ layout_mode = 0
 offset_right = 80.0
 offset_bottom = 80.0
 
-[node name="anim" type="AnimatedSprite2D" parent="UI/ui/Panel/player/Unit Construction/Build_archery_btn" unique_id=2107884915]
+[node name="anim" type="AnimatedSprite2D" parent="UI/ui/Panel/player/Unit Construction/Build_archery_btn" unique_id=826178401]
+sprite_frames = SubResource("SpriteFrames_kdhhr")
+animation = &"yellow"
 
 [node name="Marker2D" type="Marker2D" parent="UI/ui/Panel/player/Unit Construction/Build_archery_btn" unique_id=690057860]
 
@@ -1351,6 +1859,10 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="unit resource" type="TileMapLayer" parent="UI/ui/Panel/player/Unit Resources" unique_id=1699867066]
+modulate = Color(1, 1, 1, 0.5882353)
+self_modulate = Color(1, 1, 1, 0.5882353)
+tile_map_data = PackedByteArray("AAANAAkAAAAAAAAAAAAOAAkAAAACAAAAAAAPAAkAAAACAAAAAAAQAAkAAAACAAAAAAARAAkAAAACAAAAAAASAAkAAAACAAAAAAATAAkAAAAEAAAAAAANAAoAAAAAAAQAAAAOAAoAAAACAAQAAAAPAAoAAAACAAQAAAAQAAoAAAACAAQAAAARAAoAAAACAAQAAAASAAoAAAACAAQAAAATAAoAAAAEAAQAAAA=")
+tile_set = SubResource("TileSet_o8jhj")
 
 [node name="GIcon" type="Sprite2D" parent="UI/ui/Panel/player/Unit Resources" unique_id=142671662]
 
