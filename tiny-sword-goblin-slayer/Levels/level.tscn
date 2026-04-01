@@ -24,8 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://dihqi8wblme4h" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Icons/Icon_09.png" id="23_nflnv"]
 [ext_resource type="Texture2D" uid="uid://kc5qmtbtuh7r" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Icons/Icon_10.png" id="24_3kmy4"]
 [ext_resource type="PackedScene" uid="uid://bw4s3lcfya36o" path="res://Unit_buildings/castle/castle.tscn" id="24_twn60"]
-[ext_resource type="PackedScene" uid="uid://m78nn4gj4rtr" path="res://Units/Monk/monk_black.tscn" id="25_r2ueb"]
-[ext_resource type="PackedScene" uid="uid://c0r4rgkt5cdbt" path="res://Units/knight/knight_black.tscn" id="26_o8jhj"]
+[ext_resource type="Texture2D" uid="uid://b5mirvy0xrt42" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Papers/RegularPaper.png" id="25_r2ueb"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lybtp"]
 vertices = PackedVector2Array(32, 32, -32, 32, -32, -32, 32, -32)
@@ -1069,6 +1068,23 @@ sources/0 = SubResource("TileSetAtlasSource_1sae0")
 
 [sub_resource type="TileSet" id="TileSet_gaktt"]
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o8jhj"]
+texture = ExtResource("25_r2ueb")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+2:0/0 = 0
+4:0/0 = 0
+0:2/0 = 0
+2:2/0 = 0
+4:2/0 = 0
+0:4/0 = 0
+2:4/0 = 0
+4:4/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_nflnv"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_o8jhj")
+
 [node name="level_stage" type="Node2D" unique_id=1383739427]
 
 [node name="sea" type="TextureRect" parent="." unique_id=1921126012]
@@ -1157,6 +1173,8 @@ offset_bottom = 23.0
 
 [node name="Info btn" type="Button" parent="UI/ui/Panel/sets buttons" unique_id=460788861]
 process_mode = 3
+modulate = Color(1, 1, 1, 0.78431374)
+self_modulate = Color(1, 1, 1, 0.78431374)
 offset_left = 1048.0
 offset_top = 21.0
 offset_right = 1148.0
@@ -1168,6 +1186,7 @@ theme_override_styles/hover = ExtResource("20_twn60")
 theme_override_styles/hover_pressed = ExtResource("20_twn60")
 theme_override_styles/disabled = ExtResource("20_twn60")
 theme_override_styles/focus = ExtResource("20_twn60")
+metadata/_edit_lock_ = true
 
 [node name="Icon" type="Sprite2D" parent="UI/ui/Panel/sets buttons/Info btn" unique_id=841422656]
 position = Vector2(50, 30)
@@ -1175,6 +1194,8 @@ texture = ExtResource("21_r2ueb")
 
 [node name="Mute btn" type="Button" parent="UI/ui/Panel/sets buttons" unique_id=741622555]
 process_mode = 3
+modulate = Color(1, 1, 1, 0.78431374)
+self_modulate = Color(1, 1, 1, 0.78431374)
 offset_left = 1104.0
 offset_top = 21.0
 offset_right = 1204.0
@@ -1186,6 +1207,7 @@ theme_override_styles/hover = ExtResource("20_twn60")
 theme_override_styles/hover_pressed = ExtResource("20_twn60")
 theme_override_styles/disabled = ExtResource("20_twn60")
 theme_override_styles/focus = ExtResource("20_twn60")
+metadata/_edit_lock_ = true
 
 [node name="Icon" type="Sprite2D" parent="UI/ui/Panel/sets buttons/Mute btn" unique_id=1280097812]
 position = Vector2(52, 30)
@@ -1193,6 +1215,8 @@ texture = ExtResource("22_o8jhj")
 
 [node name="Quit btn" type="Button" parent="UI/ui/Panel/sets buttons" unique_id=1242410786]
 process_mode = 3
+modulate = Color(1, 1, 1, 0.78431374)
+self_modulate = Color(1, 1, 1, 0.78431374)
 offset_left = 1216.0
 offset_top = 21.0
 offset_right = 1316.0
@@ -1204,6 +1228,7 @@ theme_override_styles/hover = ExtResource("20_twn60")
 theme_override_styles/hover_pressed = ExtResource("20_twn60")
 theme_override_styles/disabled = ExtResource("20_twn60")
 theme_override_styles/focus = ExtResource("20_twn60")
+metadata/_edit_lock_ = true
 
 [node name="Icon" type="Sprite2D" parent="UI/ui/Panel/sets buttons/Quit btn" unique_id=1960680577]
 position = Vector2(50, 29)
@@ -1211,6 +1236,8 @@ texture = ExtResource("23_nflnv")
 
 [node name="Setting Btn" type="Button" parent="UI/ui/Panel/sets buttons" unique_id=2136631183]
 process_mode = 3
+modulate = Color(1, 1, 1, 0.78431374)
+self_modulate = Color(1, 1, 1, 0.78431374)
 offset_left = 1160.0
 offset_top = 21.0
 offset_right = 1260.0
@@ -1222,6 +1249,7 @@ theme_override_styles/hover = ExtResource("20_twn60")
 theme_override_styles/hover_pressed = ExtResource("20_twn60")
 theme_override_styles/disabled = ExtResource("20_twn60")
 theme_override_styles/focus = ExtResource("20_twn60")
+metadata/_edit_lock_ = true
 
 [node name="Icon" type="Sprite2D" parent="UI/ui/Panel/sets buttons/Setting Btn" unique_id=1617866994]
 position = Vector2(50, 30)
@@ -1244,6 +1272,9 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="Unit construction" type="TileMapLayer" parent="UI/ui/Panel/player/Unit Construction" unique_id=284133224]
+modulate = Color(1, 1, 1, 0.39215687)
+tile_map_data = PackedByteArray("AAASAAEAAAAAAAAAAAASAAIAAAAAAAIAAAASAAMAAAAAAAIAAAASAAQAAAAAAAIAAAASAAUAAAAAAAIAAAASAAYAAAAAAAIAAAASAAcAAAAAAAQAAAATAAEAAAAEAAAAAAATAAIAAAAEAAIAAAATAAMAAAAEAAIAAAATAAQAAAAEAAIAAAATAAUAAAAEAAIAAAATAAYAAAAEAAIAAAATAAcAAAAEAAQAAAA=")
+tile_set = SubResource("TileSet_nflnv")
 
 [node name="Build_House1_btn" type="Button" parent="UI/ui/Panel/player/Unit Construction" unique_id=1833011074]
 process_mode = 3
@@ -1401,9 +1432,3 @@ metadata/_edit_lock_ = true
 [node name="Building Manager" type="Node2D" parent="UI/ui/Panel" unique_id=115640910]
 
 [node name="Ghost" type="Node2D" parent="." unique_id=1778209828]
-
-[node name="monk" parent="." unique_id=563966811 instance=ExtResource("25_r2ueb")]
-position = Vector2(824, 400)
-
-[node name="knight" parent="." unique_id=1612883873 instance=ExtResource("26_o8jhj")]
-position = Vector2(368, 580)
