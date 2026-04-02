@@ -1651,6 +1651,7 @@ position_smoothing_enabled = true
 position_smoothing_speed = 3.0
 
 [node name="Buildings" type="Node2D" parent="." unique_id=1113011644]
+z_index = 6
 
 [node name="castle" type="Node2D" parent="Buildings" unique_id=1478643114]
 

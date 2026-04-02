@@ -1,5 +1,4 @@
 extends StaticBody2D
-
 #-----------------------------
 #States
 #-----------------------------
@@ -9,10 +8,8 @@ enum TreeState{
 	CHOPPED,
 	GROWING
 }
-
 var state:TreeState=TreeState.IDLE
 @export var life=3
-
 #-----------------------------
 #Nodes
 #-----------------------------
@@ -20,9 +17,7 @@ var state:TreeState=TreeState.IDLE
 @onready var chopped: CollisionShape2D = $chopped
 @onready var body: CollisionShape2D = $shape
 @onready var tree_trunk: Area2D = $tree_trunk
-
 @onready var cut_audio: AudioStreamPlayer = $Sound_fx/cut_audio
-
 #-----------------------------
 #constants
 #-----------------------------
@@ -30,29 +25,26 @@ const CHOP_TIME:=1.0
 const REGROW_TIME:=10.0
 const GROW_TIME:=1.5
 const WOOD_SCENE:=preload("res://Units/material/wood/wood.tscn")
-
 #-----------------------------
-#constants
+#ready
 #-----------------------------
 func _ready() -> void:
 	scale=Vector2(1.5,1.5)
-	z_index=int(global_position.y)
+	z_index=5
 	add_to_group("trees")
 	randomize()
 	set_state(TreeState.IDLE)
-
 #-----------------------------
 #Pawn interaction
 #-----------------------------
 func _on_tree_trunk_area_entered(area: Area2D) -> void:
-	if area.is_in_group("attackeffect") and Global.pawn_tool=="axe":
-		try_chop()
-		life-=1
+	if area.is_in_group("attackeffect") and Global.pawn_tool == "axe":
+		life -= 1
 		red_flash()
 		area.queue_free()
 		if not cut_audio.playing:
 			cut_audio.play()
-
+		try_chop()
 func set_state(new_state:TreeState)->void:
 	state=new_state
 	match state:
@@ -74,19 +66,15 @@ func set_state(new_state:TreeState)->void:
 			anim.play("idle")
 			body.disabled=true
 			chopped.disabled=true
-
 func try_chop()->void:
-	if life<0:
-		if state!=TreeState.IDLE:
-			return
-		
+	if state!=TreeState.IDLE:
+		return
+	if life<=0:
 		set_state(TreeState.CHOPPING)
 		await get_tree().create_timer(CHOP_TIME).timeout
 		set_state(TreeState.CHOPPED)
-		
 		spawn_wood()
 		start_regrow_timer()
-
 #-----------------------------
 #Spawn wood
 #-----------------------------
@@ -102,11 +90,9 @@ func spawn_wood()->void:
 		
 		wood.global_position=global_position+Vector2(x_offset,y_offset)
 		wood.rotation = randf_range(-PI,PI)
-
 func start_regrow_timer()->void:
 	await get_tree().create_timer(REGROW_TIME).timeout
 	start_growing()
-
 func start_growing()->void:
 	set_state(TreeState.GROWING)
 	
@@ -122,7 +108,6 @@ func start_growing()->void:
 	
 	await tween.finished
 	set_state(TreeState.IDLE)
-
 func red_flash()->void:
 	if anim.animation=="chop":
 		anim.modulate=Color.RED

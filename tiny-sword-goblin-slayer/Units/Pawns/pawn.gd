@@ -141,11 +141,42 @@ func _input(event: InputEvent) -> void:
 		toolbox_panel.visible=!toolbox_panel.visible
 		get_viewport().set_input_as_handled()
 		
-#tool usage
+	#tool usage
 	if event.is_action_pressed("use"):
 		use_current_tool()
 		hide_toolbox_if_visible()
-		pass
+		
+	#tool handling using keys
+	if event.is_action_pressed("tool_hand"):
+		set_tool_and_activate(tool.HAND)
+		hide_toolbox_if_visible()
+		Global.pawn_tool="hand"
+		if not equip_audio.playing:
+			equip_audio.play()
+	if event.is_action_pressed("tool_hammer"):
+		set_tool_and_activate(tool.HAMMER)
+		hide_toolbox_if_visible()
+		Global.pawn_tool="hammer"
+		if not equip_audio.playing:
+			equip_audio.play()
+	if event.is_action_pressed("tool_axe"):
+		set_tool_and_activate(tool.AXE)
+		hide_toolbox_if_visible()
+		Global.pawn_tool="axe"
+		if not equip_audio.playing:
+			equip_audio.play()
+	if event.is_action_pressed("tool_pickaxe"):
+		set_tool_and_activate(tool.PICKAXE)
+		hide_toolbox_if_visible()
+		Global.pawn_tool="pickaxe"
+		if not equip_audio.playing:
+			equip_audio.play()
+	if event.is_action_pressed("tool_knife"):
+		set_tool_and_activate(tool.KNIFE)
+		hide_toolbox_if_visible()
+		Global.pawn_tool="knife"
+		if not equip_audio.playing:
+			equip_audio.play()
 
 #-------------------------
 #hide toolbox in case of any input
@@ -481,7 +512,7 @@ func _on_pickaxe_pressed() -> void:
 func _on_axe_pressed() -> void:
 	set_tool_and_activate(tool.AXE)
 	hide_toolbox_if_visible()
-	#Global.pawn_tool="axe"
+	Global.pawn_tool = "axe"
 	equip_audio.play()
 	
 func _on_knife_pressed() -> void:

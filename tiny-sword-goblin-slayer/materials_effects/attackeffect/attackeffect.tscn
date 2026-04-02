@@ -47,12 +47,13 @@ self_modulate = Color(1, 1, 1, 0)
 sprite_frames = SubResource("SpriteFrames_dok1e")
 animation = &"sp"
 autoplay = "sp"
+frame = 3
+frame_progress = 1.0
 script = ExtResource("2_3uqey")
 
 [node name="attackeffect" type="Area2D" parent="." unique_id=1058837421 groups=["attackeffect"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attackeffect" unique_id=1390222766]
-visible = false
 shape = SubResource("CircleShape2D_bo2ad")
 metadata/_edit_lock_ = true
 
