@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://b1c6l0vxewyu8"]
 
+[ext_resource type="Script" uid="uid://b3e7aoxqp4wba" path="res://Units/material/wood/wood.gd" id="1_2espw"]
 [ext_resource type="Texture2D" uid="uid://cbdc46ofya3yu" path="res://Tiny Swords (Free Pack)/Terrain/Resources/Wood/Wood Resource/Wood Resource.png" id="1_hwl43"]
 [ext_resource type="Texture2D" uid="uid://bgm813gxv31fq" path="res://Tiny Swords (Free Pack)/Terrain/Resources/Wood/Wood Resource/W_Spawn.png" id="2_2espw"]
+[ext_resource type="AudioStream" uid="uid://hk7le33dexo2" path="res://Audio/collect.mp3" id="4_1u1te"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1u1te"]
 atlas = ExtResource("1_hwl43")
@@ -77,6 +79,7 @@ radius = 7.0
 height = 54.40287
 
 [node name="wood" type="Area2D" unique_id=814851312]
+script = ExtResource("1_2espw")
 
 [node name="anim" type="AnimatedSprite2D" parent="." unique_id=49314551]
 sprite_frames = SubResource("SpriteFrames_5tjrv")
@@ -91,3 +94,8 @@ rotation = -1.8587756
 shape = SubResource("CapsuleShape2D_6jsfx")
 
 [node name="collect_audio" type="AudioStreamPlayer" parent="." unique_id=1575588959]
+stream = ExtResource("4_1u1te")
+volume_db = 5.0
+pitch_scale = 0.92
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

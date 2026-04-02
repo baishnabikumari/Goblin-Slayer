@@ -69,6 +69,10 @@
 [ext_resource type="FontFile" uid="uid://bxbuus74cc87x" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Buttons/SPLURGEB.TTF" id="66_hwx2r"]
 [ext_resource type="Texture2D" uid="uid://b1ffunhoj5oa7" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Icons/Icon_04.png" id="67_n2og4"]
 [ext_resource type="Texture2D" uid="uid://u1kxyp2gjfa3" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Icons/Icon_02.png" id="68_0tv2o"]
+[ext_resource type="PackedScene" uid="uid://mmoomsc0s3i5" path="res://Units/material/trees/tree1.tscn" id="70_sy5sx"]
+[ext_resource type="PackedScene" uid="uid://drnuipdryjtbt" path="res://Units/material/trees/tree2.tscn" id="71_2h62v"]
+[ext_resource type="PackedScene" uid="uid://dhry0s3k6t250" path="res://Units/material/trees/tree3.tscn" id="72_oncvo"]
+[ext_resource type="PackedScene" uid="uid://b1cj8h2fsl7m7" path="res://Units/material/trees/tree4.tscn" id="73_1upps"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lybtp"]
 vertices = PackedVector2Array(32, 32, -32, 32, -32, -32, 32, -32)
@@ -2160,3 +2164,15 @@ script = ExtResource("63_ntwpu")
 building_parent = NodePath("../../Ghost")
 
 [node name="Ghost" type="Node2D" parent="." unique_id=1778209828]
+
+[node name="tree1" parent="." unique_id=322300545 instance=ExtResource("70_sy5sx")]
+position = Vector2(805, 277)
+
+[node name="tree2" parent="." unique_id=794849437 instance=ExtResource("71_2h62v")]
+position = Vector2(1038, 383)
+
+[node name="tree3" parent="." unique_id=1622638323 instance=ExtResource("72_oncvo")]
+position = Vector2(1085, 710)
+
+[node name="tree4" parent="." unique_id=947001370 instance=ExtResource("73_1upps")]
+position = Vector2(840, 500)

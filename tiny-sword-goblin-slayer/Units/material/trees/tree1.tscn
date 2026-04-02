@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://mmoomsc0s3i5"]
 
+[ext_resource type="Script" uid="uid://cms4f25lf6q0h" path="res://Units/material/trees/tree.gd" id="1_6j3oc"]
 [ext_resource type="Texture2D" uid="uid://cmjje1cj6h0tn" path="res://Tiny Swords (Free Pack)/Terrain/Resources/Wood/Trees/Tree1.png" id="1_j78i1"]
 [ext_resource type="Texture2D" uid="uid://um0libc2tm3p" path="res://Tiny Swords (Free Pack)/Terrain/Resources/Wood/Trees/Stump 1.png" id="2_14ox1"]
+[ext_resource type="AudioStream" uid="uid://j2tfjpsm61t0" path="res://Audio/tree_impact.mp3" id="3_14ox1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cawq2"]
 atlas = ExtResource("1_j78i1")
@@ -142,7 +144,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qxd5r"]
 radius = 16.0
-height = 64.0
+height = 54.66667
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kof4i"]
 radius = 16.0
@@ -150,20 +152,23 @@ radius = 16.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_cawq2"]
 radius = 15.0
 
-[node name="tree" type="StaticBody2D" unique_id=322300545]
+[node name="tree1" type="StaticBody2D" unique_id=322300545 groups=["block_building", "trees"]]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_6j3oc")
 
 [node name="anim" type="AnimatedSprite2D" parent="." unique_id=794812074]
 sprite_frames = SubResource("SpriteFrames_1l17b")
 animation = &"idle"
 autoplay = "idle"
-
-[node name="shape" type="CollisionShape2D" parent="." unique_id=1882050313]
-position = Vector2(0, 72)
-shape = SubResource("CapsuleShape2D_qxd5r")
-debug_color = Color(1.347661e-06, 0.638742, 0.3962414, 0.41960785)
 metadata/_edit_lock_ = true
 
+[node name="shape" type="CollisionShape2D" parent="." unique_id=1882050313]
+position = Vector2(1.3333334, 80.666664)
+shape = SubResource("CapsuleShape2D_qxd5r")
+debug_color = Color(1.347661e-06, 0.638742, 0.3962414, 0.41960785)
+
 [node name="chopped" type="CollisionShape2D" parent="." unique_id=1151484033]
+visible = false
 position = Vector2(0, 92)
 shape = SubResource("CircleShape2D_kof4i")
 debug_color = Color(0.5003673, 0.1791519, 0, 0.41960785)
@@ -172,11 +177,17 @@ metadata/_edit_lock_ = true
 [node name="tree_trunk" type="Area2D" parent="." unique_id=1415989344]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="tree_trunk" unique_id=622759000]
+visible = false
 position = Vector2(0, 90)
 shape = SubResource("CircleShape2D_cawq2")
 debug_color = Color(0.99607843, 0, 0, 0.41960785)
 metadata/_edit_lock_ = true
 
-[node name="Node2D" type="Node2D" parent="." unique_id=536194350]
+[node name="Sound_fx" type="Node2D" parent="." unique_id=536194350]
 
-[node name="cut_audio" type="AudioStreamPlayer" parent="Node2D" unique_id=1552395393]
+[node name="cut_audio" type="AudioStreamPlayer" parent="Sound_fx" unique_id=1552395393]
+stream = ExtResource("3_14ox1")
+volume_db = 5.0
+pitch_scale = 0.75
+
+[connection signal="area_entered" from="tree_trunk" to="." method="_on_tree_trunk_area_entered"]
