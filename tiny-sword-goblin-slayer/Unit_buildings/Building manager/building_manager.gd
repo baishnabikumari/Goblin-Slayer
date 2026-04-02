@@ -56,15 +56,9 @@ func _process(delta: float) -> void:
 
 	var mouse_pos := get_global_mouse_position()
 	var tile_pos := ground.local_to_map(ground.to_local(mouse_pos))
-	var world_pos := ground.to_global(ground.map_to_local(tile_pos)) + Vector2(ground.tile_set.tile_size) / 2.0
+	var world_pos := ground.to_global(ground.map_to_local(tile_pos))
 
-	ghost.visible = true
 	ghost.global_position = world_pos
-
-	if _mouse_over_ui():
-		can_place = false
-		return
-
 	_validate_placement()
 
 #--------------------------------
@@ -75,13 +69,8 @@ func select_building(id: String) -> void:
 		ghost.queue_free()
 		ghost = null
 
-	if not ghost_scene.has(id):
-		push_error("Invalid building id: %s" % id)
-		return
-
 	current_id = id
 	ghost = ghost_scene[id].instantiate()
-	ghost.visible = true
 	ghost_parents.add_child(ghost)
 
 	if not _has_enoungh_resourches(id):
@@ -100,7 +89,7 @@ func _validate_placement() -> void:
 	if not _has_enoungh_resourches(current_id):
 		can_place = false
 
-	var shape_node: CollisionShape2D = ghost.get_node_or_null("CollisionShape2D")
+	var shape_node = ghost.get_node_or_null("CollisionShape2D")
 	if shape_node == null or shape_node.shape == null:
 		can_place = false
 		return
@@ -111,12 +100,16 @@ func _validate_placement() -> void:
 	query.shape = shape_node.shape
 	query.transform = shape_node.global_transform
 	query.collide_with_bodies = true
-	query.collide_with_areas = true
+	query.collide_with_areas = false
+	query.exclude = [ghost.get_rid()]
 
 	var result = space_state.intersect_shape(query)
 
-	if result.size() > 0:
-		can_place = false
+	for hit in result:
+		var collider = hit["collider"]
+		if not collider is TileMapLayer and not collider is CharacterBody2D:
+			can_place = false
+			break
 
 	var sprite := ghost.get_node_or_null("anim") as CanvasItem
 	if sprite:
@@ -127,8 +120,6 @@ func _validate_placement() -> void:
 #--------------------------------
 func _input(event: InputEvent) -> void:
 	if ghost == null:
-		return
-	if _mouse_over_ui():
 		return
 	if event.is_action_pressed("confirm_building") and can_place:
 		_place_building()
@@ -151,28 +142,16 @@ func _place_building() -> void:
 		var tween = moving_building.create_tween()
 		tween.tween_property(
 			moving_building,
-			"ghost_position",
+			"global_position",
 			ghost.global_position,
 			0.25
 		).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
 		moving_building = null
 	else:
-		if not building_scenes.has(current_id):
-			return
-
-		var building = building_scenes[current_id].instantiate()
+		var building: Node2D = building_scenes[current_id].instantiate()
 		building.global_position = ghost.global_position
-
-		var parent := building_parent
-		if parent == null:
-			parent = get_tree().current_scene as Node2D
-
-		if parent == null:
-			push_error("building_parent is not assigned")
-			return
-
-		parent.add_child(building)
+		building_parent.add_child(building)
 
 		if building.has_method("play_building_animation"):
 			building.play_building_animation()
@@ -225,17 +204,10 @@ func request_move(building: StaticBody2D) -> void:
 
 	var id := _get_building_id_from_scene(building)
 	if id == "":
-		building.visible = true
-		building.set_physics_process(true)
-		moving_building = null
 		return
 
 	current_id = id
-	if not ghost_scene.has(id):
-		return
-
 	ghost = ghost_scene[id].instantiate()
-	ghost.visible = true
 	ghost.global_position = building.global_position
 	ghost_parents.add_child(ghost)
 
@@ -298,6 +270,3 @@ func _feedback_insufficient_ghosts() -> void:
 	tween.tween_property(ghost, "position:x", original_position.x, 0.05)
 	tween.tween_property(sprite, "modulate", original_modulate, 0.15)
 	await tween.finished
-
-func _mouse_over_ui() -> bool:
-	return get_viewport().gui_get_hovered_control() != null

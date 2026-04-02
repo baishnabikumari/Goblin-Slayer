@@ -27,7 +27,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85obm"]
-size = Vector2(144, 72)
+size = Vector2(98, 53)
 
 [node name="archery ghost" type="Area2D" unique_id=1074063094]
 
@@ -37,6 +37,5 @@ sprite_frames = SubResource("SpriteFrames_be4id")
 script = ExtResource("3_do1lp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=820742295]
-visible = false
-position = Vector2(0, 68)
+position = Vector2(1, 44.5)
 shape = SubResource("RectangleShape2D_85obm")
