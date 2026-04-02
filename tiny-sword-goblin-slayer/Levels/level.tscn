@@ -1776,7 +1776,7 @@ position = Vector2(0, -8)
 tile_map_data = PackedByteArray("AAASAAEAAAAAAAAAAAASAAIAAAAAAAIAAAASAAMAAAAAAAIAAAASAAQAAAAAAAIAAAASAAUAAAAAAAIAAAASAAYAAAAAAAIAAAATAAEAAAAEAAAAAAATAAIAAAAEAAIAAAATAAMAAAAEAAIAAAATAAQAAAAEAAIAAAATAAUAAAAEAAIAAAATAAYAAAAEAAIAAAASAAcAAAAAAAIAAAASAAgAAAAAAAIAAAATAAcAAAAEAAIAAAATAAgAAAAEAAIAAAASAAkAAAAAAAQAAAATAAkAAAAEAAQAAAA=")
 tile_set = SubResource("TileSet_nflnv")
 
-[node name="Build_House1_btn" type="Button" parent="UI/ui/Panel/player/Unit Construction" unique_id=1833011074]
+[node name="Build_House1_btn" type="Button" parent="UI/ui/Panel/player/Unit Construction" unique_id=1833011074 node_paths=PackedStringArray("building_manager")]
 process_mode = 3
 layout_mode = 0
 offset_left = 1180.0
@@ -1791,7 +1791,8 @@ theme_override_styles/hover_pressed = ExtResource("20_twn60")
 theme_override_styles/disabled = ExtResource("20_twn60")
 theme_override_styles/focus = ExtResource("20_twn60")
 script = ExtResource("26_yf7rk")
-building_id = "hosue1"
+building_id = "house1"
+building_manager = NodePath("../../../../../Building Manager")
 
 [node name="anim" type="AnimatedSprite2D" parent="UI/ui/Panel/player/Unit Construction/Build_House1_btn" unique_id=748741979]
 modulate = Color(1, 1, 1, 0.78431374)
@@ -1808,7 +1809,7 @@ metadata/_edit_lock_ = true
 position = Vector2(40, 40)
 metadata/_edit_lock_ = true
 
-[node name="Build_House2_btn" type="Button" parent="UI/ui/Panel/player/Unit Construction" unique_id=674292578]
+[node name="Build_House2_btn" type="Button" parent="UI/ui/Panel/player/Unit Construction" unique_id=674292578 node_paths=PackedStringArray("building_manager")]
 process_mode = 3
 layout_mode = 0
 offset_left = 1180.0
@@ -1824,6 +1825,7 @@ theme_override_styles/disabled = ExtResource("20_twn60")
 theme_override_styles/focus = ExtResource("20_twn60")
 script = ExtResource("26_yf7rk")
 building_id = "house2"
+building_manager = NodePath("../../../../../Building Manager")
 
 [node name="anim" type="AnimatedSprite2D" parent="UI/ui/Panel/player/Unit Construction/Build_House2_btn" unique_id=915453354]
 modulate = Color(1, 1, 1, 0.78431374)
@@ -1840,7 +1842,7 @@ metadata/_edit_lock_ = true
 position = Vector2(40, 40)
 metadata/_edit_lock_ = true
 
-[node name="Build_House3_btn" type="Button" parent="UI/ui/Panel/player/Unit Construction" unique_id=1814311461]
+[node name="Build_House3_btn" type="Button" parent="UI/ui/Panel/player/Unit Construction" unique_id=1814311461 node_paths=PackedStringArray("building_manager")]
 process_mode = 3
 layout_mode = 0
 offset_left = 1180.0
@@ -1856,6 +1858,7 @@ theme_override_styles/disabled = ExtResource("20_twn60")
 theme_override_styles/focus = ExtResource("20_twn60")
 script = ExtResource("26_yf7rk")
 building_id = "house3"
+building_manager = NodePath("../../../../../Building Manager")
 
 [node name="anim" type="AnimatedSprite2D" parent="UI/ui/Panel/player/Unit Construction/Build_House3_btn" unique_id=1789946666]
 modulate = Color(1, 1, 1, 0.78431374)
@@ -1872,7 +1875,7 @@ metadata/_edit_lock_ = true
 position = Vector2(40, 40)
 metadata/_edit_lock_ = true
 
-[node name="Build_Tower_btn" type="Button" parent="UI/ui/Panel/player/Unit Construction" unique_id=427180775]
+[node name="Build_Tower_btn" type="Button" parent="UI/ui/Panel/player/Unit Construction" unique_id=427180775 node_paths=PackedStringArray("building_manager")]
 process_mode = 3
 layout_mode = 0
 offset_left = 1180.0
@@ -1888,6 +1891,7 @@ theme_override_styles/disabled = ExtResource("20_twn60")
 theme_override_styles/focus = ExtResource("20_twn60")
 script = ExtResource("26_yf7rk")
 building_id = "tower"
+building_manager = NodePath("../../../../../Building Manager")
 
 [node name="anim" type="AnimatedSprite2D" parent="UI/ui/Panel/player/Unit Construction/Build_Tower_btn" unique_id=1376492575]
 modulate = Color(1, 1, 1, 0.78431374)
@@ -1904,7 +1908,7 @@ metadata/_edit_lock_ = true
 position = Vector2(40, 40)
 metadata/_edit_lock_ = true
 
-[node name="Build_barrack_btn" type="Button" parent="UI/ui/Panel/player/Unit Construction" unique_id=52014000]
+[node name="Build_barrack_btn" type="Button" parent="UI/ui/Panel/player/Unit Construction" unique_id=52014000 node_paths=PackedStringArray("building_manager")]
 process_mode = 3
 layout_mode = 0
 offset_left = 1180.0
@@ -1920,6 +1924,7 @@ theme_override_styles/disabled = ExtResource("20_twn60")
 theme_override_styles/focus = ExtResource("20_twn60")
 script = ExtResource("26_yf7rk")
 building_id = "barracks"
+building_manager = NodePath("../../../../../Building Manager")
 
 [node name="anim" type="AnimatedSprite2D" parent="UI/ui/Panel/player/Unit Construction/Build_barrack_btn" unique_id=874496950]
 modulate = Color(1, 1, 1, 0.78431374)
@@ -1936,7 +1941,7 @@ metadata/_edit_lock_ = true
 position = Vector2(40, 40)
 metadata/_edit_lock_ = true
 
-[node name="Build_monastery_btn" type="Button" parent="UI/ui/Panel/player/Unit Construction" unique_id=1895888089]
+[node name="Build_monastery_btn" type="Button" parent="UI/ui/Panel/player/Unit Construction" unique_id=1895888089 node_paths=PackedStringArray("building_manager")]
 process_mode = 3
 layout_mode = 0
 offset_left = 1180.0
@@ -1952,6 +1957,7 @@ theme_override_styles/disabled = ExtResource("20_twn60")
 theme_override_styles/focus = ExtResource("20_twn60")
 script = ExtResource("26_yf7rk")
 building_id = "monastery"
+building_manager = NodePath("../../../../../Building Manager")
 
 [node name="anim" type="AnimatedSprite2D" parent="UI/ui/Panel/player/Unit Construction/Build_monastery_btn" unique_id=918469413]
 modulate = Color(1, 1, 1, 0.78431374)
@@ -1968,7 +1974,7 @@ metadata/_edit_lock_ = true
 position = Vector2(40, 40)
 metadata/_edit_lock_ = true
 
-[node name="Build_archery_btn" type="Button" parent="UI/ui/Panel/player/Unit Construction" unique_id=1669929936]
+[node name="Build_archery_btn" type="Button" parent="UI/ui/Panel/player/Unit Construction" unique_id=1669929936 node_paths=PackedStringArray("building_manager")]
 process_mode = 3
 layout_mode = 0
 offset_left = 1180.0
@@ -1983,7 +1989,8 @@ theme_override_styles/hover_pressed = ExtResource("20_twn60")
 theme_override_styles/disabled = ExtResource("20_twn60")
 theme_override_styles/focus = ExtResource("20_twn60")
 script = ExtResource("26_yf7rk")
-building_id = "archery"
+building_id = "archery_tower"
+building_manager = NodePath("../../../../../Building Manager")
 
 [node name="anim" type="AnimatedSprite2D" parent="UI/ui/Panel/player/Unit Construction/Build_archery_btn" unique_id=826178401]
 modulate = Color(1, 1, 1, 0.78431374)
@@ -2091,7 +2098,8 @@ offset_right = 40.0
 offset_bottom = 23.0
 metadata/_edit_lock_ = true
 
-[node name="Building Manager" type="Node2D" parent="UI/ui/Panel" unique_id=115640910]
+[node name="Building Manager" type="Node2D" parent="UI" unique_id=115640910 node_paths=PackedStringArray("building_parent")]
 script = ExtResource("63_ntwpu")
+building_parent = NodePath("../../Ghost")
 
 [node name="Ghost" type="Node2D" parent="." unique_id=1778209828]

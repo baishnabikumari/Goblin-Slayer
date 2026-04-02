@@ -40,7 +40,9 @@ func _on_any_button_pressed(index:int) -> void:
 	_scale_bump(icon)
 
 	if Global.gold >= building_cost["gold"] and Global.wood >= building_cost["wood"]:
-		var building = buttons[index].name
+		var building = buttons[index].name.to_lower().replace("build_", "").replace("_btn", "")
+		if building == "archery":
+			building = "archery_tower"
 		Global.pawn_tool = building
 		emit_signal("build_requested", building)
 		Global.gold -= building_cost["gold"]

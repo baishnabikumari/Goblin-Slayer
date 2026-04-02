@@ -15,9 +15,9 @@ var choosed_colour: String="black"
 const SAVE_COLOR: String="user://levels.save"
 
 #variables
-var gold:int=5
-var wood:int=5
-var meat:int=10
+var gold:int=50
+var wood:int=50
+var meat:int=50
 
 var max_gold:int=1000
 var max_wood:int=1000

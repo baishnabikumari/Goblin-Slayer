@@ -24,6 +24,7 @@ size = Vector2(70, 58.5)
 [node name="archery ghost" type="Area2D" unique_id=1074063094]
 
 [node name="anim" type="AnimatedSprite2D" parent="." unique_id=1932016645]
+scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_be4id")
 script = ExtResource("2_82hsp")
 
