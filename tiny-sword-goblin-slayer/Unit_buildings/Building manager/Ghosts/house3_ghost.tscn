@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://ddjhuu24g33vq"]
+
+[ext_resource type="Texture2D" uid="uid://dcy1daq8a6k3h" path="res://Tiny Swords (Free Pack)/Knights/Buildings/House/House_Construction.png" id="1_rmbar"]
+[ext_resource type="Script" uid="uid://hocswan3nwjy" path="res://Unit_buildings/Building manager/Ghosts/anim.gd" id="2_fybh0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82hsp"]
+atlas = ExtResource("1_rmbar")
+region = Rect2(0, 0, 128, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_be4id"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82hsp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_85obm"]
+size = Vector2(71, 61)
+
+[node name="archery ghost" type="Area2D" unique_id=1074063094]
+
+[node name="anim" type="AnimatedSprite2D" parent="." unique_id=1932016645]
+sprite_frames = SubResource("SpriteFrames_be4id")
+script = ExtResource("2_fybh0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=820742295]
+visible = false
+position = Vector2(0.5, 32.5)
+shape = SubResource("RectangleShape2D_85obm")
