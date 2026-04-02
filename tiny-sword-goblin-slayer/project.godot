@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.6", "GL Compatibility")
 
 Global="*uid://pfk1u4j4aw5q"
 GlobalPlayer="*uid://bxlp3cju5wfq1"
+TargetManager="*uid://c28cdtv61m5h0"
 
 [display]
 

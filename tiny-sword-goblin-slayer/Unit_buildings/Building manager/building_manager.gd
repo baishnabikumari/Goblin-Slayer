@@ -32,14 +32,14 @@ var current_id := ""
 var can_place := false
 
 #cost mapping
-var cost_map := {
-	"house1": {"wood": 1, "gold": 1},
-	"house2": {"wood": 3, "gold": 3},
-	"house3": {"wood": 2, "gold": 2},
-	"archery_tower": {"wood": 10, "gold": 6},
-	"barracks": {"wood": 10, "gold": 5},
-	"tower": {"wood": 6, "gold": 3},
-	"monastery": {"wood": 10, "gold": 5}
+var cost_map := { #--neeed to change it later
+	"house1": {"wood": 0, "gold": 0},
+	"house2": {"wood": 0, "gold": 0},
+	"house3": {"wood": 0, "gold": 0},
+	"archery_tower": {"wood": 0, "gold": 0},
+	"barracks": {"wood": 0, "gold": 0},
+	"tower": {"wood": 0, "gold": 0},
+	"monastery": {"wood": 0, "gold": 0}
 }
 
 #--------------------------------
@@ -107,9 +107,12 @@ func _validate_placement() -> void:
 
 	for hit in result:
 		var collider = hit["collider"]
-		if not collider is TileMapLayer and not collider is CharacterBody2D:
-			can_place = false
-			break
+		if collider is CharacterBody2D:
+			continue
+		if collider is TileMapLayer and collider.is_in_group(ground_tilemap_group):
+			continue
+		can_place = false
+		break
 
 	var sprite := ghost.get_node_or_null("anim") as CanvasItem
 	if sprite:
@@ -265,8 +268,8 @@ func _feedback_insufficient_ghosts() -> void:
 	sprite.modulate = Color(1, 0, 0, 0.8)
 
 	var tween = ghost.create_tween()
-	tween.tween_property(ghost, "position:x", original_position.x + 10, 0.05)
-	tween.tween_property(ghost, "position:x", original_position.x - 10, 0.1)
+	tween.tween_property(ghost, "position:x", original_position.x + 5, 0.05)
+	tween.tween_property(ghost, "position:x", original_position.x - 5, 0.1)
 	tween.tween_property(ghost, "position:x", original_position.x, 0.05)
 	tween.tween_property(sprite, "modulate", original_modulate, 0.15)
 	await tween.finished

@@ -65,6 +65,10 @@
 [ext_resource type="Texture2D" uid="uid://b6r4ldnww5my4" path="res://Tiny Swords (Free Pack)/Buildings/Yellow Buildings/Archery.png" id="60_011lf"]
 [ext_resource type="Script" uid="uid://cpcyh1hm4ckx6" path="res://Unit_buildings/Building manager/building_manager.gd" id="63_ntwpu"]
 [ext_resource type="Texture2D" uid="uid://xvdbp4ipwe56" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Cursors/Cursor_04.png" id="64_g5qva"]
+[ext_resource type="Texture2D" uid="uid://crktwrcrdk6xp" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Icons/Icon_03.png" id="65_hwx2r"]
+[ext_resource type="FontFile" uid="uid://bxbuus74cc87x" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Buttons/SPLURGEB.TTF" id="66_hwx2r"]
+[ext_resource type="Texture2D" uid="uid://b1ffunhoj5oa7" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Icons/Icon_04.png" id="67_n2og4"]
+[ext_resource type="Texture2D" uid="uid://u1kxyp2gjfa3" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Icons/Icon_02.png" id="68_0tv2o"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lybtp"]
 vertices = PackedVector2Array(32, 32, -32, 32, -32, -32, 32, -32)
@@ -1583,7 +1587,7 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_r2ueb")
 
-[node name="level_stage" type="Node2D" unique_id=1383739427]
+[node name="level" type="Node2D" unique_id=1383739427]
 
 [node name="sea" type="TextureRect" parent="." unique_id=1921126012]
 z_index = -10
@@ -1656,6 +1660,7 @@ position = Vector2(672, 688)
 [node name="Panel" type="Panel" parent="UI/ui" unique_id=646436492]
 offset_right = 1368.0
 offset_bottom = 1072.0
+mouse_filter = 1
 theme_override_styles/panel = ExtResource("20_twn60")
 metadata/_edit_use_anchors_ = true
 
@@ -1684,7 +1689,6 @@ theme_override_styles/hover = ExtResource("20_twn60")
 theme_override_styles/hover_pressed = ExtResource("20_twn60")
 theme_override_styles/disabled = ExtResource("20_twn60")
 theme_override_styles/focus = ExtResource("20_twn60")
-metadata/_edit_lock_ = true
 
 [node name="Icon" type="Sprite2D" parent="UI/ui/Panel/sets buttons/Info btn" unique_id=841422656]
 position = Vector2(50, 30)
@@ -1758,12 +1762,18 @@ texture = ExtResource("24_3kmy4")
 [node name="Unit Construction" type="Panel" parent="UI/ui/Panel/player" unique_id=1333358606]
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("20_twn60")
 script = ExtResource("25_011lf")
 
 [node name="Next" type="Button" parent="UI/ui/Panel/player/Unit Construction" unique_id=1478049347]
+visible = false
 layout_mode = 0
-offset_right = 60.0
-offset_bottom = 60.0
+offset_left = 200.0
+offset_top = 752.0
+offset_right = 260.0
+offset_bottom = 784.0
+metadata/_edit_lock_ = true
 
 [node name="InfoLabel" type="Label" parent="UI/ui/Panel/player/Unit Construction" unique_id=578116239]
 layout_mode = 0
@@ -2015,34 +2025,79 @@ texture = ExtResource("64_g5qva")
 [node name="Unit Resources" type="Panel" parent="UI/ui/Panel/player" unique_id=2125908692]
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("20_twn60")
+metadata/_edit_lock_ = true
 
 [node name="unit resource" type="TileMapLayer" parent="UI/ui/Panel/player/Unit Resources" unique_id=1699867066]
 modulate = Color(1, 1, 1, 0.5882353)
 self_modulate = Color(1, 1, 1, 0.5882353)
+position = Vector2(-32, -120)
+scale = Vector2(0.6, 0.6)
+tile_map_data = PackedByteArray("AAABABIAAAAAAAAAAAABABMAAAAAAAQAAAABABQAAAAAAAAAAAABABUAAAAAAAQAAAABABYAAAAAAAAAAAABABcAAAAAAAQAAAACABIAAAACAAAAAAACABMAAAACAAQAAAACABQAAAACAAAAAAACABUAAAACAAQAAAACABYAAAACAAAAAAACABcAAAACAAQAAAAFABIAAAAEAAAAAAAFABMAAAAEAAQAAAAFABQAAAAEAAAAAAAFABUAAAAEAAQAAAAFABYAAAAEAAAAAAAFABcAAAAEAAQAAAADABIAAAACAAAAAAAEABIAAAACAAAAAAADABMAAAACAAQAAAAEABMAAAACAAQAAAADABQAAAACAAAAAAAEABQAAAACAAAAAAADABUAAAACAAQAAAAEABUAAAACAAQAAAADABcAAAACAAQAAAAEABcAAAACAAQAAAADABYAAAACAAAAAAAEABYAAAACAAAAAAA=")
 tile_set = SubResource("TileSet_o8jhj")
 
 [node name="GIcon" type="Sprite2D" parent="UI/ui/Panel/player/Unit Resources" unique_id=142671662]
+position = Vector2(40, 609)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("65_hwx2r")
 
 [node name="Gold_Label" type="Label" parent="UI/ui/Panel/player/Unit Resources/GIcon" unique_id=35874828]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 40.0
+offset_top = -55.0
+offset_right = 351.11115
+offset_bottom = 129.0
+scale = Vector2(0.6, 0.6)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("66_hwx2r")
+theme_override_font_sizes/font_size = 120
+text = ": 0"
+metadata/_edit_lock_ = true
 
 [node name="MIcon2" type="Sprite2D" parent="UI/ui/Panel/player/Unit Resources" unique_id=41974754]
+position = Vector2(41, 763)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("67_n2og4")
 
 [node name="Meat_Label" type="Label" parent="UI/ui/Panel/player/Unit Resources/MIcon2" unique_id=1504649672]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 40.0
+offset_top = -55.0
+offset_right = 370.55554
+offset_bottom = 129.0
+scale = Vector2(0.6, 0.6)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("66_hwx2r")
+theme_override_font_sizes/font_size = 120
+text = ": 0"
+metadata/_edit_lock_ = true
 
 [node name="WIcon3" type="Sprite2D" parent="UI/ui/Panel/player/Unit Resources" unique_id=1037561681]
+position = Vector2(40, 686)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("68_0tv2o")
 
 [node name="Wood_Label" type="Label" parent="UI/ui/Panel/player/Unit Resources/WIcon3" unique_id=2020868155]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 40.0
+offset_top = -55.0
+offset_right = 351.11115
+offset_bottom = 129.0
+scale = Vector2(0.6, 0.6)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("66_hwx2r")
+theme_override_font_sizes/font_size = 120
+text = ": 0"
+metadata/_edit_lock_ = true
 
 [node name="Timer Label" type="Label" parent="UI/ui/Panel" unique_id=1833174920]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 136.0
+offset_top = 8.0
+offset_right = 384.0
+offset_bottom = 31.0
+metadata/_edit_lock_ = true
 
 [node name="Main Panel" type="TileMapLayer" parent="UI/ui/Panel" unique_id=753899831]
 
@@ -2051,6 +2106,7 @@ visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 1
 metadata/_edit_lock_ = true
 
 [node name="Label Game Over" type="Label" parent="UI/ui/Panel/Game Over" unique_id=228991220]
@@ -2082,6 +2138,7 @@ visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 1
 metadata/_edit_lock_ = true
 
 [node name="pause" type="Label" parent="UI/ui/Panel/Pause" unique_id=1503547522]

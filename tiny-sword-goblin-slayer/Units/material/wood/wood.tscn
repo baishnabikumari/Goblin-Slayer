@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://b1c6l0vxewyu8"]
+
+[ext_resource type="Texture2D" uid="uid://cbdc46ofya3yu" path="res://Tiny Swords (Free Pack)/Terrain/Resources/Wood/Wood Resource/Wood Resource.png" id="1_hwl43"]
+[ext_resource type="Texture2D" uid="uid://bgm813gxv31fq" path="res://Tiny Swords (Free Pack)/Terrain/Resources/Wood/Wood Resource/W_Spawn.png" id="2_2espw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1u1te"]
+atlas = ExtResource("1_hwl43")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krxpf"]
+atlas = ExtResource("2_2espw")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02qie"]
+atlas = ExtResource("2_2espw")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2guj"]
+atlas = ExtResource("2_2espw")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwp8b"]
+atlas = ExtResource("2_2espw")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rb22x"]
+atlas = ExtResource("2_2espw")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5g6bd"]
+atlas = ExtResource("2_2espw")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wyal5"]
+atlas = ExtResource("2_2espw")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5tjrv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1u1te")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krxpf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02qie")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2guj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwp8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rb22x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5g6bd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wyal5")
+}],
+"loop": false,
+"name": &"sp",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6jsfx"]
+radius = 7.0
+height = 54.40287
+
+[node name="wood" type="Area2D" unique_id=814851312]
+
+[node name="anim" type="AnimatedSprite2D" parent="." unique_id=49314551]
+sprite_frames = SubResource("SpriteFrames_5tjrv")
+animation = &"sp"
+autoplay = "sp"
+frame = 6
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=288265909]
+position = Vector2(0, 22)
+rotation = -1.8587756
+shape = SubResource("CapsuleShape2D_6jsfx")
+
+[node name="collect_audio" type="AudioStreamPlayer" parent="." unique_id=1575588959]

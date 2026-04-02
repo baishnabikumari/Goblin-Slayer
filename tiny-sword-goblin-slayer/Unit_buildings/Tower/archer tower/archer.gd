@@ -58,8 +58,8 @@ func _pick_best_target()->void:
 		if not is_instance_valid(goblin):
 			continue
 			
-		#if TargetManager.is_taken(goblin):
-		#	continue
+		if TargetManager.is_taken(goblin):
+			continue
 		
 		var dist=global_position.distance_to(goblin.global_position)
 		if dist<best_dist:
@@ -77,12 +77,12 @@ func _set_target(new_target:Node2D)->void:
 		_release_target()
 	
 	target=new_target
-	#TargetManager.assign(target,self)
+	TargetManager.assign(target,self)
 	anim.play("idle")
 
 func _release_target()->void:
 	if target:
-		#TargetManager.assign(target)
+		TargetManager.release(target)
 		pass
 	target=null
 	anim.play("idle")
