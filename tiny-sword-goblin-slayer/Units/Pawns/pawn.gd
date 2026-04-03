@@ -83,7 +83,8 @@ func _ready() -> void:
 	progress_bar.visible=false
 	
 	toolbox_panel.z_index=7
-	z_index=4
+	#z_index=4
+	z_index = int(global_position.y)
 	scale=Vector2(0.7,0.7)
 	life=50
 	progress_bar.max_value=max_life
@@ -189,6 +190,7 @@ func hide_toolbox_if_visible():
 #physics process
 #-------------------------
 func _physics_process(delta: float) -> void:
+	z_index = int(global_position.y)
 	if active==true:
 		GlobalPlayer.active_player_position=global_position
 	if active and not busy:

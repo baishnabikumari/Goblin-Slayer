@@ -143,8 +143,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qxd5r"]
-radius = 16.0
-height = 54.66667
+radius = 15.999999
+height = 31.999998
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kof4i"]
 radius = 16.0
@@ -157,31 +157,29 @@ scale = Vector2(1.5, 1.5)
 script = ExtResource("1_6j3oc")
 
 [node name="anim" type="AnimatedSprite2D" parent="." unique_id=794812074]
+position = Vector2(0, -85.33333)
 sprite_frames = SubResource("SpriteFrames_1l17b")
 animation = &"idle"
 autoplay = "idle"
-metadata/_edit_lock_ = true
 
 [node name="shape" type="CollisionShape2D" parent="." unique_id=1882050313]
-position = Vector2(1.3333334, 80.666664)
+visible = false
 shape = SubResource("CapsuleShape2D_qxd5r")
 debug_color = Color(1.347661e-06, 0.638742, 0.3962414, 0.41960785)
 
 [node name="chopped" type="CollisionShape2D" parent="." unique_id=1151484033]
 visible = false
-position = Vector2(0, 92)
+position = Vector2(0, 5.333336)
 shape = SubResource("CircleShape2D_kof4i")
 debug_color = Color(0.5003673, 0.1791519, 0, 0.41960785)
-metadata/_edit_lock_ = true
 
 [node name="tree_trunk" type="Area2D" parent="." unique_id=1415989344]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="tree_trunk" unique_id=622759000]
 visible = false
-position = Vector2(0, 90)
+position = Vector2(0, 5.333336)
 shape = SubResource("CircleShape2D_cawq2")
 debug_color = Color(0.99607843, 0, 0, 0.41960785)
-metadata/_edit_lock_ = true
 
 [node name="Sound_fx" type="Node2D" parent="." unique_id=536194350]
 

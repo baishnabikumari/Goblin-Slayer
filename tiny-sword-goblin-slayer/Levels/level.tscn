@@ -2167,13 +2167,17 @@ building_parent = NodePath("../../Ghost")
 [node name="Ghost" type="Node2D" parent="." unique_id=1778209828]
 
 [node name="tree1" parent="." unique_id=322300545 instance=ExtResource("70_sy5sx")]
-position = Vector2(805, 277)
+y_sort_enabled = true
+position = Vector2(352, 806)
 
 [node name="tree2" parent="." unique_id=794849437 instance=ExtResource("71_2h62v")]
+y_sort_enabled = true
 position = Vector2(1038, 383)
 
 [node name="tree3" parent="." unique_id=1622638323 instance=ExtResource("72_oncvo")]
+y_sort_enabled = true
 position = Vector2(1085, 710)
 
 [node name="tree4" parent="." unique_id=947001370 instance=ExtResource("73_1upps")]
+y_sort_enabled = true
 position = Vector2(840, 500)

@@ -30,11 +30,15 @@ const WOOD_SCENE:=preload("res://Units/material/wood/wood.tscn")
 #-----------------------------
 func _ready() -> void:
 	scale=Vector2(1.5,1.5)
-	z_index=5
+	#z_index=5
+	z_index = int(global_position.y)
 	add_to_group("trees")
 	randomize()
 	set_state(TreeState.IDLE)
 	#tree_trunk.area_entered.connect(_on_tree_trunk_area_entered)
+
+func _process(delta: float) -> void:
+	z_index = int(global_position.y)
 #-----------------------------
 #Pawn interaction
 #-----------------------------
