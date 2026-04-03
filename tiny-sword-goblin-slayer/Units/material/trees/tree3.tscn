@@ -159,7 +159,7 @@ script = ExtResource("1_iisgd")
 [node name="anim" type="AnimatedSprite2D" parent="." unique_id=794812074]
 position = Vector2(0, -37.333332)
 sprite_frames = SubResource("SpriteFrames_1l17b")
-animation = &"idle"
+animation = &"chopped"
 autoplay = "idle"
 
 [node name="shape" type="CollisionShape2D" parent="." unique_id=1882050313 groups=["block_building", "trees"]]

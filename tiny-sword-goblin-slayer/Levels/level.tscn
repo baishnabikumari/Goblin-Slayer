@@ -73,6 +73,7 @@
 [ext_resource type="PackedScene" uid="uid://drnuipdryjtbt" path="res://Units/material/trees/tree2.tscn" id="71_2h62v"]
 [ext_resource type="PackedScene" uid="uid://dhry0s3k6t250" path="res://Units/material/trees/tree3.tscn" id="72_oncvo"]
 [ext_resource type="PackedScene" uid="uid://b1cj8h2fsl7m7" path="res://Units/material/trees/tree4.tscn" id="73_1upps"]
+[ext_resource type="PackedScene" uid="uid://dqpxp3tq2ie8a" path="res://Units/material/sheep/sheep.tscn" id="74_2h62v"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lybtp"]
 vertices = PackedVector2Array(32, 32, -32, 32, -32, -32, 32, -32)
@@ -2166,18 +2167,40 @@ building_parent = NodePath("../../Ghost")
 
 [node name="Ghost" type="Node2D" parent="." unique_id=1778209828]
 
-[node name="tree1" parent="." unique_id=322300545 instance=ExtResource("70_sy5sx")]
+[node name="decor" type="Node2D" parent="." unique_id=184428933]
+
+[node name="trees" type="Node2D" parent="decor" unique_id=1502933787]
+z_index = 7
+
+[node name="tree1" parent="decor/trees" unique_id=322300545 instance=ExtResource("70_sy5sx")]
 y_sort_enabled = true
 position = Vector2(352, 806)
 
-[node name="tree2" parent="." unique_id=794849437 instance=ExtResource("71_2h62v")]
+[node name="tree2" parent="decor/trees" unique_id=794849437 instance=ExtResource("71_2h62v")]
 y_sort_enabled = true
 position = Vector2(1038, 383)
 
-[node name="tree3" parent="." unique_id=1622638323 instance=ExtResource("72_oncvo")]
+[node name="tree3" parent="decor/trees" unique_id=1622638323 instance=ExtResource("72_oncvo")]
 y_sort_enabled = true
 position = Vector2(1085, 710)
 
-[node name="tree4" parent="." unique_id=947001370 instance=ExtResource("73_1upps")]
+[node name="tree4" parent="decor/trees" unique_id=947001370 instance=ExtResource("73_1upps")]
 y_sort_enabled = true
 position = Vector2(840, 500)
+
+[node name="sheep" type="Node2D" parent="decor" unique_id=824538533]
+
+[node name="sheep" parent="decor/sheep" unique_id=2066737040 instance=ExtResource("74_2h62v")]
+position = Vector2(588, 890)
+
+[node name="sheep2" parent="decor/sheep" unique_id=461848623 instance=ExtResource("74_2h62v")]
+position = Vector2(847, 898)
+
+[node name="sheep3" parent="decor/sheep" unique_id=1162735294 instance=ExtResource("74_2h62v")]
+position = Vector2(952, 702)
+
+[node name="sheep4" parent="decor/sheep" unique_id=1207595240 instance=ExtResource("74_2h62v")]
+position = Vector2(418, 571)
+
+[node name="sheep5" parent="decor/sheep" unique_id=861781569 instance=ExtResource("74_2h62v")]
+position = Vector2(201, 882)

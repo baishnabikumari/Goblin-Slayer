@@ -82,6 +82,7 @@ height = 54.40287
 script = ExtResource("1_2espw")
 
 [node name="anim" type="AnimatedSprite2D" parent="." unique_id=49314551]
+position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_5tjrv")
 animation = &"sp"
 autoplay = "sp"
@@ -89,7 +90,7 @@ frame = 6
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=288265909]
-position = Vector2(0, 22)
+position = Vector2(0, -10)
 rotation = -1.8587756
 shape = SubResource("CapsuleShape2D_6jsfx")
 

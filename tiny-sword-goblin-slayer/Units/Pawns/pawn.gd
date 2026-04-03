@@ -275,7 +275,7 @@ func use_current_tool():
 		tool.PICKAXE:
 			repeat_tool_action(tool.PICKAXE,"stone","pickaxe",4)
 		tool.AXE:
-			repeat_tool_action(tool.AXE,"wood","axe",4)
+			repeat_tool_action(tool.AXE,"wood","axe",1)
 		tool.KNIFE:
 			repeat_tool_action(tool.KNIFE,"meat","knife",2)
 		tool.HAND:
@@ -330,7 +330,7 @@ func collect_nearby_resources(resource_type:String)->void:
 
 	var overlapping_area=detector_zone.get_overlapping_areas()
 	for area in overlapping_area:
-		if area.has_method("collect") and area.has_property("resource_type"):
+		if area.has_method("collect") and area.get("resource_type") != null:
 			pickup_resource(area)
 			return
 

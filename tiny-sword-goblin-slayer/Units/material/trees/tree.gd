@@ -44,6 +44,13 @@ func _process(delta: float) -> void:
 #-----------------------------
 func _on_tree_trunk_area_entered(area: Area2D) -> void:
 	if area.is_in_group("attackeffect") and Global.pawn_tool == "axe":
+		try_chop()
+		life-=1
+		red_flash()
+		area.queue_free()
+		cut_audio.play()
+		await get_tree().create_timer(1.95).timeout
+		cut_audio.stop()
 		hit()
 
 func hit() -> void:
@@ -89,14 +96,20 @@ func try_chop()->void:
 #Spawn wood
 #-----------------------------
 func spawn_wood()->void:
-	var wood_count:=randi_range(4,8)
+	var wood_count:=randi_range(5,20)
+	
 	for i in range(wood_count):
 		var wood=WOOD_SCENE.instantiate()
+		wood.scale=Vector2(0.6,0.6)
 		get_parent().add_child(wood)
+		
 		var x_offset:=randf_range(-35,35)
-		var y_offset:=randf_range(35,-35)
+		var y_offset:=randf_range(-75,105)
+		
 		wood.global_position=global_position+Vector2(x_offset,y_offset)
 		wood.rotation = randf_range(-PI,PI)
+		wood.z_index=5
+
 func start_regrow_timer()->void:
 	await get_tree().create_timer(REGROW_TIME).timeout
 	start_growing()

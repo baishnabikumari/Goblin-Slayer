@@ -161,7 +161,6 @@ position = Vector2(0, -42.666668)
 sprite_frames = SubResource("SpriteFrames_1l17b")
 animation = &"idle"
 autoplay = "idle"
-metadata/_edit_lock_ = true
 
 [node name="shape" type="CollisionShape2D" parent="." unique_id=1882050313]
 visible = false
