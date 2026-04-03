@@ -127,7 +127,8 @@ func _on_resource_entered(area:Area2D)->void:
 	#check
 	if (resource_type=="wood" and current_tool==tool.AXE) or \
 		(resource_type=="stone" and current_tool==tool.PICKAXE) or \
-		(resource_type=="meat" and current_tool==tool.AXE):
+		(resource_type=="meat" and current_tool==tool.KNIFE) or \
+		(resource_type=="gold" and current_tool==tool.PICKAXE):
 			pickup_resource(area)
 
 #-------------------------
@@ -273,7 +274,7 @@ func use_current_tool():
 		tool.HAMMER:
 			repeat_tool_action(tool.HAMMER,"","HAMMER",3)
 		tool.PICKAXE:
-			repeat_tool_action(tool.PICKAXE,"stone","pickaxe",4)
+			repeat_tool_action(tool.PICKAXE,"","pickaxe",4)
 		tool.AXE:
 			repeat_tool_action(tool.AXE,"wood","axe",1)
 		tool.KNIFE:
@@ -382,10 +383,12 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 #-------------------------
 func spawn_attack_effect()->void:
 	var fx:=attack_effect_scene.instantiate()
-	fx.global_position=marker_2d.global_position
 	fx.scale=Vector2(0.2,0.2)
-	get_parent().add_child(fx)
-	fx.add_to_group("attackeffect")
+	for child in fx.get_children():
+		if child is Area2D:
+			child.add_to_group("attackeffect")
+	get_tree().current_scene.add_child(fx)
+	fx.global_position=marker_2d.global_position
 	match current_tool:
 		tool.HAMMER:
 			fx.scale=Vector2(0.2,0.2)
@@ -514,25 +517,25 @@ func _on_hammer_pressed() -> void:
 func _on_pickaxe_pressed() -> void:
 	set_tool_and_activate(tool.PICKAXE)
 	hide_toolbox_if_visible()
-	#Global.pawn_tool="pickaxe"
+	Global.pawn_tool="pickaxe"
 	equip_audio.play()
 	
 func _on_axe_pressed() -> void:
 	set_tool_and_activate(tool.AXE)
 	hide_toolbox_if_visible()
-	Global.pawn_tool = "axe"
+	#Global.pawn_tool = "axe"
 	equip_audio.play()
 	
 func _on_knife_pressed() -> void:
 	set_tool_and_activate(tool.KNIFE)
 	hide_toolbox_if_visible()
-	#Global.pawn_tool="knife"
+	Global.pawn_tool="knife"
 	equip_audio.play()
 
 func _on_hand_pressed() -> void:
 	set_tool_and_activate(tool.HAND)
 	hide_toolbox_if_visible()
-	#Global.pawn_tool="hand"
+	Global.pawn_tool="hand"
 	equip_audio.play()
 
 #-------------------------

@@ -75,6 +75,7 @@
 [ext_resource type="PackedScene" uid="uid://b1cj8h2fsl7m7" path="res://Units/material/trees/tree4.tscn" id="73_1upps"]
 [ext_resource type="PackedScene" uid="uid://dqpxp3tq2ie8a" path="res://Units/material/sheep/sheep.tscn" id="74_2h62v"]
 [ext_resource type="PackedScene" uid="uid://c83wtfbvuacre" path="res://Units/effect fx/fire_bomb/fire.tscn" id="75_oncvo"]
+[ext_resource type="PackedScene" uid="uid://3q60iqbj8821" path="res://Units/material/gold stone mine/gold stone.tscn" id="76_1upps"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lybtp"]
 vertices = PackedVector2Array(32, 32, -32, 32, -32, -32, 32, -32)
@@ -1667,7 +1668,7 @@ position = Vector2(672, 688)
 [node name="Panel" type="Panel" parent="UI/ui" unique_id=646436492]
 offset_right = 1368.0
 offset_bottom = 1072.0
-mouse_filter = 1
+mouse_filter = 2
 theme_override_styles/panel = ExtResource("20_twn60")
 metadata/_edit_use_anchors_ = true
 
@@ -2208,3 +2209,11 @@ position = Vector2(201, 882)
 
 [node name="fire" parent="decor/sheep" unique_id=1514476646 instance=ExtResource("75_oncvo")]
 position = Vector2(461, 865)
+
+[node name="mine" type="Node2D" parent="decor" unique_id=1767583484]
+
+[node name="gold stone mine" parent="decor/mine" unique_id=2138400638 instance=ExtResource("76_1upps")]
+position = Vector2(958, 841)
+
+[node name="gold stone mine2" parent="decor/mine" unique_id=1073582136 instance=ExtResource("76_1upps")]
+position = Vector2(1021, 925)

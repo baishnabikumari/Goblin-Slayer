@@ -185,7 +185,7 @@ radius = 17.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_tj1jj"]
 radius = 17.0
 
-[node name="sheep" type="CharacterBody2D" unique_id=2066737040 groups=["block_building", "trees"]]
+[node name="sheep" type="CharacterBody2D" unique_id=2066737040 groups=["block_building", "sheep", "trees"]]
 script = ExtResource("1_2jwud")
 
 [node name="anim" type="AnimatedSprite2D" parent="." unique_id=383982626]
@@ -208,9 +208,9 @@ shape = SubResource("CircleShape2D_tj1jj")
 debug_color = Color(0.9901555, 0, 0.2874469, 0.41960785)
 metadata/_edit_lock_ = true
 
-[node name="Danger zone" type="Area2D" parent="." unique_id=208645096]
+[node name="danger zone" type="Area2D" parent="." unique_id=208645096]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Danger zone" unique_id=550310455]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="danger zone" unique_id=550310455]
 visible = false
 position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_tj1jj")
