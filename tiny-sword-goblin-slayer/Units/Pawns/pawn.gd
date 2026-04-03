@@ -312,20 +312,25 @@ func spawn_tool_effect()->void:
 		spawn_attack_effect()
 
 
-#-------------------------
+#-----------------------------
 #func to pick nearby resources
-#-------------------------
+#-----------------------------
 @warning_ignore("unused_parameter")
 func collect_nearby_resources(resource_type:String)->void:
 	if detector_zone==null:
 		return
-		
+
+	if resource_type == "wood":
+		for body in detector_zone.get_overlapping_bodies():
+			if body.is_in_group("trees") and body.has_method("hit"):
+				body.hit()
+				return
+
 	var overlapping_area=detector_zone.get_overlapping_areas()
 	for area in overlapping_area:
 		if area.has_method("collect") and area.has_property("resource_type"):
 			pickup_resource(area)
 			return
-			
 
 #-------------------------
 #pickup func

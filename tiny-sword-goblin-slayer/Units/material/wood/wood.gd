@@ -28,7 +28,7 @@ func collect():
 	if not collect_audio.playing:
 		collect_audio.play()
 	Global.add_wood(1)
-	collision_shape_2d.disabled=true
+	collision_shape_2d.set_deferred("disabled",true)
 	
 	var tween:=create_tween()
 	tween.set_parallel(true)
