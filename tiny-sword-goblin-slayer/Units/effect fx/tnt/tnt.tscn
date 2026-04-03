@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://87iqwinf0cks"]
+
+[ext_resource type="Texture2D" uid="uid://dh621g757lkgj" path="res://Tiny Swords (Free Pack)/Particle FX/Dynamite.png" id="1_75rog"]
+[ext_resource type="Script" uid="uid://3n2l3mirffgl" path="res://Units/effect fx/tnt/tnt.gd" id="1_imij7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_imij7"]
+atlas = ExtResource("1_75rog")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2rnjg"]
+atlas = ExtResource("1_75rog")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hn7kr"]
+atlas = ExtResource("1_75rog")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6xbd"]
+atlas = ExtResource("1_75rog")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7011"]
+atlas = ExtResource("1_75rog")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_osi1c"]
+atlas = ExtResource("1_75rog")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n7qrf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_imij7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2rnjg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hn7kr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6xbd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7011")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_osi1c")
+}],
+"loop": true,
+"name": &"sp",
+"speed": 10.0
+}]
+
+[node name="tnt" type="Node2D" unique_id=2045516577]
+script = ExtResource("1_imij7")
+
+[node name="anim" type="AnimatedSprite2D" parent="." unique_id=1001193792]
+sprite_frames = SubResource("SpriteFrames_n7qrf")
+animation = &"sp"
+frame = 1
+frame_progress = 0.37004632

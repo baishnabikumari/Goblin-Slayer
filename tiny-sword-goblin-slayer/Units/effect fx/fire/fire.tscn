@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://jakfpok3bqul"]
+
+[ext_resource type="Texture2D" uid="uid://bidxf41galox2" path="res://Tiny Swords (Free Pack)/Particle FX/Fire.png" id="1_1kxon"]
+[ext_resource type="Script" uid="uid://cgf8oj2axmnd2" path="res://Units/effect fx/fire/fire.gd" id="2_6bgky"]
+[ext_resource type="AudioStream" uid="uid://do0rrjat61kcx" path="res://Audio/fire_audio.mp3" id="3_v4vux"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2nha"]
+atlas = ExtResource("1_1kxon")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0clg"]
+atlas = ExtResource("1_1kxon")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o451d"]
+atlas = ExtResource("1_1kxon")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iyqar"]
+atlas = ExtResource("1_1kxon")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_boaw4"]
+atlas = ExtResource("1_1kxon")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_03i3x"]
+atlas = ExtResource("1_1kxon")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1l2in"]
+atlas = ExtResource("1_1kxon")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5kf83"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2nha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q0clg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o451d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iyqar")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_boaw4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_03i3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1l2in")
+}],
+"loop": true,
+"name": &"sp",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t01sq"]
+radius = 55.0
+
+[node name="fire" type="AnimatedSprite2D" unique_id=2031008525]
+sprite_frames = SubResource("SpriteFrames_5kf83")
+animation = &"sp"
+autoplay = "sp"
+frame = 4
+frame_progress = 0.8341886
+script = ExtResource("2_6bgky")
+
+[node name="fire" type="Area2D" parent="." unique_id=661440767]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fire" unique_id=674360935]
+visible = false
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_t01sq")
+debug_color = Color(1, 1, 1, 0.41960785)
+
+[node name="fire_audio" type="AudioStreamPlayer" parent="." unique_id=969998332]
+stream = ExtResource("3_v4vux")
+volume_db = -27.688

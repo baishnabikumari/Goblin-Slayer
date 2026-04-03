@@ -385,6 +385,7 @@ func spawn_attack_effect()->void:
 	fx.global_position=marker_2d.global_position
 	fx.scale=Vector2(0.2,0.2)
 	get_parent().add_child(fx)
+	fx.add_to_group("attackeffect")
 	match current_tool:
 		tool.HAMMER:
 			fx.scale=Vector2(0.2,0.2)

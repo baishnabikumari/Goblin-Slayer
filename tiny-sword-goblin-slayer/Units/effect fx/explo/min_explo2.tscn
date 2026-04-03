@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://6u01gunbkkfy"]
+
+[ext_resource type="Texture2D" uid="uid://d15uyxqi52dj6" path="res://Tiny Swords (Free Pack)/Particle FX/Explosion_02.png" id="1_egypx"]
+[ext_resource type="Script" uid="uid://q67uh7t3etfk" path="res://Units/effect fx/explo/explosion.gd" id="2_fqplx"]
+[ext_resource type="AudioStream" uid="uid://b3ri5bf6rlrrv" path="res://Audio/explosion.mp3" id="3_e7j7v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqplx"]
+atlas = ExtResource("1_egypx")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7j7v"]
+atlas = ExtResource("1_egypx")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbtlj"]
+atlas = ExtResource("1_egypx")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byfdf"]
+atlas = ExtResource("1_egypx")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ka3if"]
+atlas = ExtResource("1_egypx")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnqeo"]
+atlas = ExtResource("1_egypx")
+region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_632u4"]
+atlas = ExtResource("1_egypx")
+region = Rect2(1152, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8l47y"]
+atlas = ExtResource("1_egypx")
+region = Rect2(1344, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxw1s"]
+atlas = ExtResource("1_egypx")
+region = Rect2(1536, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2jlg"]
+atlas = ExtResource("1_egypx")
+region = Rect2(1728, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5denl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqplx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7j7v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xbtlj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_byfdf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ka3if")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bnqeo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_632u4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8l47y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxw1s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2jlg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_163v7"]
+radius = 106.06602
+
+[node name="explosion" type="AnimatedSprite2D" unique_id=1951981918]
+sprite_frames = SubResource("SpriteFrames_5denl")
+autoplay = "default"
+frame = 7
+frame_progress = 0.76848936
+script = ExtResource("2_fqplx")
+metadata/_edit_lock_ = true
+
+[node name="explo" type="Area2D" parent="." unique_id=1544881016 groups=["explo"]]
+
+[node name="shape" type="CollisionShape2D" parent="explo" unique_id=1350307989]
+visible = false
+shape = SubResource("CircleShape2D_163v7")
+debug_color = Color(0.9838875, 0.12724143, 0, 0.41960785)
+
+[node name="explo_audio" type="AudioStreamPlayer" parent="." unique_id=98617680]
+stream = ExtResource("3_e7j7v")
+volume_db = -22.286
+pitch_scale = 1.87

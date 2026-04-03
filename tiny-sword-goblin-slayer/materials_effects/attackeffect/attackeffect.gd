@@ -1,10 +1,10 @@
 extends AnimatedSprite2D
 
-@onready var attackeffect: AnimatedSprite2D = $"."
+#@onready var attackeffect: AnimatedSprite2D = $"."
 
 func _ready() -> void:
 	z_index=4
-	attackeffect.play("sp")
+	play("sp")
 
 func die():
 	queue_free()

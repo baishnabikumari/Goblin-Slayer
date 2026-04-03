@@ -74,6 +74,7 @@
 [ext_resource type="PackedScene" uid="uid://dhry0s3k6t250" path="res://Units/material/trees/tree3.tscn" id="72_oncvo"]
 [ext_resource type="PackedScene" uid="uid://b1cj8h2fsl7m7" path="res://Units/material/trees/tree4.tscn" id="73_1upps"]
 [ext_resource type="PackedScene" uid="uid://dqpxp3tq2ie8a" path="res://Units/material/sheep/sheep.tscn" id="74_2h62v"]
+[ext_resource type="PackedScene" uid="uid://c83wtfbvuacre" path="res://Units/effect fx/fire_bomb/fire.tscn" id="75_oncvo"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lybtp"]
 vertices = PackedVector2Array(32, 32, -32, 32, -32, -32, 32, -32)
@@ -2204,3 +2205,6 @@ position = Vector2(418, 571)
 
 [node name="sheep5" parent="decor/sheep" unique_id=861781569 instance=ExtResource("74_2h62v")]
 position = Vector2(201, 882)
+
+[node name="fire" parent="decor/sheep" unique_id=1514476646 instance=ExtResource("75_oncvo")]
+position = Vector2(461, 865)

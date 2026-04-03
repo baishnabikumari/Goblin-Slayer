@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://c83wtfbvuacre"]
+
+[ext_resource type="Script" uid="uid://cmr1hclc4fsba" path="res://Units/effect fx/fire_bomb/fire.gd" id="1_c0ehc"]
+[ext_resource type="Texture2D" uid="uid://bidxf41galox2" path="res://Tiny Swords (Free Pack)/Particle FX/Fire.png" id="1_nngtw"]
+[ext_resource type="AudioStream" uid="uid://do0rrjat61kcx" path="res://Audio/fire_audio.mp3" id="3_wm31c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6r3u"]
+atlas = ExtResource("1_nngtw")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ysx8f"]
+atlas = ExtResource("1_nngtw")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nngtw"]
+atlas = ExtResource("1_nngtw")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0ehc"]
+atlas = ExtResource("1_nngtw")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wm31c"]
+atlas = ExtResource("1_nngtw")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qbb7"]
+atlas = ExtResource("1_nngtw")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djol2"]
+atlas = ExtResource("1_nngtw")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vokmn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6r3u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ysx8f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nngtw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0ehc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wm31c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qbb7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_djol2")
+}],
+"loop": true,
+"name": &"sp",
+"speed": 10.0
+}]
+
+[node name="fire" type="Node2D" unique_id=1514476646]
+script = ExtResource("1_c0ehc")
+
+[node name="anim" type="AnimatedSprite2D" parent="." unique_id=1891405692]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_vokmn")
+animation = &"sp"
+autoplay = "sp"
+
+[node name="fire_audio" type="AudioStreamPlayer" parent="anim" unique_id=81455146]
+stream = ExtResource("3_wm31c")
+volume_db = -23.636
