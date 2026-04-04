@@ -220,6 +220,8 @@ func _physics_process(delta: float) -> void:
 	if state in [State.IDLE,State.CHASE]:
 		velocity+=separation_vector()*SEPARATION_FORCE
 	avoid_obstacles()
+	if state == State.ATTACK:
+		velocity = Vector2.ZERO
 	move_and_slide()
 
 #==============================
@@ -240,16 +242,25 @@ func idle_state()->void:
 func chase_state()->void:
 	if not validate_target():
 		return
-	nav.target_position=current_target.global_position
-	var next_point:Vector2=nav.get_next_path_position()
-	var dir:Vector2=(next_point-global_position).normalized()
 
-	velocity=dir*SPEED
-	anim.flip_h=dir.x<0
+	nav.target_position = current_target.global_position
+	
+	var next_point:Vector2 = nav.get_next_path_position()
+	var dir:Vector2 = (next_point - global_position).normalized()
+
+	velocity = dir * SPEED
+	anim.flip_h = dir.x < 0
 	anim.play("run")
 
-	if target_area.get_overlapping_bodies().has(current_target):
-		state=State.ATTACK
+	var dist:float = global_position.distance_to(current_target.global_position)
+
+	if dist < 40.0:
+		state = State.ATTACK
+		return
+
+	if velocity.length() < 5.0 and dist < 80.0:
+		state = State.ATTACK
+		return
 
 var is_attacking:=false
 func attack_state()->void:

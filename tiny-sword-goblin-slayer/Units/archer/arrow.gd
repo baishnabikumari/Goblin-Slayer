@@ -9,13 +9,13 @@ var stuck_body:Node2D=null
 var stick_offset:Vector2=Vector2.ZERO
 
 #var of the group affected by the arrows
-@export var stick_groups:Array=["goblin","goblinbuildings","building"]
+@export var stick_groups:Array=["goblin","goblinbuildings"]
 
 #arrow lifespan
 @export var lifespan:float=0.35
 
 func _ready() -> void:
-	body_entered.connect(_on_body_entered)
+	area_entered.connect(_on_area_entered)
 	_start_lifespan_timer()
 
 
@@ -33,28 +33,28 @@ func _physics_process(delta: float) -> void:
 	global_position+=velocity*delta
 	rotation=velocity.angle()
 
-#func _on_body_entered(body: Node2D) -> void:
-func _on_body_entered(body: Node2D) -> void:
+func _on_area_entered(area: Area2D) -> void:
+	print("HIT:", area.name)
 	if stuck:
 		return
 	
 	var can_stick:bool=false
 	for group in stick_groups:
-		if body.is_in_group(group) or body.name==group:
+		if area.is_in_group(group) or area.name==group:
 			can_stick=true
 			break
 	if not can_stick:
 		return
-	stuck_body=body
+	
 	stuck=true
 	velocity=Vector2.ZERO
-	stick_offset=global_position-body.global_position
-	if body.is_in_group("goblin"):
-		if body.has_method("take_damage"):
-			body.take_damage(1,global_position)
-	if body.is_in_group("goblinbuildings"):
-		if body.has_method("take_damage"):
-			body.take_damage(30)
+	
+	if area.is_in_group("goblin"):
+		if area.has_method("take_damage"):
+			area.take_damage(1,global_position)
+	if area.is_in_group("goblinbuildings"):
+		if area.has_method("take_damage"):
+			area.take_damage(30, global_position)
 	
 	_fade_and_die()
 

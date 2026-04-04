@@ -181,8 +181,11 @@ metadata/_edit_lock_ = true
 visible = false
 position = Vector2(0, 7)
 shape = SubResource("CircleShape2D_ki085")
+disabled = true
 
-[node name="hurtbox" type="Area2D" parent="." unique_id=2135471399]
+[node name="hurtbox" type="Area2D" parent="." unique_id=2135471399 groups=["goblin"]]
+collision_layer = 4
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox" unique_id=86909037]
 position = Vector2(0, 5)

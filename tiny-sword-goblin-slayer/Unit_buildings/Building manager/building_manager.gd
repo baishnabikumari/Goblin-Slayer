@@ -32,14 +32,14 @@ var current_id := ""
 var can_place := false
 
 #cost mapping
-var cost_map := { #--neeed to change it later
-	"house1": {"wood": 0, "gold": 0},
-	"house2": {"wood": 0, "gold": 0},
-	"house3": {"wood": 0, "gold": 0},
-	"archery_tower": {"wood": 0, "gold": 0},
-	"barracks": {"wood": 0, "gold": 0},
-	"tower": {"wood": 0, "gold": 0},
-	"monastery": {"wood": 0, "gold": 0}
+var cost_map := {
+	"house1": {"wood": 20, "gold": 10},
+	"house2": {"wood": 30, "gold": 15},
+	"house3": {"wood": 40, "gold": 20},
+	"archery_tower": {"wood": 50, "gold": 40},
+	"barracks": {"wood": 40, "gold": 30},
+	"tower": {"wood": 40, "gold": 30},
+	"monastery": {"wood": 40, "gold": 40}
 }
 
 #--------------------------------
@@ -241,17 +241,23 @@ func _has_enoungh_resourches(id: String) -> bool:
 	if not cost:
 		return false
 
-	return Global.gold >= cost["gold"] and Global.wood >= cost["wood"]
+	return Global.gold >= cost.get("gold",0) \
+	and Global.wood >= cost.get("wood",0) \
+	and Global.meat >= cost.get("meat",0)
 
 func _substract_resources(id: String) -> bool:
 	var cost = cost_map.get(id)
 	if not cost:
 		return false
 
-	if Global.gold < cost["gold"] or Global.wood < cost["wood"]:
+	if Global.gold < cost.get("gold",0) \
+	or Global.wood < cost.get("wood",0) \
+	or Global.meat < cost.get("meat",0):
 		return false
-	Global.consume_gold(cost["gold"])
-	Global.consume_wood(cost["wood"])
+
+	Global.consume_gold(cost.get("gold",0))
+	Global.consume_wood(cost.get("wood",0))
+	Global.consume_meat(cost.get("meat",0))
 	return true
 
 func _feedback_insufficient_ghosts() -> void:

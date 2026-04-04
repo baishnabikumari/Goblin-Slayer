@@ -34,6 +34,8 @@ animations = [{
 size = Vector2(38, 2)
 
 [node name="arrow" type="Area2D" unique_id=1141990447 groups=["arrow"]]
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("1_sbejn")
 
 [node name="anim" type="AnimatedSprite2D" parent="." unique_id=471680845]
@@ -46,4 +48,4 @@ visible = false
 position = Vector2(-1, 3)
 shape = SubResource("RectangleShape2D_3103l")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

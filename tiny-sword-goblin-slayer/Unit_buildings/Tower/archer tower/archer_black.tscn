@@ -122,7 +122,7 @@ radius = 22.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_oio1o"]
 radius = 184.69434
 
-[node name="archer" type="CharacterBody2D" unique_id=497485192 groups=["player"]]
+[node name="archer" type="CharacterBody2D" unique_id=497485192]
 script = ExtResource("1_q7cqp")
 
 [node name="anim" type="AnimatedSprite2D" parent="." unique_id=1805673175]
@@ -138,7 +138,6 @@ metadata/_edit_lock_ = true
 [node name="attack zone" type="Area2D" parent="." unique_id=1535390219]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attack zone" unique_id=2047456222]
-visible = false
 shape = SubResource("CircleShape2D_oio1o")
 debug_color = Color(0, 0.6509804, 0.17254902, 0.39215687)
 metadata/_edit_lock_ = true
