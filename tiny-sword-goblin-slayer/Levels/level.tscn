@@ -65,8 +65,9 @@
 [ext_resource type="Texture2D" uid="uid://b6r4ldnww5my4" path="res://Tiny Swords (Free Pack)/Buildings/Yellow Buildings/Archery.png" id="60_011lf"]
 [ext_resource type="Script" uid="uid://cpcyh1hm4ckx6" path="res://Unit_buildings/Building manager/building_manager.gd" id="63_ntwpu"]
 [ext_resource type="Texture2D" uid="uid://xvdbp4ipwe56" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Cursors/Cursor_04.png" id="64_g5qva"]
+[ext_resource type="Script" uid="uid://bn5ovq664lw1b" path="res://Levels/unit_resources.gd" id="65_07u00"]
 [ext_resource type="Texture2D" uid="uid://crktwrcrdk6xp" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Icons/Icon_03.png" id="65_hwx2r"]
-[ext_resource type="FontFile" uid="uid://bxbuus74cc87x" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Buttons/SPLURGEB.TTF" id="66_hwx2r"]
+[ext_resource type="FontFile" uid="uid://dhmbmim1l0lpk" path="res://Tiny Swords (Free Pack)/UI Elements/fonts/kirifont/KiriFont.ttf" id="67_07u00"]
 [ext_resource type="Texture2D" uid="uid://b1ffunhoj5oa7" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Icons/Icon_04.png" id="67_n2og4"]
 [ext_resource type="Texture2D" uid="uid://u1kxyp2gjfa3" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Icons/Icon_02.png" id="68_0tv2o"]
 [ext_resource type="PackedScene" uid="uid://mmoomsc0s3i5" path="res://Units/material/trees/tree1.tscn" id="70_sy5sx"]
@@ -2035,6 +2036,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 1
 theme_override_styles/panel = ExtResource("20_twn60")
+script = ExtResource("65_07u00")
 metadata/_edit_lock_ = true
 
 [node name="unit resource" type="TileMapLayer" parent="UI/ui/Panel/player/Unit Resources" unique_id=1699867066]
@@ -2051,14 +2053,14 @@ scale = Vector2(0.6, 0.6)
 texture = ExtResource("65_hwx2r")
 
 [node name="Gold_Label" type="Label" parent="UI/ui/Panel/player/Unit Resources/GIcon" unique_id=35874828]
-offset_left = 40.0
-offset_top = -55.0
-offset_right = 351.11115
-offset_bottom = 129.0
-scale = Vector2(0.6, 0.6)
+offset_left = 33.333332
+offset_top = -21.666664
+offset_right = 319.4445
+offset_bottom = 98.333336
+scale = Vector2(0.4, 0.4)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 20
-theme_override_fonts/font = ExtResource("66_hwx2r")
+theme_override_fonts/font = ExtResource("67_07u00")
 theme_override_font_sizes/font_size = 120
 text = ": 0"
 metadata/_edit_lock_ = true
@@ -2070,13 +2072,13 @@ texture = ExtResource("67_n2og4")
 
 [node name="Meat_Label" type="Label" parent="UI/ui/Panel/player/Unit Resources/MIcon2" unique_id=1504649672]
 offset_left = 40.0
-offset_top = -55.0
+offset_top = -21.666668
 offset_right = 370.55554
-offset_bottom = 129.0
-scale = Vector2(0.6, 0.6)
+offset_bottom = 162.33333
+scale = Vector2(0.4, 0.4)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 20
-theme_override_fonts/font = ExtResource("66_hwx2r")
+theme_override_fonts/font = ExtResource("67_07u00")
 theme_override_font_sizes/font_size = 120
 text = ": 0"
 metadata/_edit_lock_ = true
@@ -2088,13 +2090,13 @@ texture = ExtResource("68_0tv2o")
 
 [node name="Wood_Label" type="Label" parent="UI/ui/Panel/player/Unit Resources/WIcon3" unique_id=2020868155]
 offset_left = 40.0
-offset_top = -55.0
+offset_top = -21.666668
 offset_right = 351.11115
-offset_bottom = 129.0
-scale = Vector2(0.6, 0.6)
+offset_bottom = 162.33333
+scale = Vector2(0.4, 0.4)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 20
-theme_override_fonts/font = ExtResource("66_hwx2r")
+theme_override_fonts/font = ExtResource("67_07u00")
 theme_override_font_sizes/font_size = 120
 text = ": 0"
 metadata/_edit_lock_ = true

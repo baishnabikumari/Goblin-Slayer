@@ -227,13 +227,22 @@ func die():
 	queue_free()
 
 func _schedule_respawn():
-	var respawn_position=global_position
-	var parent=get_parent()
-	get_tree().create_timer(5.0).timeout.connect(func():
+	print("_schedule_respawn called")
+	var respawn_position = global_position
+	var parent = get_parent()
+	var scene = baby_sheep_scene
+	
+	var timer = get_tree().create_timer(60.0)
+	timer.timeout.connect(func():
+		print("timer fired - attempting respawn")
 		if is_instance_valid(parent):
-			var new_sheep=baby_sheep_scene.instantiate()
-			new_sheep.global_position=respawn_position+Vector2(randf_range(-30,30),randf_range(-30,30))
-			parent.add_child(new_sheep)
+			print("parent valid - spawning sheep")
+			var new_sheep = scene.instantiate()
+			new_sheep.global_position = respawn_position + Vector2(randf_range(-30,30), randf_range(-30,30))
+			parent.call_deferred("add_child", new_sheep)
+			print("sheep added")
+		else:
+			print("parent invalid")
 	)
 
 #================
