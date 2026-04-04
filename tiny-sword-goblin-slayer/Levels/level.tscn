@@ -1724,6 +1724,7 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="sets buttons" type="Node2D" parent="UI/ui/Panel" unique_id=756825979]
+visible = false
 
 [node name="Info btn" type="Button" parent="UI/ui/Panel/sets buttons" unique_id=460788861]
 process_mode = 3
