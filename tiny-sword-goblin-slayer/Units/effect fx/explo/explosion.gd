@@ -1,17 +1,17 @@
 extends AnimatedSprite2D
 
-@onready var explosion: AnimatedSprite2D = $"."
 @onready var explo: Area2D = $explo
 @onready var explo_audio: AudioStreamPlayer = $explo_audio
 @onready var shape: CollisionShape2D = $explo/shape
-
 var pos
-
-func _ready() -> void:
-	if not explo_audio.playing:
-		explo_audio.play()
-		explosion.play("sp")
-		scale=Vector2(2,2)
+func _ready():
+	explo.monitoring = true
+	
+	await get_tree().create_timer(0.1).timeout
+	explo.monitoring = false
+	
+	await get_tree().create_timer(0.3).timeout
+	queue_free()
 
 func _on_animation_finished() -> void:
 	queue_free()

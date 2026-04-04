@@ -422,12 +422,12 @@ func _on_explore_detector_area_entered(area: Area2D) -> void:
 	if state!=STATE_IDLE:
 		return
 	if area.is_in_group("explo"):
-		take_damage(1)
+		take_damage(1, area.global_position)
 
-func take_damage(amount:int)->void:
+func take_damage(damage:int, source_pos:Vector2):
 	if state!=STATE_IDLE:
 		return
-	life-=amount
+	life-=damage
 	life=max(life,0)
 	
 	is_hit=true

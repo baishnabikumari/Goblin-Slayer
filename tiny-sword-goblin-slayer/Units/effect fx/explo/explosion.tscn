@@ -70,7 +70,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5denl")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 10.0
 }]
@@ -81,8 +81,8 @@ radius = 106.06602
 [node name="explosion" type="AnimatedSprite2D" unique_id=1951981918]
 sprite_frames = SubResource("SpriteFrames_5denl")
 autoplay = "default"
-frame = 2
-frame_progress = 0.5619767
+frame = 8
+frame_progress = 1.0
 script = ExtResource("2_pji2o")
 metadata/_edit_lock_ = true
 

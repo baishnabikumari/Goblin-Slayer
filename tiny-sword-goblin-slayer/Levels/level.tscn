@@ -77,6 +77,8 @@
 [ext_resource type="PackedScene" uid="uid://dqpxp3tq2ie8a" path="res://Units/material/sheep/sheep.tscn" id="74_2h62v"]
 [ext_resource type="PackedScene" uid="uid://c83wtfbvuacre" path="res://Units/effect fx/fire_bomb/fire.tscn" id="75_oncvo"]
 [ext_resource type="PackedScene" uid="uid://3q60iqbj8821" path="res://Units/material/gold stone mine/gold stone.tscn" id="76_1upps"]
+[ext_resource type="PackedScene" uid="uid://2sx23d8xhqvn" path="res://Unit Goblins/Goblin barrel/goblin_barrel.tscn" id="78_unfds"]
+[ext_resource type="PackedScene" uid="uid://ii5i38sjnrr8" path="res://Units/Pawns/pawn_black.tscn" id="79_03wqq"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lybtp"]
 vertices = PackedVector2Array(32, 32, -32, 32, -32, -32, 32, -32)
@@ -2219,3 +2221,17 @@ position = Vector2(958, 841)
 
 [node name="gold stone mine2" parent="decor/mine" unique_id=1073582136 instance=ExtResource("76_1upps")]
 position = Vector2(1021, 925)
+
+[node name="Goblin Units" type="Node2D" parent="." unique_id=120180776]
+
+[node name="Goblin barrel" parent="." unique_id=1032318086 instance=ExtResource("78_unfds")]
+position = Vector2(1050, 497)
+
+[node name="Goblin barrel2" parent="." unique_id=1463817165 instance=ExtResource("78_unfds")]
+position = Vector2(456, 672)
+
+[node name="Goblin barrel3" parent="." unique_id=850864706 instance=ExtResource("78_unfds")]
+position = Vector2(216, 472)
+
+[node name="pawn" parent="." unique_id=563966811 instance=ExtResource("79_03wqq")]
+position = Vector2(701, 933)

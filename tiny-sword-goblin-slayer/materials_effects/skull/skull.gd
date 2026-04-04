@@ -4,7 +4,7 @@ extends AnimatedSprite2D
 
 func _ready() -> void:
 	z_index=4
-	skull.play("sp")
+	skull.play("default")
 
 
 @warning_ignore("unused_parameter")
@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 	fade()
 
 func fade():
-	skull.play("sp")
+	skull.play("default")
 	await skull.animation_finished
 	die()
 
