@@ -1,7 +1,7 @@
 extends Panel
 
 #====================
-# Labels
+# Labels for buttons 
 #====================
 @onready var label_gold: Label = $"GIcon/Gold_Label"
 @onready var label_meat: Label = $"MIcon2/Meat_Label"
